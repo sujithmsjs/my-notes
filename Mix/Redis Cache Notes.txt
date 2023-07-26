@@ -1,0 +1,415 @@
+09:58 01-02-2023
+
+TODO LIST
+- Clear all the JIRA tickets on priotiry
+- Practice all the remaining angular work
+- learn about $look up in mongoDB
+- Redis cache impl
+
+Jan 11 
+
+-----------
+REDIS CACHE
+-----------
+Remote Dictionary Server
+
+REmote
+DIctionary
+Service
+
+Redis (/ˈrɛdɪs/;[6][7] Remote Dictionary Server)[6] is an in-memory data structure store, used as a distributed, in-memory key–value database, cache and message broker, with optional durability. Redis supports different kinds of abstract data structures, such as strings, lists, maps, sets, sorted sets, HyperLogLogs, bitmaps, streams, and spatial indices. The project was developed and maintained by Salvatore Sanfilippo, starting in 2009.
+
+
+- A DS store that sotres the data in Primary memory of the Sys.
+
+- It uses key-valu pairs to store the data, which is just like a HashMap.
+
+Features
+
+1. In-Memonry Storge(Faster when compared to treditional HDs and SSDs)
+2. Advanced DS: Redis stores it's data in a key-value pair and has the ability to store the data using a variety of DS.
+It provides wide verity of DSs.
+
+Ex: Strings, Lists, Sets, Sorted Sets, Hashes, Bit Arrays, HyperLogLogs, Streams
+
+It's not possible if you would wish to store data directly in the memory without using Redis.
+
+3. No need of Serialization required here since the data is stored directly in the form of the DS. 
+
+4. Persistence: System memory is volatile, it will get vanished once power gets off. To overcome that Redis will main tain backup Secoundary storage in the form of Snapshots and AOFs(Append Only Files).
+
+5. Replication:
+Redis uses Master-Slave(Primary-Replica) architecture, where data can be replicated to multiple replica servers. This boosts the read performance since requests can split among different servers. This also helps in faster recovery in case the master or primary server eperiences on outage.
+
+
+Realtime Usecases
+1. Twitter - Caching with low latency
+2. Pinterest - Caching
+3. Dream11/My11Circle - Highly performant leaderboards with concurrent read and writes.
+
+
+
+
+Alternatives to REDIS
+
+1. MongoDB
+2. RabbitMQ
+3. Cassandra
+
+
+How to Implement?
+
+Dependencies
+1. spring-boot-starter-cache
+2. spring-boot-starter-data-redis
+
+@EnableCaching
+
+RedisCacheConfiguration bean where configuration takes place.
+RedisCacheManagerBuilderCustomizer 
+
+
+TTL: Time to live
+customize the default serialization strategy
+
+
+RESOURCES:
+https://www.crio.do/blog/what-is-redis/
+https://javatechonline.com/spring-boot-redis-crud-example/
+https://javatechonline.com/how-to-implement-redis-cache-in-spring-boot-application/
+https://redis.io/docs/getting-started/installation/install-redis-on-windows/
+https://docs.spring.io/spring-data/data-redis/docs/current/reference/html/
+
+
+
+1) What is Redis?
+Redis is an open source(BSD licensed) in-memory remote data structure store(database) that offers high performance, replication, and a unique data model. The full form of Redis is Remote Directory Server. Moreover, we can use it in multiple forms. Redis provides data structures such as strings, hashes, lists, sets, sorted sets with range queries, bitmaps, hyperloglogs, geospatial indexes, and streams.
+
+2) What is Redis Database?
+Redis is a NoSQL DB of type Key-Value stores. In fact, Redis Database is an in-memory database that persists on disk. It means when we use Redis Database, we occupy a memory on the disk to use as a Database.
+
+
+3) How does Redis database work?
+-> Unlike other databases such as MongoDB, PostgreSQL, Oracle, Cassandra that store data on disk or SSDs, all Redis data resides in-memory.
+-> As it doesn’t need to access disks, it avoids seek time delays.
+-> Whatever data Redis stores such as string, redis set or redis hash, everything is saved inside the hash tables.
+
+
+4) What are the benefits of Redis?
+-> In-memory data store
+-> Flexible data structures : like Strings, Lists, Sets, Sorted Sets, Hashes, Bitmaps, HyperLoglogs
+-> Simplicity and ease-of-use
+-> High availability and scalability
+-> Easy for Replication and persistence
+-> High Extensibility
+
+
+5) What is NoSQL DB ? What are some popular examples of NoSQL databases?
+NoSQL databases are those who store data in a format other than relational tables.
+
+
+6) How many types of NoSQL DB are there?
+
+-> Key-Values Stores: They internally use a hash table where there is a unique key and a pointer to a particular item of data.
+Example: 
+Redis, DynanoDB, Oracle BDB, Voldemort, Amazon
+
+
+-> Wide-column Stores: They store data in tables, rows, and dynamic columns. Here each row doesn’t need to have the same columns. Therefore, they are better in flexibility over relational databases
+Example:
+Cassandra, HBase
+
+
+-> Document Databases: Document Databases store data in documents like JSON objects
+Example:
+MongoDB, CouchDB
+
+
+-> Graph Databases: 
+They use a flexible graph model which, again, can scale across multiple machines. Graph Databases store data in nodes and edges. Nodes typically store information about people, places, and things while edges store information about the relationships between the nodes.
+Example:
+Neo4J, JanusGraph, InfoGrid, Infine Graph
+
+
+
+
+7) What are the benefits of using a NoSQL Database?
+NoSQL databases are more flexible and scalable, faster, reliable, distributed, schema-free architecture, easy replication support, simple API, support for big data etc. NoSQL databases can often perform better than SQL(relational databases) for your use case
+
+8) What are the Drawbacks of a NoSQL Database?
+One of the recognized drawbacks of NoSQL databases is that they don’t support ACID (atomicity, consistency, isolation, durability) transactions across multiple documents.
+
+As NoSQL data models primarily focused on optimizing for queries rather than reducing data duplication, therefore NoSQL databases can be larger than SQL databases.
+
+9) How to create a connection between application & Redis DB?
+10) Spring Boot Redis CRUD Example
+11) How to test the implemented methods?
+
+
+
+-> Redis cache helps us by minimizing the number of network calls while accessing the data from DB.
+
+-> Redis can also be used as a database and Message Broker.
+
+-> In a real time application, Redis is popular for a Cache Manager as compared to database & Message Broker.
+
+
+---
+
+const Redis = require('ioredis');
+const fs = require('fs');
+
+const redis = new Redis({
+    host: 'redis-18107.c9.us-east-1-4.ec2.cloud.redislabs.com',
+    port: 18107,
+    password: 'cfP9oUSaakppherXX4HqUEDtGxDDW7Df'
+});
+
+
+---
+
+How to connect to Redis
+-----------------------
+
+
+https://redis.com/thank-you/try-redis-enterprise-cloud-free/
+username: sujith.ms.js@gmail.com
+password: NvrStle#22
+
+https://app.redislabs.com/#/subscriptions/subscription/1959070/bdb-view/11465677/configuration
+
+You need to provide 3 properties in side the Springboot application
+
+
+application.properties
+----------------------
+spring.redis.host=redis-18107.c9.us-east-1-4.ec2.cloud.redislabs.com
+spring.redis.port=18107
+spring.redis.password=cfP9oUSaakppherXX4HqUEDtGxDDW7Df
+
+Redis is In-Memory database mostly used for chaching. It will story the data in HashMap format.
+
+Redis Cache useful Annotations
+------------------------------
+org.springframework.cache.annotation
+
+
+
+@EnableCaching:
+ 
+We apply this annotation at the main class (starter class) of our application in order to tell Spring Container that we need a caching feature in our application.
+
+@Cacheable:
+
+ -> It is used to fetch (retrieve) data from the DB to the application and store in Redis Cache.
+
+-> We apply it on the methods that get (retrieve) data from DB.
+
+-> It requires a return value of the method that adds or updates data in the cache.
+
+@CachePut
+
+-> We use @CachePut in order to update data in the Redis Cache while there is any update of data in DB. We apply it on the methods that make modifications in DB.
+
+@CacheEvict 
+
+Evict: Remove, Eject, Force out, Expel
+
+-> We use @CacheEvict in order to remove the data in the Redis Cache while there is any removal of data in DB. We apply it on the methods that delete data from DB. It can be used with void methods.
+
+employee::SimpleKey []
+
+
+
+Caching Behavior
+-----------------
+Redic Cache Infrastructure
+
+
+
+1. Per whole class
+2. Per-cache basis
+
+RedisCacheManagerBuilder : 
+
+
+Controlling properties and behaviors of the Spring caching abstraction: 
+
+including data update and eviction
+
+Bind the caching behavior to the methods with declarative annotations
+
+
+@Cacheable:
+If any of the caches contain the required result, the result is returned and the method is not invoked.
+
+
+
+
+@CacheEvict:
+Reduces the overhead of looking up entries in a large cache by removing stale and unused entries.
+
+@CacheEvict(value="addresses", allEntries=true)
+
+@CachePut
+we selectively update the entries whenever we alter them.
+
+
+@Caching:  group multiple caching annotations with @Caching
+
+
+@CacheConfig:
+
+@CacheConfig(cacheNames={"addresses"})
+
+@CachePut(value="addresses", condition="#customer.name=='Tom'")
+@CachePut(value="addresses", unless="#result.length()<64")
+
+
+https://docs.spring.io/spring-framework/docs/3.2.x/spring-framework-reference/html/cache.html
+
+
+
+@Cacheable(value="book", condition="#name.length < 32", unless="#result.hardback")
+public Book findBook(String name)
+
+@Cacheable(value="book", condition="#name.length < 32")
+public Book findBook(String name)
+
+
+
+@Cacheable(cacheNames = "Sujith" , key = EMPLOYEE_KEY )
+Instead of setting cacheName for every method we can use @Config to make it convinient for every use.
+
+redisTemplate
+redisConnectionFactory
+redisTemplate
+stringRedisTemplate
+
+
+
+https://medium.com/@gayathchandira/implement-a-cache-in-spring-boot-applications-with-redis-f7886c6656b1
+
+
+
+Spring Boot framework allows the integration of various cache providers Such as Redis, Hazelcast, EhCache, and Caffeine.
+
+
+https://programmerfriend.com/ultimate-guide-to-redis-cache-with-spring-boot-2-and-spring-data-redis/
+
+
+=================
+
+Token table
+jwt key
+
+
+
+
+
+
+fe36ab40-cfdc-4eb4-87c5-63de1b0a698c
+
+
+com.onpassive.odesk_admin.security.RefreshTokenService
+
+
+jwt : RandomToken
+ 
+public RefreshTokenEntity findByJwtToken(String token){}
+
+public TokenDto createRefreshToken(
+String emailId,
+String accessToken,
+String deviceType,
+String osName,
+String osVersion,
+String browserName,
+String browserVersion, String macId){}
+}
+
+TokenService{
+	Token findTokenById(int)	
+	boolean deleteTokenById(int)
+	Token createToken(int)
+	Token verifyExpirationById(int)
+	Token refreshTokenById(int)
+	Token getNewToken(int)
+}
+
+ @Bean
+    public RedisCacheConfiguration cacheConfiguration() {
+        return RedisCacheConfiguration.defaultCacheConfig()
+                .entryTtl(Duration.ofSeconds(10))
+                .disableCachingNullValues()
+                .serializeValuesWith(RedisSerializationContext.SerializationPair.fromSerializer(new GenericJackson2JsonRedisSerializer()));
+    }
+
+    @Bean
+    public RedisCacheManagerBuilderCustomizer redisCacheManagerBuilderCustomizer() {
+        return (builder) -> builder
+                .withCacheConfiguration("keyValueCache",
+                        RedisCacheConfiguration.defaultCacheConfig().entryTtl(Duration.ofSeconds(20)));
+    }
+
+
+
+
+package com.onpassive.odesk_admin.cache;
+
+import java.time.Duration;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.cache.RedisCacheManagerBuilderCustomizer;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.cache.RedisCacheConfiguration;
+import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
+
+import com.onpassive.odesk_admin.constant.Constants;
+
+import lombok.extern.slf4j.Slf4j;
+
+@Configuration
+@Slf4j
+public class RedisConfig {
+	
+	@Value("${onpassive.jwtRefreshExpirationMs}")
+	private Long refreshTokenDurationMs;
+
+	public LettuceConnectionFactory redisConnectionFactory() {
+		return new LettuceConnectionFactory();
+	}
+
+	@Bean
+	public RedisCacheManagerBuilderCustomizer redisCacheManagerBuilderCustomizer() {
+		log.info("Inside RedisCacheManagerBuilderCustomizer");
+		return (builder) -> builder
+	      .withCacheConfiguration(Constants.JWT_CACHE_NAME,
+	        RedisCacheConfiguration.defaultCacheConfig().entryTtl(Duration.ofMillis(refreshTokenDurationMs)));
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,141 @@
+extensively adverb : to a large degree; a great amount
+
+Gregorian calendar: 
+
+Smoke/preliminary test
+Politic
+Social
+Economic
+warning alert (Sirens)
+mock drill
+Any inconvenience it may cause is deeply regretted.
+cooperation
+Ad Tier for Prime Video
+in·fla·tion The action of inflating something or the condition of being inflated.
+
+discretionary:Available for use at the discretion of the user.
+
+im·per·son·a·tion
+An act of pretending to be another person for the purpose of entertainment or fraud.
+
+ a whirlwind tour
+
+initiate
+
+task-oriented
+Chief Executive Officer
+tech ecosystem
+
+Intercept
+Grooming session
+Mitigation Strategies
+intuitively obvious
+asterisk
+perfect x imperfect 
+compatibility issues
+evolved x
+downside
+A real-life analogy
+evaluate
+Concise
+Verbose
+Arrow notation
+Type Inferred
+performan
+Traditional
+Backed by
+It·er·a·tion: The repetition of a process or utterance.
+Disperses
+retrieval
+concurrently
+externally
+encapsulates 
+
+Natural Ordering?
+Custom Ordering?
+vice versa
+Explicit comparator
+
+regardless of whether an explicit comparator is provided, must ensure that the ordering of elements within the set aligns with the equality relationship defined by the "equals" method.
+
+consistent with equals
+
+Set -> Equals
+ConcurrentModificationException
+employed by : given work to
+
+a·nal·o·gy:
+A comparison between two things, typically for the purpose of explanation or clarification.
+
+Data integrity
+searching
+insertion
+retrieval
+contrary
+
+Prior to
+
+MovieFlix
+FilmVault
+CinemaCatalog
+MovieMania
+ReelRoster
+FlickFinder
+PicturePedia
+ShowtimeSage
+CineSphere
+MovieHub
+indentation
+
+intricate 
+interoperability
+backward compatibility
+Pluggability
+Reablility
+Extensibility
+Scalability
+Reusability
+Maintainability
+Flexibility
+Interchangeability
+
+ac·com·mo·date: (of physical space, especially a building) provide lodging or sufficient space for.
+Adaptee -> Adapter
+bottlenecks
+
+Utilizing connection pooling and efficient database queries can help mitigate the database as a scalability bottleneck.
+
+Pitfalls
+descriptive
+nov·ice:A person new to or inexperienced in a field or situation.
+
+Automated Linters
+
+Abondon:
+
+
+
+
+ the modus operandi 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

@@ -1,0 +1,86 @@
+### updated version of the code with some improvements
+
+```java
+import java.util.*;
+import java.util.stream.*;
+public class Main
+{
+	public static void main(String[] args) {
+	
+        List<Integer> newList =  List.of(1,2,3,4,6,7,19,20,12);
+        List<Integer> oldList =  List.of(4,6,7,8,9,10,12);
+        
+        for(Integer i : newList){
+            if (oldList.stream().anyMatch(o -> o.equals(i)) ){
+                 System.out.println("Update " + i); // 4,6,7 <- Updatable
+            }else{
+                 System.out.println("Save " + i); //1,2,3 <- New Records
+            }
+        }
+        
+        for(Integer i : oldList){
+            if (newList.stream().noneMatch(o -> o.equals(i)) ){
+                 System.out.println("Remove " + i); // 4,6,7 <- Deletable
+            }
+        }
+	}
+}
+```
+---
+
+### Use a Set instead of a List for faster membership testing
+```java
+Set<Integer> oldSet = new HashSet<>(oldList);
+
+for (Integer i : newList) {
+    if (oldSet.contains(i)) {
+        System.out.println("Update " + i); // 4,6,7 <- Updatable
+    } else {
+        System.out.println("Save " + i); //1,2,3 <- New Records
+    }
+}
+
+for (Integer i : oldList) {
+    if (!newList.contains(i)) {
+        System.out.println("Remove " + i); // 4,6,7 <- Deletable
+    }
+}
+```
+```java
+Set<Integer> oldSet = new HashSet<>(oldList);
+Set<Integer> newSet = new HashSet<>(newList);
+
+for (Integer i : newSet) {
+    if (oldSet.contains(i)) {
+        System.out.println("Update " + i); // 4,6,7 <- Updatable
+        oldSet.remove(i); // Remove from oldSet to avoid duplicates
+    } else {
+        System.out.println("Save " + i); //1,2,3 <- New Records
+    }
+}
+
+for (Integer i : oldSet) {
+    System.out.println("Remove " + i); // 4,6,7 <- Deletable
+}
+```
+
+---
+
+### This code has a time complexity of O(n), which is more efficient than the previous implementation.
+```java
+Set<Integer> newSet = Set.of(1, 2, 3, 4, 6, 7, 19, 20, 12);
+Set<Integer> oldSet = Set.of(4, 6, 7, 8, 9, 10, 12);
+
+Set<Integer> intersectionSet = new HashSet<>(oldSet);
+intersectionSet.retainAll(newSet);
+
+Set<Integer> newRecordsSet = new HashSet<>(newSet);
+newRecordsSet.removeAll(oldSet);
+
+Set<Integer> deletableSet = new HashSet<>(oldSet);
+deletableSet.removeAll(newSet);
+
+intersectionSet.forEach(i -> System.out.println("Update " + i));
+newRecordsSet.forEach(i -> System.out.println("Save " + i));
+deletableSet.forEach(i -> System.out.println("Remove " + i));
+```

@@ -1,0 +1,32 @@
+1. What is Spring boot
+2. Features of Spring Boot
+
+Starter POM.
+Version Management.
+Auto Configuration.
+Component Scanning.
+Embedded server.
+InMemory DB.
+Actuators
+Opinionated configuration
+Embedded web server
+Auto-configuration
+Production-ready features
+Seamless integration with other Spring projects
+Developer productivity tools (e.g. hot reloading)
+Spring Boot Actuator for monitoring and management of the application
+
+
+3. Diff Spring and Spring Boot
+4. Advantages of using Spring Boot
+
+5. @SpringBootApplication
+
+Combination of
+@Configuration
+@EnableAutoConfiguration
+@ComponentScan
+
+6. @ComponentScan
+7. @EnableAutoConfiguration
+8. @ComponentScan

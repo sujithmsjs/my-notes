@@ -1,0 +1,36 @@
+10:24 23-06-2023
+----------------
+
+Java 9 Features
+
+
+- Interface Private Methods: We can create private method inside an interface. Those private method can be used to called by default methods.
+
+- Try-With Resources: we don't need to close resources (file, connection, network etc) explicitly.
+
+
+- Anonymous Classes Improvement
+
+- Java @SafeVarargs Annotation
+
+
+- Java Collection Factory Methods:
+
+
+
+- Java New Version-String Scheme
+- JShell
+- Java 9 Stream API Improvement
+
+- Try-With-Resources: Resource declared outside the try block will not work prior to java 9. Only if a resource declared inside the try block will work.
+
+- Diamond Operator Extension: Java 9 introduced a new feature that allows us to use diamond operator with anonymous classes. Using the diamond with anonymous classes was not allowed in Java 7.s
+
+In Java 9, as long as the inferred type is denotable, we can use the diamond operator when we create an anonymous inner class.
+
+
+- Interface Private Method
+
+New APIs
+- Optional to Stream
+- Immutable Set

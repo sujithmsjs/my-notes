@@ -1,0 +1,17 @@
+
+
+
+Certainly! Here's a tabular format showcasing the scope names and their corresponding implementation code snippets in Spring Boot:
+
+| Scope Name    | Implementation Code Snippet                                              |
+|---------------|-------------------------------------------------------------------------|
+| Singleton     | `@Component` (Default scope)                                             |
+| Prototype     | `@Scope("prototype")`                                                    |
+| Request       | `@Scope(value = "request", proxyMode = ScopedProxyMode.TARGET_CLASS)`    |
+| Session       | `@Scope(value = "session", proxyMode = ScopedProxyMode.TARGET_CLASS)`    |
+| Application   | `@Scope(value = "application", proxyMode = ScopedProxyMode.TARGET_CLASS)`|
+| WebSocket     | `@Scope(value = "websocket", proxyMode = ScopedProxyMode.TARGET_CLASS)`  |
+
+Note: In the case of `Request`, `Session`, `Application`, and `WebSocket` scopes, the `proxyMode` attribute is set to `ScopedProxyMode.TARGET_CLASS`. This is necessary for creating proxies to handle the scoped beans correctly.
+
+These code snippets represent the annotations used to specify the scope of a bean in Spring Boot. You would typically place these annotations above the class declaration of the corresponding bean/component.

@@ -1,0 +1,99 @@
+# Pranisha Choppari
+## chopparipranisha@gmail.com
+## 7658994214
+----
+|Date | Event |
+|-----|------|
+|Jan 15th 2021| Offer Letter| 
+|Feb 01th 2021| Joining Letter|
+|Mar 06th 2021 |(Happy Trigger)Project Start|
+|Nov 20th 2021 |Project End|
+|Jan 03rd 2022| (Wasta)Project Start|
+|Sep 23rd 2022 | Project End|
+|Oct 03rd 2022 | Project Start|
+|Feb 01th 2023 |Resigned|
+|Mar 15th 2023 | Reliving Date|
+
+
+
+
+### Professional Summary:
+* Having 3+ years of experience as a Java Developer in the Development of Web
+applications.
+* Having good experience developing application using Spring Boot & Spring Data JPA
+* Having hands on experience in Rest Applications-JSON
+* Strong hands-on experience in Maven tool.
+* Good Knowledge on My SQL
+* Basic Knowledge in Micro Services
+* Experience in using GIT for code repository and as version control mechanism.
+* Having good experience in unit testing by using JUNIT.
+* Experience in using LOG4J for logging and debugging.
+* Experience in understanding of Software Development Life Cycle .
+### Technical Skills:
+* Languages : Java
+* J2EE Technologies : Servlets, JSP and JDBC
+* Frameworks : Spring, Spring-Boot and Hibernate
+* Web Services : Restful Web Services.
+* Application/Web Servers : Tomcat.
+* IDE : Eclipse
+* Databases : My SQL and Oracle.
+* Version controller : GIT.
+* Project Management Tools : LOG4J, JUNIT and JIRA.
+* Build Tool : Maven.
+### Working Experience:
+> Currently working as Programmer in ***Cubespace Technologies Private Limited*** from Feb 2021 to March 2023.
+
+### EDUCATIONAL BACKGROUND:
+> B.Tech From JNTU -Hyderabad
+
+# Project 1
+### Title : HappyTrigger
+***Technologies :*** Micro Services, Restful Web Services, Angular2, JPA, Spring Boot, Java8, Python, MySQL
+***ole :*** Java Developer
+***Duration :*** March 2021-Till date
+#### Project Overview
+> The main goal of this project is to provide valid coupons to the customers. In this project,
+there are three main users. 1. Admin 2. Provider & 3. Reward Partners. Admin: The role of the
+admin user is to maintain the application. Provider: is the mediator between Reward Partners and
+end users(customers). He collects the coupons provided by Reward Partners and give them to end
+users/customers based on the metrics obtained through there shopping preferences. Reward
+Partner: Reward Partners are the companies who tie-up with providers and provide coupons.
+
+####  Roles & Responsibilities
+* Implementing functionalities using design pattern oriented architecture includes
+Controller, Service and DAO layers.
+* Implemented functionalities like CRUD operations.
+* Implementing Server side validations.
+* Coding and debugging by using debugging tool and Log4j.
+* Maven used for Project Management Structure.
+* Used ouath2,authorization server along with jwt token generator for security,
+* Used GIT for code repository and as version control mechanism.
+* Object Creation and injection was done using Spring Boot mechanisms.
+* Performed Debugging and testing using Test cases.
+* Attending the scrum meeting
+
+## Project 2
+### Title : Wasta
+***Client:*** Internal Project.
+***Role :*** Java Developer.
+***Environment :*** Java, SpringBoot, SpringData, JPA, Maven, Eclipse,LOG4J,MySQL, Tomcat.
+***Team size :***  04.
+***Duration :*** Jan 2020 to Feb 2021.
+#### Project Description
+> The main goal of this Project is to maintain bio data of all the employees in the
+organization which does include personal, professional, educational, experiences and
+achievements. The Admin user would have access to create the contacts in the system which could
+be shared with another users. A user with basic provision will not have access to all the details of
+other users unless it is approved by Admin user.
+
+#### Role and Responsibilities
+* mplementing functionalities using design pattern oriented architecture includes
+Controller, Service and DAO layers.
+*Implemented functionalities like CRUD operations.
+* Implementing Server side validations.
+* Coding and debugging by using debugging tool and Log4j.
+* used Maven for Project Management Structure.
+* Used GIT for code repository and as version control mechanism.
+* Object Creation and injection was done using Spring Boot mechanisms.
+* Performed Debugging and testing using Test cases.
+* Attending the scrum meeting

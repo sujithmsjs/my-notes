@@ -1,0 +1,50 @@
+Resources
+https://www.baeldung.com/get-user-in-spring-security
+
+
+Retrieve User Information in Spring Security.
+
+1. SecurityContextHolder
+2. Principal directly as a method argument
+3. Authentication directly as a method argument
+4. From HttpServletRequest
+
+
+1. SecurityContextHolder
+SecurityContextHolder.getContext().getAuthentication();
+
+2. Principal directly as a method argument
+
+3. Authentication directly as a method argument
+
+UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+
+4. From HttpServletRequest
+request.getUserPrincipal()
+
+11:00-19:00,1000
+
+fr: 05:30,to: 19:30, Alw:2000000
+
+
+
+
+<V> TypeMap<S, D> addMapping(SourceGetter<S> sourceGetter, DestinationSetter<D, V> destinationSetter);
+
+SourceGetter:
+P get(S source);
+
+s -> s.getName()
+
+DestinationSetter:
+void accept(D destination, V value);
+
+(d,v) -> d.setName(v);
+
+
+
+
+
+
+
+

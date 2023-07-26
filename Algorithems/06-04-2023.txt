@@ -1,0 +1,21 @@
+hurdle(noun) : a problem or difficulty that must be solved or dealt with before you can achieve something
+SYNONYM obstacle
+
+
+hurdle (verb): to jump over something while you are running.
+
+subtle (adj): not very obvious or easy to notice
+indistinct
+indefinite
+
+imperceptible (adjective): Indistinguishable, undectable, unnoticeable, slight, subtle, negli
+
+OPPOSITE perceptible, Obvious, Noticable
+
+FOCUS ON ONE TIME LEARNERS
+
+MongoDB Compass
+
+Please install MongoDB Compass and NetBeans in my system. Additionally, I require your help to launch SonarQube Server which may prompts security related pop ups.
+
+Could you please assist me with installing MongoDB Compass and NetBeans on my system? Additionally, I would appreciate your help in launching the SonarQube Server, which may generate security-related pop-ups.

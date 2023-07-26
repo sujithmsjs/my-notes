@@ -1,0 +1,6 @@
+https://howtodoinjava.com/kafka/spring-boot-with-kafka/
+https://www.baeldung.com/spring-kafka
+https://www.qlik.com/us/streaming-data/apache-kafka
+
+Apache Kafka is a distributed and fault-tolerant stream processing system.
+

@@ -1,0 +1,20 @@
+Refactoring
+
+https://www.altexsoft.com/blog/engineering/code-refactoring-best-practices-when-and-when-not-to-do-it/
+
+Purpose of code refactoring
+- maintainable code
+- efficient code
+- Code refactoring is important if you want to avoid the dreaded code rot.
+
+Code rot results from duplicate code, myriad patches, bad classifications, and other programming discrepancies.
+
+
+
+Right after I left his apartment, I got a call from him and he told me to come back
+
+user acceptance testing UAT
+
+The statement suggests that there is a database (DB) that is required for three different environments: User Acceptance Testing (UAT), System Integration Testing (SG), and System Testing (ST).
+
+facilities@onpassive.com

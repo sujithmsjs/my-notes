@@ -1,0 +1,54 @@
+{
+    "_id" : ObjectId("619cd7d05a702685cd43b880"),
+    "product_id" : 1,
+    "product_name" : "O-Founders",
+    "product_display_name" : "OFOUNDERS",
+    "mail_id" : "of@onpassive.com",
+    "created_by" : "Admin",
+    "created_date" : ISODate("2020-07-30T18:38:28.000Z"),
+    "is_deleted" : false,
+    "updated_by" : "Admin",
+    "updated_date" : ISODate("2020-07-30T18:41:03.000Z"),
+    "mail_details" : 0,
+    "mailref" : {
+        "$ref" : "mail",
+        "$id" : "Need update mail OID"
+    },
+    "case_id" : "GO_0X7NN5700",
+    "customer_ref" : null,
+    "customer_id" : 0,
+    "should_be_contacted_by" : "Phone/Email",
+    "case_raised_date" : ISODate("2020-07-30T18:41:03.000Z"),
+    "case_assigned_date" : ISODate("2020-07-30T18:41:03.000Z"),
+    "assigned_to_ref" : {
+        "$ref" : "agent_details",
+        "$id" : ObjectId("6184fdcc68b51a7ad0cff7a9")
+    },
+    "assigneeref" : {
+        "$ref" : "agent_details",
+        "$id" : ObjectId("6184fdcc68b51a7ad0cff7a9")
+    },
+    "priority" : "High",
+    "status" : "Closed",
+    "is_assigned" : true,
+    "case_notes" : "test",
+    "gofounder_customer_details" : {
+        "first_name" : "John E.",
+        "last_name" : "Stratmann",
+        "alternate_phone_number" : "-150767053080",
+        "phone_number" : "9999999999",
+        "email" : "datla.sivarama@onpassive.com",
+        "goFounderId" : "14812"
+    },
+    "product" : 0,
+    "category" : "General Support",
+    "case_closed_date" : ISODate("2020-08-02T07:57:52.000Z"),
+    "is_transfer" : false,
+    "trigger" : 3,
+    "origin" : "email",
+    "is_gofounder" : true,
+    "transfer_by" : null,
+    "_class" : "com.onpassive.ocrm.model.TicketsModel",
+    "is_bug_fixed" : true,
+    "customer_comments" : "<p><span style=\"font-size:18px;\">Hello!&nbsp; Unfortunately I sent my ticket over 72 hours ago when you started to to upgrade the system,</span></p>\r\n\r\n<p><span style=\"font-size:18px;\">My problem is that I have been unable to lock down my login information.&nbsp; If possible, I would like to have a longer password and lock it.&nbsp;&nbsp;</span></p>\r\n\r\n<p><span style=\"font-size:18px;\">Thank you for your assistance.&nbsp; Regards,</span></p>\r\n\r\n<p><span style=\"font-size:18px;\">John</span></p>\r\n"
+}

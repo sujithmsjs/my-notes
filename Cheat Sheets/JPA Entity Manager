@@ -1,0 +1,51 @@
+public class CustomUserRepositoryImpl implements CustomUserRepository {
+
+    @PersistenceContext
+    private EntityManager entityManager;
+
+    @Override
+    public User customFindMethod(Long id) {
+        return (User) entityManager.createQuery("FROM User u WHERE u.id = :id")
+          .setParameter("id", id)
+          .getSingleResult();
+    }
+}
+
+Map<Integer, Integer> postCountByYearMap = entityManager.createQuery("""
+    select
+       YEAR(p.createdOn) as year,
+       count(p) as postCount
+    from
+       Post p
+    group by
+       YEAR(p.createdOn)
+    """, Tuple.class)
+.getResultList()
+.stream()
+.collect(
+    Collectors.toMap(
+        tuple -> ((Number) tuple.get("year")).intValue(),
+        tuple -> ((Number) tuple.get("postCount")).intValue()
+    )
+);
+
+
+public Map<String, String> getAvailableBorderTypes() {
+   // create empty map to store results in. If we don't find results, an empty hashmap will be returned
+   Map<String, String> results = new HashMap<String, String>();
+
+   EntityManager em = entityManagerFactory.createEntityManager();
+
+   // Construct and run query
+   String jpaQuery = "SELECT DISTINCT location.mftcc, location.name FROM Location location";
+   List<Object[]> resultList = em.createQuery(jpaQuery).getResultList();
+
+   // Place results in map
+   for (Object[] borderTypes: resultList) {
+      results.put((String)borderTypes[0], (String)borderTypes[1]);
+   }
+
+   return results;
+}
+
+/jpa-total-code

@@ -1,0 +1,12 @@
+Types of inheritance in java?
+Why multiple inheritance is not supported in java?
+
+error: incompatible types: bad return type in method reference
+
+erroneous
+inferred
+predominantly
+
+
+
+Gradle vs Maven?

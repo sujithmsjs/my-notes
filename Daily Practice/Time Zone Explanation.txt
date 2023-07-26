@@ -1,0 +1,85 @@
+Server 10:00(IST)<-->05:30
+
+MDB : 4:30(UTC)
+SQL : 10:00
+
+---------------
+
+Browser-->US -4:00
+
+
+Mongodb
+10:00(IST) -> -05:30 -4:00 = 00:30(US)
+
+MySql
+4:30(UTC) -04:00 = 00:30 (US)
+
+----------------
+
+converToFE(LocalDateTime, DB.MONGO);
+converToFE(LocalDateTime, DB.MYSQL);
+LocalDateTime getPresentUTC();
+converToUTC(LocalDateTimne feTime); 
+converToLocal(LocalDateTime utcTime);
+
+-----------------
+Offset : 00:00
+DUB Server
+Time : 6:30 AM
+
+MongoDB: 6:30
+Mysql  : 6:30
+
+---------------
+browser FrontEnd : +05:30
+
+Mongodb
+6:30(UTC) -> -00:00 + 5:30 = 12:00(INS)
+
+MySql
+6:30(UTC) +05:30 = 12:00(INS)
+
+
+
+-----------------
+FrontEnd : -04:00
+
+Mongodb
+6:30(UTC) -> -00:00 - 04:00 = 12:00(INS)
+
+MySql
+6:30(UTC) +05:30 = 12:00(INS)
+
+
+-------------------
+
+
+13:00 (IST)
+12:30 (PAK)
+00:00 (US)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

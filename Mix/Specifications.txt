@@ -1,0 +1,59 @@
+
+# Pagination and dynamic filtering
+
+1. CriteriaQuery
+2. JpaSpecificationExecutor
+3. JpaRepository
+4. createNativeQuery
+5. JPAQuery
+6. List<Predicate>
+7. PageImpl<>
+
+
+
+
+
+
+
+
+
+
+# Specifications
+
+> To be able to define reusable Predicates we introduced the Specification interface that is derived from concepts introduced in Eric Evans' Domain Driven Design book. It defines a specification as a predicate over an entity which is exactly what our Specification interface represents.
+
+
+```java
+public interface Specification<T> {
+  Predicate toPredicate(Root<T> root, CriteriaQuery query, CriteriaBuilder cb);
+}
+```
+
+
+
+```java
+public interface Predicate extends Expression<Boolean> {
+}
+```
+
+```java
+public interface Expression<T> extends Selection<T> {
+}
+```
+
+```java
+//an element that is returned in a query result tuple.
+
+public interface Selection<X> extends TupleElement<X> {
+}
+```
+
+
+TupleElement<X>
+Selection<T>
+Expression<T>
+Predicate
+
+
+
+pro·fi·cient: Competent or skilled in doing or using something.

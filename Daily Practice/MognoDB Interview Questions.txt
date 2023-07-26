@@ -1,0 +1,22 @@
+Sure! Here are some key differences between MongoDB and traditional relational databases:
+
+1. Data model: In a relational database, data is organized into tables with pre-defined columns and relationships between them. In contrast, MongoDB uses a document-based data model, where data is stored in flexible and dynamic documents that can be nested and have different structures. This makes it easier to represent complex data structures without having to fit them into a rigid table schema.
+
+NOTE: 
+A rigid table schema means that the structure is fixed and inflexible, meaning that it cannot be easily modified once it has been defined.
+
+Schema: refers to the structure or blueprint of the database.
+
+2. Query language: Relational databases use SQL (Structured Query Language) for querying and manipulating data. MongoDB, on the other hand, uses its own query language called the MongoDB Query Language (MQL). MQL is designed to work with document-based data and provides a more flexible and expressive way to query and analyze data.
+
+3. Scalability: Traditional relational databases typically scale vertically by adding more powerful hardware. In contrast, MongoDB can scale horizontally by distributing data across multiple servers. This makes it easier to handle large volumes of data and handle spikes in traffic.
+
+In the context of databases, "spikes in traffic" refer to sudden and significant increases in the volume of requests or queries that a database receives. 
+
+
+
+4. Transactions: Relational databases support ACID (Atomicity, Consistency, Isolation, Durability) transactions, which provide strong guarantees around data consistency and integrity. While MongoDB also supports transactions, its support for multi-document transactions is limited and it's generally considered to be weaker than traditional relational databases.
+
+5. Schema flexibility: In a relational database, the schema is defined upfront and any changes to it can be time-consuming and disruptive. In MongoDB, there is more flexibility to evolve the schema over time, which can be beneficial for applications that have rapidly changing requirements.
+
+Overall, the main differences between MongoDB and traditional relational databases are their data model, query language, scalability, and schema flexibility. Depending on the use case, one may be more suitable than the other.

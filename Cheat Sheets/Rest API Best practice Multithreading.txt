@@ -1,0 +1,200 @@
+exploit their data
+easing
+flawlessly
+conventions : rules
+tripping over
+server-side technologies
+... without any hassle.
+It is a boon for developers to use ...
+Your first extinct might be...
+compatible 
+endpoints
+
+
+
+REST Best Practice
+
+1. Just use JSON
+2. Use proper Status codes
+3. Don't use verbs in URLs
+4. Use Plural nouns
+5. Well compiled Documentation
+6. Descriptive Error Messages : It is convenient for the API endpoint to return error details in the JSON or response body to help a user with debugging.
+7. Use Resource Nesting: Use logical nesting on endpoints
+Ex:-
+/users
+/users/123
+/users/123/orders
+/users/123/orders/0001
+8. USE SSL/TLS
+9. Provide Security
+
+---
+SonarQube Token:
+Admin: c3dafe822002bdd015eaa86c751de41e14ca99f0
+
+---
+
+ThreadPoolExecuter
+
+---
+
+{
+"companyName":"onpas",
+"companyWebsite":"www.onpas.net",
+"firstName":"Onpasssive",
+"lastName":"Onpasssiveee",
+"gender":"male",
+"phoneNumber":"9854712360",
+"landlinenumber":"08518225599",
+"emailId":"abdusl@gmail.com",
+"alternateEmail":"abdulsss@gmail.com",
+"address":"test",
+"countryId":101,
+"stateId":4017,
+"cityId":2,
+"updatedBy":"Onpassive Tech"
+}
+
+
+---
+
+/api/setUserStatus/
+/api/setRoleStatus/
+
+
++-+-+-+-+-+-+-+-+-
+11:10 19-01-2023
++-+-+-+-+-+-+-+-+-
+
+1. /api/addORUpdateRole/ : Exclude MasterAdmin and SuperAdmin
+2. /getAllRolesForDropDown/{companyId} : Exclude MasterAdmin and SuperAdmin
+3. /getAllUsers: Exclude own details, exclude SuperAdmin and MasterAdmin
+4. Mail Concurrently sending
+
+
+4. Learn about Template driven form
+
+5. Install SonarQube
+
+mvn org.jacoco:jacoco-maven-plugin:prepare-agent install
+mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=Admin@123
+
+
+6. Diff b/w Synchronous and Asynchronous
+
+7. Model mapper
+
+<dependency>
+	<groupId>org.modelmapper</groupId>
+	<artifactId>modelmapper</artifactId>
+	<version>2.3.3</version>
+</dependency>
+
+
+
+
+
+CorePoolSide
+MaxPoolSide
+KeepAliveTime
+Time unit
+BlockingQueue 
+
+Url
+email
+password
+
+<b>URL :</b><a href="${Url}" > ${Url}</a><br>
+<b>User Name :</b> ${email} <br>
+<b>	Password :</b> ${passWord}<br>
+
+
+User create 10mins loading time.
+
+START: 
+MAIL CODE: 9mins
+STOP:
+
+Apachi flink: Paraller processing!
+
+
+ThreadPoolExecutor
+--------------------
+https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/ThreadPoolExecutor.html
+
+class TaskThread impl Runnable {
+	run(){//...}
+}
+
+@Component
+class ThreadPoolExecutorUtil {
+
+	private ThreadPoolExecutor threadPoolExecutor;
+
+	public ThreadPoolExecutorUtil(){
+		//.... Create ThreadPoolExecutor instance
+	}
+
+	void executeTask(TaskThread taskThread){
+        Future&llt?> future=threadPoolExecutor.submit(taskThread); // Adding task to ThreaedPoolExecutor
+        System.out.println("Queue Size: "+threadPoolExecutor.getQueue().size()); // Checking the side of ThreadedPool
+        System.out.println("Number of Active Threads: "+threadPoolExecutor.getActiveCount()); // Get active count
+    }
+}
+
+
+
+
+ThreadPoolExecutor contains multiple  threads to get executed. It contains bunch of thead in hand. getQueue() will returns the count of theads on hand.
+
+submit(taskThread)
+getQueue().size()
+getActiveCount()
+getLargestPoolSize()
+getMaximumPoolSize()
+getPoolSize()
+getActiveCount()
+getTaskCount()
+
+
+How to create ThreadPoolExecutor
+
+Way #1
+executor = (ThreadPoolExecutor)Executors.newCachedThreadPool();
+
+Way #2
+executor = new ThreadPoolExecutor(2, 10, 20, TimeUnit.SECONDS, blockingQueue);
+
+
+Useful Runnable impl
+public void run() {
+
+try {
+	Long duration = (long) (Math.random() * 5);
+	System.out.println("Running Task! Thread Name: " +
+	Thread.currentThread().getName());
+	TimeUnit.SECONDS.sleep(duration);
+	System.out.println("Task Completed! Thread Name: " +
+	Thread.currentThread().getName());
+}
+catch (InterruptedException e) {
+            e.printStackTrace();
+	
+}
+
+
+executor.submit(Runnable) : method will call the run() method of runnable function immediately.
+
+shutdown()
+Initiates an orderly shutdown in which previously submitted tasks are executed, but no new tasks will be accepted.
+
+Executor.submit() VS Executor.execute()
+
+Hirarche:
+---------
+Executor(interface)
+ExecutorService(interface)
+AbstractExecutorService(interface)
+ThreadPoolExecutor(interface)
+---

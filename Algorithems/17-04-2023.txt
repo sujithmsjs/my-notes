@@ -1,0 +1,67 @@
+15:03 17-04-2023
+
+Sujith: M, F
+Prakash: F, Sat
+Sravani: F,Sat
+Ajay:	F,Sat
+
+
+
+
+{
+  "email": "cb69sCrSoMbCVDFvdvBZ5rcrogMasNfoFHg2XCXqkJs=",
+  "password": "eFjfhcegDMvddKU/VvYqJg=="
+}
+
+orgId: 722
+role: 663
+
+
+insert into odeskb2b.odesk_users values(1004,
+'123456481',
+'Razak',
+'Sk',
+'Onpassive Attendance',
+'Onpassive Attendance',
+'razaksk@onpassive.com',
+'722', '663', '0', '7865432221',
+'$2a$10$rXNkrCYIaH6fGcsD2c43iukggTQZYfNbrvbfmp6qSxG3mmC1ajX/u',
+'2023-04-11 06:38:47',
+'10:00-7:00', '2023-04-11 06:38:47', 'Admin', '101', 'India', '1', '2023-04-11 06:38:47', NULL, '0', '1')
+
+Compliant x Noncompliant 
+Inline Expression
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,111 @@
+	@Autowired
+	private DateRangeRepository dateRangeRepository;
+
+	@PostMapping("/check")
+	public Object check(@RequestBody DateRange dateRange) {
+
+		Map<Object, Object> map = new LinkedHashMap<>();
+
+		List<DateRangeTest> range = dateRangeRepository.findByDateRange(dateRange.getFrom(), dateRange.getTo());
+
+		DateRangeTest fromRangeTest = null;
+		DateRangeTest toRangeTest = null;
+		if (!range.isEmpty()) {
+			fromRangeTest = range.get(0);
+			toRangeTest = range.get(range.size() - 1);
+		} else {
+			map.put("body", dateRange);
+			return map;
+		}
+
+		DateRange fromDr = getDateRange(fromRangeTest);
+		DateRange todr = getDateRange(toRangeTest);
+
+		boolean fromInRange = fromDr.isDateInRange(dateRange.getFrom());
+		boolean toInRange = todr.isDateInRange(dateRange.getTo());
+		// if true should not delete that record, else delete that record
+		// if false that entity also eligible for purge.
+
+		List<Integer> deletable = new ArrayList<>();
+
+		// 3 model view HEAD, ENTRY and TAIL
+		DateRangeTest head, tail, entry;
+		head = tail = entry = null;
+
+		if (!fromInRange || fromDr.getFrom().equals(dateRange.getFrom())) {
+			// Here entity in the index will be deleted
+			deletable.add(0);
+
+		}else {
+			head = getDateRangeTest(range.get(0));
+
+			if (dateRange.getShiftId().equals(head.getShiftId())) {
+				dateRange.setFrom(head.getFrom()); // If both shift's are same modify entry
+				head = null; // Head will be eligible for deletion.
+				deletable.add(0);
+			} else {
+				LocalDate headTo = dateRange.getFrom().minusDays(1);
+				head.setTo(headTo);
+				deletable.add(1);
+			}
+		}
+
+		if (!toInRange || todr.getTo().equals(dateRange.getTo()))
+
+		{
+			// Here entity in the index will be deleted
+			deletable.add(range.size() - 1);
+
+		} else {
+			// Here to edit the document prune the dates.
+
+			tail = getDateRangeTest(range.get(range.size() - 1));
+
+			if (dateRange.getShiftId().equals(tail.getShiftId())) {
+				dateRange.setTo(tail.getTo()); // If both shift's are same modify entry
+				tail = null; // Tail will be eligible for deletion.
+				deletable.add(range.size() - 1);
+			} else {
+				LocalDate tailFrom = dateRange.getTo().plusDays(1);
+				tail.setFrom(tailFrom);
+				deletable.add(range.size() - 2);
+			}
+		}
+
+		if (range.size() == 1 && fromDr.getFrom().isBefore(dateRange.getFrom())
+				&& todr.getTo().isAfter(dateRange.getTo())) {
+			log.info("Record '" + range.get(0) + "' need to split into 3 segments");
+			deletable.clear();
+			deletable.add(0);
+		}
+
+		map.put("body", dateRange);
+		map.put("head", head);
+		map.put("tail", tail);
+		map.put("Max size", range.size());
+		map.put("delete from and to ", deletable);
+		map.put("From date in range: ", fromInRange);
+		map.put("To date in range: ", toInRange);
+		map.put("Ranges ", range);
+
+		return map;
+	}
+
+	private DateRange getDateRange(DateRangeTest dateRangeTest) {
+
+		DateRange dr = new DateRange();
+		dr.setFrom(dateRangeTest.getFrom());
+		dr.setTo(dateRangeTest.getTo());
+		dr.setShiftId(dateRangeTest.getShiftId());
+		return dr;
+	}
+
+	private DateRangeTest getDateRangeTest(DateRangeTest range) {
+
+		DateRangeTest d = new DateRangeTest();
+		d.setFrom(range.getFrom());
+		d.setTo(range.getTo());
+		d.setShiftId(range.getShiftId());
+		d.setId(range.getId());
+		return d;
+	}

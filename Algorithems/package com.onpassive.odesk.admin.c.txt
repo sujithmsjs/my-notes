@@ -1,0 +1,162 @@
+package com.onpassive.odesk.admin.controller;
+
+import java.time.LocalDate;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.onpassive.odesk.admin.constant.Constants;
+import com.onpassive.odesk.admin.dto.IUserNameDto;
+import com.onpassive.odesk.admin.dto.PaginationRequestDto;
+import com.onpassive.odesk.admin.dto.PaginationResponseDto;
+import com.onpassive.odesk.admin.dto.Response;
+import com.onpassive.odesk.admin.dto.ShiftDTO;
+import com.onpassive.odesk.admin.dto.ShiftIdDto;
+import com.onpassive.odesk.admin.entity.Shift;
+import com.onpassive.odesk.admin.exception.CustomException;
+import com.onpassive.odesk.admin.security.JwtTokenUtil;
+import com.onpassive.odesk.admin.service.ShiftService;
+import com.onpassive.odesk.admin.serviceimpl.ShiftServiceImpl.ShiftUserNameDTO;
+
+import io.jsonwebtoken.Claims;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
+@RestController
+@CrossOrigin(origins = "*")
+@RequestMapping(value = "/api/shifts", produces = MediaType.APPLICATION_JSON_VALUE)
+public class ShiftController {
+
+	@Autowired
+	private JwtTokenUtil jwtTokenUtil;
+
+	@Autowired
+	private ShiftService shiftService;
+
+	@PostMapping("/save-shift")
+	public Object saveShift(@RequestBody final ShiftDTO shiftDTO) {
+		return shiftService.createNewShift(shiftDTO, shiftDTO.getOrgId());
+	}
+
+	@PostMapping
+	@ApiResponse(responseCode = "201")
+	public ResponseEntity<Response> addOrUpdateShift(@RequestBody final ShiftDTO shiftDTO,
+			@RequestHeader("Authorization") String jwtToken) {
+
+		Integer orgId = shiftDTO.getOrgId();
+
+		if (orgId == null) {
+			throw new CustomException("Please provide org_id");
+		}
+
+		if (shiftDTO.getShiftId() != null) {
+			log.info("Promted Update shift: "+shiftDTO.getShiftId());
+			// UPDATE new Shift DATA
+			Shift addOrUpdate = shiftService.addOrUpdate(shiftDTO, orgId);
+			Response response = new Response("Shift updated successfully", addOrUpdate, HttpStatus.OK);
+			return new ResponseEntity<>(response, HttpStatus.OK);
+
+		} else {
+			log.info("Promted Create new shift");
+			// CREATE new Shift DATA
+			Shift addOrUpdate = shiftService.addOrUpdate(shiftDTO, orgId);
+			addOrUpdate.setShiftId(null);
+			Response response = new Response("Shift created successfully", addOrUpdate, HttpStatus.OK);
+			return new ResponseEntity<>(response, HttpStatus.OK);
+		}
+
+	}
+
+	@PostMapping("/shiftId")
+	public ResponseEntity<Response> getShift(@RequestBody ShiftIdDto dto) {
+		Response response = new Response(shiftService.getShiftById(dto.getShiftId()));
+		return ResponseEntity.ok(response);
+	}
+
+	@GetMapping("company")
+	public ResponseEntity<Response> getShiftByCompany(@RequestHeader("Authorization") String jwtToken) {
+
+		Integer orgId = null;
+		if (jwtToken != null && jwtToken.startsWith("Bearer")) {
+			jwtToken = jwtToken.substring(7);
+			Claims claimsFromJwtToken = jwtTokenUtil.getClaimsFromJwtToken(jwtToken);
+			orgId = (Integer) claimsFromJwtToken.get("orgId");
+		}
+
+		Response response = new Response(shiftService.findAllShiftsByOrgId(orgId));
+		return ResponseEntity.ok(response);
+	}
+
+	@GetMapping("/shiftId/users")
+	public ResponseEntity<ShiftUserNameDTO> getShiftNames(@RequestParam final String shiftId) {
+		ShiftUserNameDTO names = shiftService.getShiftUserNames(shiftId);
+		return ResponseEntity.ok(names);
+	}
+
+	@GetMapping("/noshift-users")
+	public ResponseEntity<List<IUserNameDto>> getNoShiftUsers(@RequestHeader("Authorization") String jwtToken) {
+
+		Integer orgId = null;
+		if (jwtToken != null && jwtToken.startsWith("Bearer")) {
+			jwtToken = jwtToken.substring(7);
+			Claims claimsFromJwtToken = jwtTokenUtil.getClaimsFromJwtToken(jwtToken);
+			orgId = (Integer) claimsFromJwtToken.get("orgId");
+		}
+
+		return ResponseEntity.ok(shiftService.getNoShiftUsers(orgId));
+	}
+
+	@GetMapping("/noshift-users/date/{date}")
+	public ResponseEntity<Object> getNoShiftUsersV2(@RequestHeader("Authorization") String jwtToken,
+			@DateTimeFormat(pattern = "yyyy-MM-dd") @PathVariable LocalDate date) {
+
+		Integer orgId = null;
+		if (jwtToken != null && jwtToken.startsWith("Bearer")) {
+			jwtToken = jwtToken.substring(7);
+			Claims claimsFromJwtToken = jwtTokenUtil.getClaimsFromJwtToken(jwtToken);
+			orgId = (Integer) claimsFromJwtToken.get("orgId");
+		}
+
+		Object noShiftUsersv2 = shiftService.getNoShiftUsersv2(orgId, date);
+		return ResponseEntity.ok(noShiftUsersv2);
+	}
+
+	@PostMapping("/page")
+	public ResponseEntity<Response> getAllShifts(@RequestBody PaginationRequestDto dto) {
+
+		PaginationResponseDto<Shift> res = shiftService.findAllShifts(dto, dto.getOrgId());
+		if (res != null) {
+			return new ResponseEntity<>(new Response(Constants.SUCCESS, res, HttpStatus.OK.value()), HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(new Response(Constants.FAIL, res, HttpStatus.NOT_FOUND.value()), HttpStatus.OK);
+		}
+	}
+
+	@DeleteMapping("/softDelete/{breakId}/{status}")
+	public ResponseEntity<Response> softDelete(@PathVariable int breakId, @PathVariable boolean status) {
+		int delete = shiftService.softDelete(breakId, status);
+		return new ResponseEntity<>(new Response("Delete status: " + delete, HttpStatus.OK), HttpStatus.OK);
+	}
+
+	@PutMapping("/updateStatus/{breakId}/{status}")
+	public ResponseEntity<Response> updateStatus(@PathVariable int breakId, @PathVariable boolean status) {
+		int delete = shiftService.updateStatus(breakId, status);
+		return new ResponseEntity<>(new Response("Update status: " + delete, HttpStatus.OK), HttpStatus.OK);
+	}
+}

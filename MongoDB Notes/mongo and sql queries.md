@@ -1,0 +1,140 @@
+# MongoDB Queries
+
+## 1. Data Defination Language
+> Automatically Commited
+Create
+Alter
+Drop
+Truncate
+Rename
+## 2. Data Manipulation Language
+> Insert
+> Update
+> Delete
+> Merge
+## 3. Data Query/Retreive Language
+> Select
+## 4. Transaction Control Language
+> Commit(Save)
+> Rollback
+> Savepoint
+## 5. Data Control Language
+> Grant(Giving Permissions)
+> Revoke(Cancel Permissions)
+
+# Datatypes in Mongo
+# Datatypes in BSON
+
+***Select different columns with multiple filters.***
+
+***Select N columns and N rows***
+
+***Select N columns and N rows***
+mysql> select ename, sal, sal*12 as annsal from emp;
+
+***Operators in MongoDB***
+***Special Operators***
+***IN, Between, Is null, Like***
+mysql> select * from emp where deptno in (20,10);
+mysql> select * from emp where sal between 2000 and 3000;
+mysql> select ename,sal,comm, sal+comm as total from emp;
+mysql> select ename,sal,comm, sal+ifnull(comm, 0) from emp;
+
+
+Concatination Operators(||)
+% and _ Operators
+
+
+mod(m,n)
+power(m,n)
+sqrt(n)
+round(n, m)
+trunc
+ceil
+floor
+ads
+sign
+
+lower
+upper
+initcap
+concat
+substr
+instr
+replace
+translate
+ltrim
+rtrim
+trim
+length
+chr
+ascii
+
+date+number
+date+data
+date- number
+date-date
+
+### Date conversion functions
+to_char
+to_date
+
+Date to full date name
+Date to Day of the date
+Date to Month name
+Change Date format
+
+--- 
+
+### Aggregate Functions
+1. Max
+2. Min
+3. Avg
+4. Sum
+5. Count(*)
+6. Count(Column)
+
+* Group employees by department.
+* Group employees by joining year.
+* Group employees by joining year.
+
+mysql> select deptno, sum(sal) as sal from emp group by deptno having sal > 10000;
+
+mysql> select to_char(hiredate,'YYYY'), count(*) from emp group by to_char(hiredate,'YYYY') having count(*)>1;
+
+---
+
+# Joins
+
+> Joins are used to retrieve date from multiple tables. If we join N tables we are using N-1 joining conditions.
+
+1. Inner Join
+2. Left outer join
+3. Right outer join
+4. Full outer join
+5. Natural join
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,231 @@
+package com.onpassive.odesk.service.impl;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.TimeZone;
+
+import org.bson.types.ObjectId;
+import org.codehaus.plexus.util.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.stereotype.Service;
+
+import com.onpassive.odesk.dto.CaseHistoryPayloadDTO;
+import com.onpassive.odesk.dto.DetailsDto;
+import com.onpassive.odesk.dto.PaginationResponseDTO;
+import com.onpassive.odesk.model.TicketModel;
+import com.onpassive.odesk.security.AESutility;
+import com.onpassive.odesk.service.CaseHistoryService;
+import com.onpassive.odesk.utility.Constants;
+
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
+@Service
+public class CaseHistoryServiceImpl implements CaseHistoryService {
+
+	@Autowired
+	private AESutility aesUtility;
+
+	@Autowired
+	private MongoTemplate mongoTemplate;
+
+	@Override
+	public PaginationResponseDTO getCaseHistory(CaseHistoryPayloadDTO helperDto) {
+
+		int pageStart = (helperDto.getPageNumber() != null && helperDto.getPageNumber() > 0) ? helperDto.getPageNumber()
+				: 1;
+		int pageSize = (helperDto.getPageSize() != null && helperDto.getPageSize() > 0) ? helperDto.getPageSize() : 10;
+
+		Pageable paging = PageRequest.of(pageStart - 1, pageSize);
+
+		List<DetailsDto> detailsDto = new ArrayList<>();
+		Query query = new Query();
+
+		if (StringUtils.isNotBlank(helperDto.getObjectId())) {
+			query.addCriteria(Criteria.where("assigned_to_ref.$id").is(new ObjectId(helperDto.getObjectId())));
+		}
+
+		if (StringUtils.isNotBlank(helperDto.getStatus())) {
+			query.addCriteria(Criteria.where("status").is(helperDto.getStatus()));
+		}
+
+		if (StringUtils.isNotBlank(helperDto.getPriority())) {
+			query.addCriteria(Criteria.where("priority").is(helperDto.getPriority()));
+		}
+
+		if (StringUtils.isNotBlank(helperDto.getProductId())) {
+			query.addCriteria(Criteria.where("productref.$id").is(new ObjectId(helperDto.getProductId())));
+		}
+
+		if (StringUtils.isNotBlank(helperDto.getCountry())) {
+			query.addCriteria(Criteria.where("gofounder_customer_details.country").is(helperDto.getCountry()));
+		}
+
+		if (StringUtils.isNotBlank(helperDto.getRegion())) {
+			query.addCriteria(Criteria.where("gofounder_customer_details.region").is(helperDto.getRegion()));
+		}
+
+		/*
+		 * if (helperDto.getEmail() != null) { String goFounderId =
+		 * getEmail(helperDto.getEmail()); if (goFounderId != null) {
+		 * query.addCriteria(Criteria.where("gofounder_customer_details.goFounderId").is
+		 * (goFounderId)); } }
+		 */
+
+		if (StringUtils.isNotBlank(helperDto.getUserId())) {
+			query.addCriteria(Criteria.where("gofounder_customer_details.goFounderId").is(helperDto.getUserId()));
+		}
+
+		int dataSize = (int) mongoTemplate.count(query, TicketModel.class);
+		
+		return extractedGetAdminTicketsPage(helperDto, paging, pageStart, pageSize, detailsDto, query, dataSize);
+	}
+
+	public PaginationResponseDTO extractedGetAdminTicketsPage(CaseHistoryPayloadDTO helperDto, Pageable paging,
+			int pageStart, int pageSize, List<DetailsDto> detailsDto, Query query, int dataSize) {
+
+		String assignedToRefName = "-";
+		String body = "-";
+		String subject = "-";
+		String username = "-";
+		String userId = "-";
+		String date = "-";
+		String payment = "no data";
+		String category = "NA";
+		String email = "-";
+		String updatedDate = "";
+		String closedDate = "";
+		String userProfilePic = "";
+
+		Set<HashMap<String, String>> setCountry = new HashSet<>();
+
+		PaginationResponseDTO paginationResponseDto = new PaginationResponseDTO();
+
+		List<TicketModel> tickets;
+
+		if (dataSize > 0) {
+			if (helperDto.isExport()) {
+				tickets = mongoTemplate.find(query, TicketModel.class);
+			} else {
+
+				if (helperDto.getTicketId() != null) {
+					query.addCriteria(Criteria.where("case_id").is(helperDto.getTicketId()));
+					dataSize = (int) mongoTemplate.count(query, TicketModel.class);
+					tickets = mongoTemplate.find(query, TicketModel.class);
+				} else {
+					query.with(Sort.by(Sort.Direction.DESC, "updated_date"));
+					query.with(paging).limit(pageSize);
+					tickets = mongoTemplate.find(query, TicketModel.class);
+				}
+			}
+
+			for (TicketModel ticketModel : tickets) {
+				String region = "";
+				String country = "";
+
+				String id = ticketModel.getTicketId() + "-" + ticketModel.getProductref().getProductName();
+
+				if (ticketModel.getAssigneeref() != null) {
+					assignedToRefName = ticketModel.getAssignedToRef().getFirstName()
+							+ ticketModel.getAssignedToRef().getLastName();
+				}
+
+				if (ticketModel.getProductref() != null) {
+					subject = ticketModel.getTicketId() + "-" + ticketModel.getProductref().getProductName();
+				}
+
+				if (ticketModel.getUser() != null) {
+					username = ticketModel.getUser().getUserName();
+					userId = ticketModel.getUser().getUserId();
+				}
+
+				if (ticketModel.getGofoundercustomerdetails() != null) {
+					if (ticketModel.getGofoundercustomerdetails().getEmail() != null) {
+						email = ticketModel.getGofoundercustomerdetails().getEmail();
+						email = aesUtility.encrypt(email);
+					}
+					username = ticketModel.getGofoundercustomerdetails().getFirst_name();
+					if (ticketModel.getGofoundercustomerdetails().getGoFounderId() != null) {
+						userId = ticketModel.getGofoundercustomerdetails().getGoFounderId();
+						userId = aesUtility.encrypt(userId);
+					}
+
+					country = ticketModel.getGofoundercustomerdetails().getCountry();
+					userProfilePic = ticketModel.getGofoundercustomerdetails().getUserProfilePic();
+					if (ticketModel.getGofoundercustomerdetails().getRegion() != null)
+						region = ticketModel.getGofoundercustomerdetails().getRegion();
+				}
+
+				if (ticketModel.getTicketAssignedDate() != null) {
+					date = formattedDate(ticketModel.getTicketAssignedDate());
+				}
+
+				if (ticketModel.getUpdatedDate() != null) {
+					updatedDate = formattedDate(ticketModel.getUpdatedDate());
+				}
+
+				if (ticketModel.getCaseClosedDate() != null) {
+					if (ticketModel.getStatus().equals(Constants.STATUS_CLOSED)) {
+						closedDate = formattedDate(ticketModel.getCaseClosedDate());
+					}
+				}
+
+				if (ticketModel.getCategory() != null) {
+					category = ticketModel.getCategory();
+				}
+
+				if (helperDto.getBackend() != null && helperDto.getBackend() == true) {
+					detailsDto.add(
+							new DetailsDto(id, ticketModel.getPriority(), ticketModel.getStatus(), subject, username,
+									ticketModel.getTicketRaisedDate().toString(), updatedDate, payment, userProfilePic,
+									ticketModel.getTicketId(), category, userId, email, country, closedDate, region));
+				} else {
+					detailsDto.add(new DetailsDto(id, body, ticketModel.getPriority(), ticketModel.getStatus(), subject,
+							username, date, updatedDate, payment, userProfilePic, ticketModel.getIsAssigned(),
+							ticketModel.getTicketId(), assignedToRefName, null, null, null, category, userId, null,
+							email, country, closedDate, region, "", null));
+				}
+
+				if (helperDto.getRegion() != null && !helperDto.getRegion().equals(Constants.NULL_VALUE)) {
+					HashMap<String, String> map = new HashMap<String, String>();
+					map.put("countryName", country);
+					setCountry.add(map);
+				}
+
+			}
+		}
+
+		paginationResponseDto.setList(detailsDto);
+		paginationResponseDto.setTotalRows(dataSize);
+		paginationResponseDto.setPage(pageStart);
+		paginationResponseDto.setNumberOfPages(getTotalPages(dataSize, pageSize));
+		paginationResponseDto.setCountry(setCountry);
+
+		return paginationResponseDto;
+	}
+
+	public int getTotalPages(int totalElements, int pageSize) {
+		int totalPages = ((totalElements % pageSize) > 0 ? 1 : 0) + ((int) totalElements / pageSize);
+		return totalPages;
+	}
+
+	public String formattedDate(Date date) {
+		SimpleDateFormat dateFormatter = new SimpleDateFormat("MMM dd, yyyy, HH:mm:ss a");
+	//	SimpleDateFormat dateFormatter = new SimpleDateFormat("MMM-dd-yyyy HH:mm:ss");
+		TimeZone timeZone = TimeZone.getTimeZone("IST");
+		dateFormatter.setTimeZone(timeZone);
+		return dateFormatter.format(date);
+	}
+
+}

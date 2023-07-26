@@ -1,0 +1,167 @@
+10:44 26-04-2023
+ChronoUnit: A standard set of date periods units!
+
+db.getCollection('shift_timings').aggregate(
+[
+    { $group : { _id : '$item', count : {$sum : 1}, sum : { $sum : '$price'}, avg : { $avg : '$price'} } },
+    { $sort : { _id : -1} },
+    { $skip : 0},
+    { $limit : 2}
+]
+)
+
+
+db.getCollection('shift_timings').aggregate(
+[
+    { $group : { _id : '$item', count : { $count : {} }}}
+]
+)
+
+https://bigdatansql.com/2021/09/02/emp-and-dept-datasets-for-mongodb/
+
+
+
+mongodb+srv://sujith:NvrStle22@cluster0.7usugpb.mongodb.net/emps?retryWrites=true&w=majority
+
+
+
+db.getCollection('shift_timings').aggregate([
+
+    {
+        $group : { _id : '$job', count : { $count : {}}, 'total-sal' : { $avg : '$sal'} }   
+    },
+    
+    {
+        $sort : { _id : 1} 
+    }
+
+])
+
+
+
+{ $sum: [ <expression1>, <expression2> ... ]  }
+
+
+db.getCollection('shift_timings').aggregate([
+    {
+        $project : { _id : 0, name : '$ename' , salary : '$sal', comm : '$comm', totalSal : { $sum : [ '$sal', '$comm'] } }
+    }
+])
+
+
+{ $subtract: [ <expression1>, <expression2> ] }
+
+
+
+Aggregation Pipeline Operators
+
+
+Expression Operators
+These expression operators are available to construct expressions for use in the aggregation pipeline stages.
+
+Arithmetic Expression Operators
+$sum, $subtract $devide, $mod, $multiply, $sqrt, $pow
+$round
+
+db.getCollection('shift_timings').aggregate([
+    {
+        $project : { _id : 0, name : '$ename' , salary : '$sal', comm : '$comm', totalSal : {  $divide : [ { $sum : [ '$sal', '$comm']} , 7] }}
+    }
+])
+
+db.getCollection('shift_timings').aggregate([
+    {
+        $project : { _id : 0, name : '$ename' , salary : '$sal', comm : '$comm', totalSal : {  $round : [   {$divide : [ { $sum : [ '$sal', '$comm']} , 7] }   ,0]  }}
+    }
+])
+
+
+Array Expression Operators
+Boolean Expression Operators
+Comparison Expression Operators
+Conditional Expression Operators
+Custom Aggregation Expression Operators
+Data Size Operators
+
+Date Expression Operators
+$year, $month, $week, $day, $add, $subtract
+$toLower, $toUpper
+
+Literal Expression Operator
+Miscellaneous Operators
+Object Expression Operators
+Set Expression Operators
+
+String Expression Operators
+$concat, $trim, $substr, $split
+
+
+Text Expression Operator
+Timestamp Expression Operators
+Trigonometry Expression Operators
+Type Expression Operators
+
+
+Accumulators (in Other Stages)
+$avg
+$max
+$min
+$sum
+$count
+$first
+$top
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

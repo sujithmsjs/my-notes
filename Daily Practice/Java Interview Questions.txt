@@ -1,0 +1,207 @@
+Java Collections
+----------------
+
+Can you briefly explain the Java Collection Framework and its main components?
+What is the difference between ArrayList and LinkedList in Java?
+How does the HashSet ensure uniqueness of elements?
+Explain the difference between HashMap and HashTable in Java.
+Can you provide an example of when you would use a TreeMap instead of a HashMap?
+How does the Java Collection Framework support the concept of iteration?
+What is the purpose of the Iterator interface? Can you provide an example of its usage?
+Can you explain the concept of fail-fast and fail-safe iterators?
+How would you sort elements in a List using the Java Collection Framework?
+Are there any limitations or considerations when using the Java Collection Framework?
+What is the difference between a Set and a List in Java Collection Framework?
+How does the Java Collection Framework handle null values?
+Can you explain the difference between Comparable and Comparator interfaces?
+What is the purpose of the Collection interface in Java?
+How does the ConcurrentHashMap differ from a regular HashMap?
+What are the benefits of using the ConcurrentLinkedQueue over the regular LinkedList?
+Can you explain the purpose of the CopyOnWriteArrayList class and when it is useful?
+How does the PriorityQueue class work in the Java Collection Framework?
+Can you describe the purpose of the Deque interface and provide an example of its usage?
+What are some common pitfalls or mistakes to watch out for when working with the Java Collection Framework?
+
+Java Data Structures
+--------------------
+What is a data structure, and why is it important in programming?
+Explain the difference between an array and a linked list in Java.
+What is the time complexity of inserting an element at the beginning of an ArrayList and a LinkedList?
+How does a stack data structure work, and what are its main operations?
+What is the difference between a stack and a queue in Java?
+Explain the concept of a binary tree and its various types (e.g., binary search tree, AVL tree).
+How do you find the maximum depth of a binary tree recursively?
+Describe the process of traversing a binary tree in preorder, inorder, and postorder.
+What is a hash table, and how does it handle collisions?
+Explain the difference between a hash set and a hash map in Java.
+What is the time complexity of retrieving an element from a hash set and a hash map?
+Describe the process of implementing a priority queue in Java.
+How does a heap data structure work, and what is its significance?
+What are the differences between a singly linked list and a doubly linked list?
+Explain the concept of a graph and its different representations (e.g., adjacency matrix, adjacency list).
+How do you perform a depth-first search (DFS) and a breadth-first search (BFS) on a graph?
+What is the time complexity of searching for an element in a binary search tree?
+Explain the concept of a trie data structure and its common applications.
+What is the difference between a linear search and a binary search algorithm?
+Describe the concept of dynamic programming and provide an example of its usage in solving a problem.
+
+
+Java 8 Interview Questions
+--------------------------
+1. What are the main features introduced in Java 8?
+Lambda Expressions
+Stream API
+Default Methods
+Optional Class
+Method References
+Functional Interfaces
+Date-Time API
+Compact Profiles
+Nashorn JavaScript Engine
+
+ Here are the main features introduced in Java 8:
+
+Lambda Expressions: Lambda expressions allow the use of functional programming concepts in Java. They provide a concise syntax for defining anonymous functions, enabling more expressive and functional-style programming.
+
+Stream API: The Stream API provides a set of powerful methods for processing collections of data in a declarative and functional manner. It allows operations like filtering, mapping, reducing, and sorting data, making code more readable and concise.
+
+Default Methods: Default methods allow the addition of new methods to existing interfaces without breaking backward compatibility. They enable interface evolution by providing default implementations for methods, reducing the need for creating adapter classes.
+
+Optional Class: The Optional class helps handle the absence of a value (null) more effectively. It encourages developers to explicitly handle the cases when a value might be absent, reducing the risk of NullPointerExceptions.
+
+Method References: Method references provide a shorthand notation for referring to existing methods or constructors. They simplify code by allowing developers to pass method references directly instead of writing lambda expressions.
+
+Functional Interfaces: Java 8 introduced a set of functional interfaces, such as Predicate, Function, Consumer, and Supplier, in the java.util.function package. These interfaces represent common functional patterns and can be used with lambda expressions and method references.
+
+Date-Time API: Java 8 introduced a new Date-Time API in the java.time package to address the shortcomings of the previous Date and Calendar classes. The new API provides a more comprehensive, immutable, and thread-safe set of classes for working with dates, times, durations, and time zones.
+
+Compact Profiles: Compact Profiles allow developers to create smaller and more efficient Java runtime environments tailored to specific deployment scenarios. They provide subsets of the Java SE Platform APIs, enabling the development of applications for resource-constrained environments.
+
+Nashorn JavaScript Engine: Java 8 included the Nashorn JavaScript engine as a replacement for the Rhino engine. Nashorn provides improved performance and better integration between Java and JavaScript code, allowing developers to embed JavaScript code within Java applications.
+--------------------------
+Explain the concept of functional interfaces in Java 8.
+
+In Java 8, functional interfaces play a significant role in enabling functional programming features. A functional interface is an interface that has exactly one abstract method. It acts as a contract for a single behavior or functionality.
+
+Here are the key aspects of functional interfaces in Java 8:
+
+Single Abstract Method (SAM): A functional interface must have only one abstract method. This method represents the behavior or functionality that the interface defines.
+
+Default and Static Methods: Functional interfaces can also have default and static methods in addition to the single abstract method. These methods provide additional utility or behavior but do not affect the functional nature of the interface.
+
+Lambda Expressions and Method References: Functional interfaces are closely related to lambda expressions and method references. Lambda expressions allow developers to concisely express the implementation of the single abstract method. Method references provide a shorthand notation for referring to existing methods that match the functional interface's signature.
+
+Built-in Functional Interfaces: Java 8 introduced a set of built-in functional interfaces in the java.util.function package. These interfaces represent common functional patterns, such as Predicate, Function, Consumer, and Supplier, and provide a foundation for functional programming in Java.
+
+Target Type for Lambdas: Functional interfaces serve as the target type for lambda expressions. The compiler uses the functional interface's abstract method signature to infer the lambda expression's parameter types and return type.
+
+Functional interfaces enable a more concise and expressive coding style in Java by allowing developers to pass behavior as parameters or return types. They are the foundation for leveraging functional programming features, such as working with streams, using lambda expressions, and employing method references effectively.
+
+--------------------------------------------
+What is a lambda expression in Java 8, and how is it different from an anonymous inner class?
+
+
+Describe the use of the Stream API in Java 8 and provide an example of its usage.
+
+
+What is the purpose of the Optional class in Java 8, and how does it help in handling null values?
+- A container object
+- Before Java 8, when dealing with a method that could potentially return a null value, developers often had to manually check for null using conditional statements, which could lead to verbose and error-prone code.
+
+
+
+
+Explain the difference between the "map" and "flatMap" operations in the Stream API.
+
+
+How do you perform filtering on a stream using the "filter" operation in Java 8?
+
+
+What are method references in Java 8, and how are they useful?
+
+Describe the concept of default methods in interfaces in Java 8.
+
+Describe diamond problem with multiple inheritance?
+
+What is Backward compatibility with default methods?
+
+How do you handle concurrency in Java 8 using the CompletableFuture class?
+
+What is the purpose of the "reduce" operation in the Stream API?
+
+Explain the concept of parallel streams in Java 8 and when to use them.
+
+How do you sort elements using the "sorted" operation in the Stream API?
+
+Describe the use of the "peek" operation in the Stream API.
+
+What is the purpose of the "collect" operation in the Stream API, and how is it used?
+Explain the concept of the Date-Time API introduced in Java 8.
+How do you handle exceptions in Java 8 using the "try-with-resources" statement?
+What is the purpose of the "Predicate" functional interface in Java 8?
+Describe the use of the "Supplier" functional interface in Java 8.
+How do you create and use default and static methods in interfaces in Java 8?
+
+
+List<Integer> l1 = List.of(1, 2);
+List<Integer> l2 = List.of(12, 76,87);
+List<Integer> l3 = List.of(24,92);
+
+List<List<Integer>> lists = List.of(l1, l2, l3);
+
+Integer integer = lists.stream()
+	.flatMap(l -> l.stream() )
+	.reduce((n,m) -> n+m )
+	.get();
+
+What is interoperability?
+What is Fine-grained locking?
+
+Maintains backward compatibility?
+
+Explain few design patterns?
+
+Design patterns are reusable solutions to common software design problems. In Java, several design patterns are widely used. Here are five of the most commonly used design patterns in Java:
+
+Singleton Pattern:
+The Singleton pattern ensures that only one instance of a class is created throughout the application. It is useful in scenarios where a single instance needs to be shared and accessed globally. The java.lang.Runtime class and database connection pools often utilize this pattern.
+
+Factory Pattern:
+The Factory pattern provides an interface for creating objects but allows subclasses to decide which class to instantiate. It encapsulates object creation and promotes loose coupling. Examples of the Factory pattern in Java include java.util.Calendar and java.text.NumberFormat.
+
+Observer Pattern:
+The Observer pattern establishes a one-to-many dependency between objects, where changes in one object trigger updates to its dependent objects. It is commonly used in event handling systems and GUI frameworks. The java.util.Observer and java.util.Observable classes are examples of the Observer pattern.
+
+Adapter Pattern:
+The Adapter pattern allows incompatible interfaces to work together by providing a common interface that both can use. It is useful when integrating existing or third-party code that may have different interfaces. The java.util.Arrays#asList() method and java.io.InputStreamReader class use the Adapter pattern.
+
+Strategy Pattern:
+The Strategy pattern defines a family of algorithms, encapsulates them as separate classes, and makes them interchangeable. It enables runtime selection of algorithms without modifying the client code. The java.util.Comparator interface and the sorting algorithms in java.util.Collections use the Strategy pattern.
+
+It's important to note that these patterns represent only a fraction of the many design patterns available. The choice of design pattern depends on the specific problem and requirements of your application. Additionally, Java also includes other popular design patterns such as Builder, Decorator, Iterator, and MVC (Model-View-Controller).
+
+
+
+
+import java.util.Objects;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,497 @@
+# Step-1
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+
+    <div id="mydiv"></div>
+
+    <script type="text/babel">
+      function Hello() {
+	
+	let name = 'Java';
+	const myElement = <h1>I Love {name}</h1>;
+	const myElements = [<h1>I Love {name}</h1>, <h1>I Love JSX!</h1>,<h1>I Love JSX!</h1>,<h1>I Love JSX!</h1>];
+
+	const eles = [];
+	for(let i=1;i<=10;i++){
+		eles.push(<h1>2 x {i}  = {2 * i} </h1>);
+	}	
+
+        return <div>
+		{myElements}
+		{eles}
+		</div>;
+      }
+
+      const container = document.body;
+      const root = ReactDOM.createRoot(container);
+      root.render(<Hello />)
+    </script>
+
+  </body>
+</html>
+
+---
+
+import Display from './Display'
+import "./styles.css";
+
+export default function App() {
+  return (
+    <div className="App">
+      <Display />
+      <Display />
+      <Display />
+    </div>
+  );
+}
+
+
+import "./styles.css";
+
+export default function Display() {
+  const emp = {
+    id : 12345,
+    name : 'Sujith',
+    slary : 1000.45,
+    hiredate : new Date()
+  }
+
+  const input = <input type="text" />;
+  return (
+    <div id="centeredDiv">
+       <p> {emp.id} </p>
+       <h1> {emp.name} </h1>
+       <h3> {emp.slary} </h3>
+       <p> {emp.hiredate.toLocaleString()} </p>
+    </div>
+  );
+}
+
+---
+
+In React, there are several ways to send props (properties) to a component. 
+
+1. Directly in JSX
+2. Spread operator with JSX
+3. Using named props
+4. Passing functions as props
+5. Using Object Destructuring
+6. Using a Functional Component
+7. Using Class Component
+8. Using the React.cloneElement method
+
+1. Directly in JSX:
+
+```
+// Parent-1
+function App() {
+  return (
+    <div className="App">
+      <Display id={1234} name="Sujith" salary={12321.5} hiredate={new Date()} />
+    </div>
+  );
+}
+
+// Parent-2
+function App() {
+
+  const emp = {
+    id: 12345,
+    name: "Sujith",
+    salary: 1000.45,
+    hiredate: new Date()
+  };
+
+  return (
+    <div className="App">
+      <Display {...emp} />
+    </div>
+  );
+}
+
+
+// Child
+function Display(props) {
+  return (
+    <div id="centeredDiv">
+      <p> {props.id} </p>
+      <h1> {props.name} </h1>
+      <h3> {props.salary} </h3>
+      <p> {props.hiredate.toLocaleString()} </p>
+    </div>
+  );
+}
+```
+
+
+2. Spread operator with JSX
+
+
+```
+// Parent
+// Child
+```
+
+3. Using named props
+
+```
+// Parent
+// Child
+```
+
+4. Passing functions as props
+
+```
+// Parent
+// Child
+```
+
+5. Using Object Destructuring
+
+```
+// Parent
+function App() {
+
+  return (
+    <div className="App">
+      <Display
+        name="Sujith"
+        id={500}
+        salary={1.5e4}
+        hiredate={new Date().toLocaleString()}
+      />
+    </div>
+  );
+}
+
+
+// Child
+function Display({id,name,salary,hiredate}) {
+
+  return (
+    <div id="centeredDiv">
+      <p> {id} </p>
+      <h1> {name} </h1>
+      <h3> {salary} </h3>
+      <p> {hiredate} </p>
+    </div>
+  );
+}
+```
+
+6. Using a Functional Component
+
+```
+// Parent
+// Child
+```
+
+7. Using Class Component
+
+```
+// Parent
+// Child
+```
+
+8. Using the React.cloneElement method
+
+```
+// Parent
+// Child
+```
+
+
+
+
+
+9. Whole Object 
+
+
+
+```
+// Parent
+function App() {
+
+  const emp = {
+    id: 12345,
+    name: "Sujith",
+    salary: 1000.45,
+    hiredate: new Date()
+  };
+
+  return (
+    <div className="App">
+      <Display data={emp} />
+    </div>
+  );
+}
+
+
+// Child
+function Display(props) {
+  return (
+    <div id="centeredDiv">
+      <p> {props.data.id} </p>
+      <h1> {props.data.name} </h1>
+      <h3> {props.data.salary} </h3>
+      <p> {props.data.hiredate.toLocaleString()} </p>
+    </div>
+  );
+}
+
+// Child
+function Display(props) {
+  const data = props.data;
+  return (
+    <div id="centeredDiv">
+      <p> {data.id} </p>
+      <h1> {data.name} </h1>
+      <h3> {data.salary} </h3>
+      <p> {data.hiredate.toLocaleString()} </p>
+    </div>
+  );
+}
+
+```
+
+Observations
+------------
+
+# 001
+
+// Sending whole object
+<Display data={emp} />
+
+// Receiving data into data parameter
+Display({id,name,data,salary,hiredate})
+data.name Valid
+data.salary Valid
+
+
+# 002
+
+// Sending whole object
+<Display data={emp} name='sujith' salary={1.5e4} />
+
+// Receiving data into data parameter
+function Display({id,name,data,salary,hiredate}){
+
+}
+data.id		Valid
+data.hiredate	Valid
+name		Valid
+salary		Valid
+
+# 003
+
+// Sending whole object
+<Display id={1234} name="sujith" salary={1.5e4}/>
+
+// Receiving data into data parameter
+function Display(props) {
+}
+props.id	Valid
+props.name	Valid
+props.salary	Valid
+
+# 004
+
+// Invoking child
+<Display data={emp} />
+
+// Child Fun
+function Display(props) {
+	data = props.data;
+	data.id		Valid
+	data.name	Valid
+	data.salary	Valid
+	data.hiredate	Valid
+}
+
+
+# 005
+// Invoking child
+ <Display name='Sujith' color='cyan' salary={1.5e5} id={101} />
+
+// Child Fun
+function Display({id,name,salary,hiredate, color}) {
+
+}
+
+# 006
+// Invoking child
+<Display {...emp} /> ✓
+<Display {emp} /> ✗
+
+// Child Fun
+function Display(props) { {
+	props.id ✓
+	props.name ✓
+	props.salary ✓
+}
+
+# 007
+// Invoking child
+<Display color={color} />
+
+// Child Fun
+function Display(props){
+
+	const styles = {
+		backgroundColor: props.color,
+	}	
+
+	return <div style={styles}>...</div>
+}
+
+---
+import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+https://source.unsplash.com/featured/300x201
+bootstrap\dist\js\bootstrap.bundle.min.js
+---
+
+
+## BUTTON EVENT(type: "click")
+
+<button id='id-val' className='demo-class' onClick={clickHandler}>in-value</button>
+
+const clickHandler = event => {
+	console.info(event.target.innerHTML);	// in-value
+	console.info(event.target.id);		// id-val
+	console.info(event.target.className);	// demo-class
+
+id
+name
+className
+type
+value 
+title 
+innerText
+outerText
+localName
+tagName
+
+
+}
+
+## USE STATE HOOK
+
+const [value, setValue] = useState(100);
+value++;		// Can't change const value
+setValue(value + 1)	// Okay
+
+## Composition(Card)
+
+Parent:
+
+const CardDiv = (props) => {
+  return <div className="styled-div">{props.children}</div>;
+};
+
+Child:
+
+<CardDiv>
+	<h1>Hello</h2>
+</CardDiv>
+
+
+## Note
+
+In React, you should not directly modify the props passed to a component. Props are intended to be read-only and should not be mutated inside the component.
+
+const CardDiv = (props) => {
+ 	props.color = 'green'; // Won't work
+};
+
+
+## Styles
+
+// Importing Styles from .CSS file
+
+h1 {
+  color: red;
+}
+
+import "./Text.css";
+
+const Text = (props) => {
+
+  // Overring Styles
+  const styles = {
+    color: "yellow",
+    backgroundColor: "black"
+  };
+
+  return <h1 style={styles}>{props.value}</h1>;
+};
+
+## randomcolor
+
+import rc from "randomcolor";
+
+const randomHslColor = rc.randomColor({
+    hue: "random",
+    luminosity: "bright",
+    saturation: "100",
+    format: "hsl"
+});
+
+luminosity : bright/light/dark/random
+format : rgb/hsl/...
+
+
+const getRandomColor = () => {
+  const hue = Math.floor(Math.random() * 360); // Random hue between 0 and 359
+  return `hsl(${hue}, 100%, 50%)`;
+};
+
+
+# Create new React Project
+
+npx create-react-app --version
+npm install --save-dev @faker-js/faker
+
+
+import { faker } from '@faker-js/faker';
+
+faker.datatype.uuid(),
+faker.internet.email(),
+faker.internet.domainName(),
+faker.image.avatar(),
+faker.internet.password(),
+faker.date.recent(30)
+
+
+Note:
+The issue with the provided code is that the input field is a controlled component, meaning its value is managed by the value state and cannot be changed directly by user input. In a controlled component, the value is only updated through the value prop and the onChange event.
+
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

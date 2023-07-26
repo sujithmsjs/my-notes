@@ -1,0 +1,28 @@
+
+1. Custom Directives
+2. Custon Pipes
+3. Component to Component Communication
+4. Life cycle Hooks
+
+onChange
+onInit
+afterViewInit
+onDestroy
+
+5. Interceptors
+6. ngrx/ rxjs
+7. Observables
+8. Gourds(Route)
+
+Youtuber:
+- Kudvenkat
+- Nisha Singla
+
+Email/Sponsor Change
+Invoice Issues
+OTP Delay / Login Issues
+
+
+/supportCategories
+
+error(message?: string, title?: string, override?: Partial<IndividualConfig>): ActiveToast<any>;

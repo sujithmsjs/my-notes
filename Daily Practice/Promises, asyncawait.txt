@@ -1,0 +1,183 @@
+# Promises, async/await
+
+
+**Asynchronous actions**
+- Actions that we initiate now, but they finish later.
+Ex: setTimeout
+
+resolve -> value
+reject 	-> error
+
+States: pending, fulfilled, rejected
+result:	undefined, value, error
+
+executor : the producting code
+
+let promise = new Promise(function(resolve, reject) {
+	setTimeout(() => resolve("done"), 1000);
+});
+
+executor function: function(resolve, reject)
+producing code :  setTimeout(() => resolve("done"), 1000);
+
+
+
+let promise = new Promise(function(resolve, reject) {
+	setTimeout(() => reject(new Error("Whoops!")), 1000);
+});
+
+let promise = new Promise(function(resolve, reject) {
+	resolve("done"); // execute
+	reject(new Error("…")); // ignored
+	setTimeout(() => resolve("…")); // ignored
+});
+
+
+> The state and result are internal
+The properties state and result of the Promise object are internal. We can’t directly access them. We can use the methods .then/.catch/.finally for that. They are described below.
+
+new Promise((resolve, reject) => {
+	setTimeout(() => reject("value"), 2000);
+	setTimeout(() => resolve("value"), 2000);
+})
+  .finally(() => console.info('Finally :' + "Promise ready")) // triggers first
+  .then(result => console.info('Then :' +result)) // <-- .then shows "value"
+  .catch(err => console.info('Error :'+err));
+
+Note: then(res, err) takes two callback functions as args, one is for function and another for err. .catch(err) is shortened and more strightforword.
+
+The call .catch(f) is a complete analog of .then(null, f), it’s just a shorthand.
+
+Cleanup: finally
+E.g. stopping loading indicators, closing no longer needed connections, etc.
+
+Finally:
+- No arguments
+- We don’t know whether the promise is successful or not
+- Promise outcome is handled by the next handler
+- When finally throws an error, then the execution goes to the nearest error handler.
+
+new Promise( (resolve, reject) => {
+	// Executor cpde
+})
+.finally( () => {})
+.then(	res = {})
+.catch( err = {})
+
+
+Example: 001
+function delay(ms) {
+ 	return new Promise( (res, rej) => {
+		setTimeout( () => res('Done'), ms);
+	} );
+}
+
+delay(3000).then(() => console.info('runs after 3 seconds'));
+
+
+Example: 001
+
+function randomPromise(){
+	let promise = new Promise( (resolve, reject) => {
+		let i = Math.floor(Math.random() * 2);
+		if(i==0){
+			reject('Zero')
+		}else{
+			resolve('Success')
+		}
+	})
+	return promise;
+}
+
+randomPromise()
+.finally( ()=> console.log('Completed...') )
+.then( result => console.log(result) )
+.catch( error => console.log(error))
+
+
+Example: 002
+Example: 003
+Example: 004
+Example: 005
+Example: 006
+Example: 007
+Example: 008
+Example: 009
+
+
+
+# Promises chaining
+
+The return type of the .then fuction is a Promise. So it can be chained together. It works like a pipe, the output of the one .then function is the input to next .then funciton.
+
+new Promise(function(resolve, reject) {
+
+  setTimeout(() => resolve(1), 1000); // (*)
+
+}).then(function(result) { // (**)
+
+  console.info(result); // 1
+  return result * 2;
+
+}).then(function(result) { // (***)
+
+  console.info(result); // 2
+  return result * 2;
+
+}).then(function(result) {
+
+  console.info(result); // 4
+  return result * 2;`
+
+}).catcg((err) => {
+
+	console.info('Error')
+
+
+} );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

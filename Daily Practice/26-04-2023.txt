@@ -1,0 +1,492 @@
+10:44 26-04-2023
+ChronoUnit: A standard set of date periods units!
+
+db.getCollection('shift_timings').aggregate(
+[
+    { $group : { _id : '$item', count : {$sum : 1}, sum : { $sum : '$price'}, avg : { $avg : '$price'} } },
+    { $sort : { _id : -1} },
+    { $skip : 0},
+    { $limit : 2}
+]
+)
+
+
+db.getCollection('shift_timings').aggregate(
+[
+    { $group : { _id : '$item', count : { $count : {} }}}
+]
+)
+
+https://bigdatansql.com/2021/09/02/emp-and-dept-datasets-for-mongodb/
+
+
+
+mongodb+srv://sujith:NvrStle22@cluster0.7usugpb.mongodb.net/emps?retryWrites=true&w=majority
+
+
+
+db.getCollection('shift_timings').aggregate([
+
+    {
+        $group : { _id : '$job', count : { $count : {}}, 'total-sal' : { $avg : '$sal'} }   
+    },
+    
+    {
+        $sort : { _id : 1} 
+    }
+
+])
+
+
+
+{ $sum: [ <expression1>, <expression2> ... ]  }
+
+
+db.getCollection('shift_timings').aggregate([
+    {
+        $project : { _id : 0, name : '$ename' , salary : '$sal', comm : '$comm', totalSal : { $sum : [ '$sal', '$comm'] } }
+    }
+])
+
+
+{ $subtract: [ <expression1>, <expression2> ] }
+
+
+
+Aggregation Pipeline Operators
+
+
+Expression Operators
+These expression operators are available to construct expressions for use in the aggregation pipeline stages.
+
+Arithmetic Expression Operators
+$sum, $subtract $devide, $mod, $multiply, $sqrt, $pow
+$round
+
+db.getCollection('shift_timings').aggregate([
+    {
+        $project : { _id : 0, name : '$ename' , salary : '$sal', comm : '$comm', totalSal : {  $divide : [ { $sum : [ '$sal', '$comm']} , 7] }}
+    }
+])
+
+db.getCollection('shift_timings').aggregate([
+    {
+        $project : { _id : 0, name : '$ename' , salary : '$sal', comm : '$comm', totalSal : {  $round : [   {$divide : [ { $sum : [ '$sal', '$comm']} , 7] }   ,0]  }}
+    }
+])
+
+
+Array Expression Operators
+Boolean Expression Operators
+Comparison Expression Operators
+Conditional Expression Operators
+Custom Aggregation Expression Operators
+Data Size Operators
+
+Date Expression Operators
+$year, $month, $week, $day, $add, $subtract
+$toLower, $toUpper
+
+Literal Expression Operator
+Miscellaneous Operators
+Object Expression Operators
+Set Expression Operators
+
+String Expression Operators
+$concat, $trim, $substr, $split
+
+
+Text Expression Operator
+Timestamp Expression Operators
+Trigonometry Expression Operators
+Type Expression Operators
+
+
+Accumulators (in Other Stages)
+$avg
+$max
+$min
+$sum
+$count
+$first
+$top
+
+{"email":"HEZn3AwzZovUBjQvY6i7Iu49wX3xeOpU8gsKshZuZZc=","password":"eFjfhcegDMvddKU/VvYqJg=="}
+
+
+
+spring.redis.expiration-in-mins
+jwt.refreshtoken.expiration-in-mins
+jwt.accesstoken.expiration-in-mins
+
+f7f23150-7374-4a4a-a822-2d9d3a3559c2
+
+db.getCollection('shift_timings').aggregate(
+[
+    {$match : { job : 'CLERK' } },
+    {$sort : {ename : 1}},
+    {$limit : 3}
+])
+
+
+--------------------------------------
+$$ROOT
+The $$ROOT variable contains the source documents for the group. If you'd like to just pass them through unmodified, you can do this by $pushing $$ROOT into the output from the group.
+
+[
+  {
+    $group:
+      {
+        _id: "$job",
+        salary: {
+          $sum: "$sal",
+        },
+        comm: {
+          $sum: "$comm",
+        },
+        emplyees: {
+          $push: "$$ROOT",
+        },
+      },
+  }
+]
+--------------------------------------
+
+
+[
+  {
+    $group:
+      {
+        _id: "$job",
+        salary: {
+          $sum: "$sal",
+        },
+        comm: {
+          $sum: "$comm",
+        },
+        emplyees: {
+          $push: "$ename",
+        },
+      },
+  }
+]
+----------------------------------------
+$pushing data into the result
+When grouping we use the _id field to hold the common values that we are grouping our documents on. This means that the output of a group aggregation only holds the data that is common to all documents in that group.
+
+What happens though if we want to preserve a value that we are not grouping on. For this we use $push.
+
+[
+  {
+    $group:
+      {
+        _id: "$job",
+        salary: {
+          $sum: "$sal",
+        },
+        comm: {
+          $sum: "$comm",
+        },
+        emplyees: {
+          $push: {
+            name: "$ename",
+            salary: "$sal",
+          },
+        },
+      },
+  }
+]
+
+
+-----------------------------
+Project with the calculations:
+
+[
+  {
+    $match:
+      {
+        ename: {
+          $ne: null,
+        },
+      },
+  },
+  {
+    $project: {
+      _id: "$ename",
+      salary: "$sal",
+      commition: "$comm",
+      total: {
+        $sum: ["$sal", "$comm"],
+      },
+    },
+  },
+]
+---------------------------------
+How to find max salary in the group.
+[
+  {
+    $match:
+      {
+        ename: {
+          $ne: null,
+        },
+      },
+  },
+  {
+    $project: {
+      _id: "$ename",
+      salary: "$sal",
+      commition: "$comm",
+      total: {
+        $sum: ["$sal", "$comm"],
+      },
+      job: "$job",
+    },
+  },
+  {
+    $group: {
+      _id: "$job",
+      max_sal: {
+        $max: "$total",
+      },
+      names: {
+        $push: {
+          name: "$_id",
+        },
+      },
+    },
+  },
+]
+
+
+-----------------------------
+
+db.getCollection('shift_timings').aggregate([
+  {
+    $group: {
+      _id: "$job", // Group by job title
+      max_sal: { $max: "$sal" }, // Get the maximum salary among the group
+      names: { $push: "$ename" } // Push employee names to an array
+    }
+  },
+  {
+    $project: {
+      _id: 1, // Include job title as "_id" field
+      max_sal: 1, // Include max salary as "max_sal" field
+      names: 1 // Include employee names as "names" field
+    }
+  }
+])
+
+--------------------------------
+
+
+$group: {
+	_id: "$job",
+      max_sal: { $max: "$sal" }, 
+      names: { $push: { name : "$ename" } }
+}
+
+$group: {
+	_id: "$job",
+	max_sal: { $max: "$sal" },
+	names: { $push:  "$ename" }
+}
+
+
+--------------------------------
+
+[
+  {
+    $group:
+      {
+        _id: "$group_id",
+        count: {
+          $count: {},
+        },
+        users: {
+          $push: "$user_id",
+        },
+      },
+  },
+  {
+    $project:
+      {
+        _id: 0,
+        group_id: "$_id",
+        count: 1,
+        users: 1,
+      },
+  },
+]
+
+-------------------------------
+$group : { _id : '$group_id', count : {$count : {} }, users : { $push : '$$ROOT' } }
+$group : { _id : '$group_id', count : {$count : {} }, users : { $push : '$user_id' } }
+------------------------------
+
+Find Maximun salaried employees
+
+db.emp.aggregate([
+  { $sort: { sal: -1 } }, // Sort employees by salary in descending order
+  { $limit: 1 }, // Limit results to the first document (i.e. the highest salary)
+  { $lookup: { // Join with self to get all employees with the same salary
+      from: "emp",
+      localField: "sal",
+      foreignField: "sal",
+      as: "employees"
+    }
+  },
+  { $unwind: "$employees" }, // Unwind the "employees" array
+  { $project: { _id: 0, ename: "$employees.ename", sal: "$employees.sal" } } // Project only "ename" and "sal" fields
+]);
+
+
+-----------------------------
+SELECT ename, sal
+FROM emp
+WHERE sal = (
+  SELECT MAX(sal)
+  FROM emp
+)
+
+
+-----------------------------
+$match : {
+  $or : [ 
+    	{comm : {$ne : null}},
+      {comm : {$exists : false}}
+]
+}
+-----------------------------
+
+[
+  {
+    $match: {
+      comm: {
+        $ne: null,
+        $exists: true,
+      },
+    },
+  },
+  {
+    $count: "comm",
+  },
+]
+
+---------------------------
+
+subsequent
+revocation
+revoke or invalidate
+
+
+-----------------------------
+
+db.getCollection('group_users').aggregate([
+{
+    $group : { _id : { groupId : '$group_id', orgId : '$org_id'} }
+}
+])
+
+
+-------------------------
+
+UTC format and using the ISO-8601 
+
+
+
+---------------------------
+db.getCollection('shift_roaster').aggregate(
+[
+  {
+    $group:
+      /**
+       * _id: The id of the group.
+       * fieldN: The first field name.
+       */
+      {
+        _id: {
+          org_id: "$org_id",
+          shift_id: "$shift_id",
+        },
+        count: {
+          $count: {},
+        },
+        users: {
+          $push: "$user_id",
+        },
+      },
+  },
+  {
+    $project:
+      /**
+       * specifications: The fields to
+       *   include or exclude.
+       */
+      {
+        _id: 0,
+        org: "$_id.org_id",
+        shift: "$_id.shift_id",
+        count: 1,
+        users: 1,
+      },
+  },
+]
+)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

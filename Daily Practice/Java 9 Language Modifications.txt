@@ -1,0 +1,19 @@
+Java 9 Language Modifications
+
+- Try-With-Resources
+- Diamond Operator Extension
+- Interface Private Method
+
+New APIs
+- Process API
+- Immutable Set
+- Optional to Stream
+
+
+Java 10 Language Modifications
+
+- Local Variable(var) Type Inference
+- Unmodifiable Collections
+--  copyOf()
+--  toUnmodifiable*()
+- orElseThrow()

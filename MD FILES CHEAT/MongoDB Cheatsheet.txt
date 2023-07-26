@@ -1,0 +1,111 @@
+1. Spring Data's built-in suppor
+
+
+```java
+Page<User> findAll(Pageable pageable);
+
+Pageable pageable = PageRequest.of(pageNo, pageSize, Sort.by(sortBy));
+return userRepository.findAll(pageable);
+```
+
+1. Query object
+
+
+```java
+Page<YourEntity> findAll(Query query, Pageable pageable);
+```
+
+
+2. MongoOperations
+
+```java
+Query query = new Query(Criteria.where(field).is(value));
+return mongoOperations.find(query, Document.class, collectionName);
+```
+
+
+3. MongoTemplate
+
+```java
+Query query = new Query();
+query.addCriteria(Criteria.where("field").is(criteria));
+query.with(pageable);
+query.with(sort);
+return mongoTemplate.find(query, YourEntity.class);
+
+
+Query query = new Query().with(PageRequest.of(pageNo, pageSize, Sort.by(sortBy)));
+List<User> users = mongoTemplate.find(query, User.class);
+long count = mongoTemplate.count(query, User.class);
+return new PageImpl<>(users, PageRequest.of(pageNo, pageSize), count);
+```
+
+4. Using Custom Query Methods
+
+```java
+
+public interface UserRepository extends MongoRepository<User, String> {
+    List<User> findByCriteria(String criteria, Pageable pageable, Sort sort);
+}
+
+public class UserController {
+    @Autowired
+    private UserRepository userRepository;
+
+    public List<User> getUsersByCriteria(String criteria, int pageNo, int pageSize, String sortBy) {
+        Pageable pageable = PageRequest.of(pageNo, pageSize, Sort.by(sortBy));
+        return userRepository.findByCriteria(criteria, pageable, Sort.by(sortBy));
+    }
+}
+
+
+```
+
+5. Aggregation Framework
+
+> Aggregation is a MongoDB framework that allows us to perform data processing operations like filtering, grouping, and sorting on MongoDB collections
+
+@Autowired
+private MongoTemplate mongoTemplate;
+
+public List<User> getAllUsers(int pageNo, int pageSize, String sortBy) {
+    Aggregation aggregation = Aggregation.newAggregation(
+        Aggregation.sort(Sort.by(sortBy)),
+        Aggregation.skip(pageNo * pageSize),
+        Aggregation.limit(pageSize)
+    );
+    AggregationResults<User> results = mongoTemplate.aggregate(aggregation, User.class, User.class);
+    return results.getMappedResults();
+}
+
+
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

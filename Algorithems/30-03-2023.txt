@@ -1,0 +1,8 @@
+10:40 30-03-2023
+
+TODO
+
+1. Shift Name Already Exists Exception
+2. Shift Export Exact data
+3. Calenders API
+4. Calenders Export data

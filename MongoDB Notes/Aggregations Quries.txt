@@ -1,0 +1,7 @@
+"Manager"
+"Architect"
+"JavaSE"
+"DBA"
+"FrontEnd"
+"Intern"
+"HR"

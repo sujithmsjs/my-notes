@@ -1,0 +1,75 @@
+Full Name  :  Choppari Pranisha
+Contact Number :  7658994214
+Personal Mail Id : chopparipranisha329@gmail.com
+Alternative Mail id : chopparipranisha@gmail.com
+GENDER : FEMALE
+PAN Number : CDCPC4914J
+DATE OF BIRTH : 16-03-96
+Bank Name : State Bank Of f India
+Account Number : 35895737079
+ Technology : java 
+Perminent Address :  H No : 6-110, Inugurthy, Kesamudram, Warangal
+
+Languages : Java
+➢ J2EE Technologies : Servlets, JSP and JDBC
+➢ Frameworks : Spring, Spring-Boot and Hibernate
+➢ Web Services : Restful Web Services.
+➢ Application/Web Servers : Tomcat.
+➢ IDE : Eclipse
+➢ Databases : My SQL and Oracle.
+➢ Version controller : GIT.
+➢ Project Management Tools : LOG4J, JUNIT and JIRA.
+➢ Build Tool : Maven.
+
+
+Highly skilled backend developer with [number of years] years of experience in designing, developing, and maintaining scalable and robust web applications using Spring Boot. 
+
+
+Experienced Spring Boot backend developer with strong OOP skills, RESTful web services expertise, and database design knowledge.
+
+CUBESPACE TECHNOLOGIES PVT LTD
+Cubespace Technologies Private Limited
+Bengaluru 560037
+
+
+
+
+
+ Implementing functionalities using design pattern oriented architecture includes 
+Controller, Service and DAO layers.
+➢ Implemented functionalities like CRUD operations.
+➢ Implementing Server side validations.
+➢ Coding and debugging by using debugging tool and Log4j.
+➢ Maven used for Project Management Structure.
+➢ Used ouath2, authorization server along with jwt token generator for security,
+➢ Used GIT for code repository and as version control mechanism.
+➢ Object Creation and injection were done using Spring Boot mechanisms.
+➢ Performed Debugging and testing using Test cases.
+➢ Attending the scrum meeting 
+
+
+
+
+
+Web Technologies
+
+JSON, XML, HTML, CSS, JavaScript
+
+
+HappyTrigger
+
+Micro Services, Restful Web Services, Angular2, JPA, 
+Spring Boot, Java8, Python, MySQL
+
+RESTful Web Services
+
+
+
+Java 8, SpringBoot, Spring Security, JPA, Maven, Eclipse, 
+Lombok, MySQL, Tomcat.
+
+
+
+maintain bio data of all the employees in the 
+organization which does include personal, professional, educational, experiences and 
+achievements

@@ -1,0 +1,31 @@
+Bootstrap 5 Full Notes
+
+CARDS
+-----
+div | .card
+div | .card-header
+div | .card-body
+div | .card-footer
+a | .card-link
+p | .card-text
+h | .card-title
+img | .card-img-top
+img | .card-img-bottom
+
+
+Progress Bar
+------------
+
+div | .progress
+div | .progress-bar
+div | .progress-bar-striped
+div | .progress-bar-animated
+
+<div class="progress" style="height:20px">
+  <div class="progress-bar" style="width:40%;"></div>
+</div>
+
+year, date, month
+
+
+

@@ -1,0 +1,15 @@
+Date and time localization in Java
+
+Geographical
+Political
+Cultural region
+
+Customs
+Conventions
+Traditional
+Compatible
+
+NumberFormat.getInstance()
+
+LocaleResolver localeResolver = RequestContextUtils.getLocaleResolver(request);
+localeResolver.setLocale(request, response, parseLocaleValue(newLocale));\

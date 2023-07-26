@@ -1,0 +1,280 @@
+
+
+1. Date Questions
+-----------------
+1.1 Print Employees who joined in Janavary
+https://www.mongodb.com/docs/manual/reference/operator/aggregation/dateToString/
+
+
+1.2 Print Employees who joined in 2022
+1.3 Print Employees who joined in Perticular date
+1.4 Print Employees who joined between 2019-2022
+1.5 Print Age of all the employees
+1.6 How many days since they joined in the organization
+1.7 Spell the date in words
+1.8 Order by date
+1.9 Group by Month
+1.10 Group by year
+1.11 Count age, months, and days
+1.12 Add 1 month and Delete 1 Month
+1.13 Add 1 year 3 months 10 days
+1.14 Substract 1 month and Delete 1 Month
+1.15 Substract 1 year 3 months 10 days
+
+2. String Questions
+-------------------
+2.1 Print String length
+
+
+2.2 Print Names size of 5
+2.3 Generate 4 digit substring from Names
+2.4 Concat both Firstname and last name
+2.5 Modify the string to lower case without spaces
+2.6 Check whether string matches regex or not
+2.7 Check whether that string contains a string or not
+2.8 Reverse a string
+2.9 String integer to integer type
+2.10 String date to date type
+
+3. Regex Questions
+------------------
+3.1 String contains exactly N letters
+3.2 String matched the Regex or Not
+3.3 String start with N letters and L length
+3.4 String ends with N letter and L length
+3.5 String start and ends with Same letter
+
+4. Integer Questions
+--------------------
+4.1 Add Salary and Commision
+4.2 Trible the Salary
+4.3 Find Average salary
+4.4 How you handle null values
+4.5 How you handle empty values
+4.6 null + int = ?
+4.7 null + null = ?
+4.8 empty + null = ?
+4.9 empty + int = ?
+4.10 (+,-,/,x,%) on data
+
+5. Tag Questions
+----------------
+5.1 Match any Tag
+find({languages : {$in : ['Java', 'C','PHP']}})
+
+5.2 Not match any Tag
+find({languages : {$not : {$in : ['Java', 'C','PHP']}}})
+find({languages : {$nin : ['Java', 'C','PHP']}})
+
+5.2 Match all the tags
+find({languages : {$all : ['Java', 'C','PHP']}})
+
+5.2 Not match all the tags
+find({languages : {$not : {$all : ['Java', 'C','PHP']}}})
+
+
+5.3 (Tag1 and Tag2) or Tag3.
+db.getCollection('employees').find(
+{
+        $or : [
+        {languages : {$all : ['Java', 'C']}},
+        {languages : {$in : ['PHP']}}
+    ]    
+})
+
+
+5.4 Print which has more 2 Tags
+find({
+    languages : {$size : 2}
+})
+
+5.5 Print Data with Tag count
+5.6 Print Unique Tags
+
+
+5.7 Show who knows only Java and C
+find(
+{
+    $and: 
+    [
+        {languages : {$size : 2}},
+        {languages : {$all : ['C', 'PHP']}}
+    ]
+    
+})
+
+
+
+6. Comparison Operators
+--------------------
+6.1 Name eight Comparision Operators
+6.2 $eq x $ne
+6.3 $gt x $lt
+6.4 $gte x $lte
+6.5 $in x $nin
+
+
+7. Logical Operators
+--------------------
+7.1 $and
+7.2 $or
+7.3 $not
+7.4 $nor: The output state of the NOR gate will be high only when all of the inputs are low. Simply, this gate returns the complement result of the OR gate.
+
+(A+B)'=Y
+$not($or)
+
+Nand: The output state of the NAND gate will be low only when all the inputs are high. Simply, this gate returns the complement result of the AND gate.
+
+(A.B)'=Y
+$not($and)
+
+8. Element Selectors
+-----------------
+8.1 $exists: Matches documents that have the specified field.
+8.2 $type: Selects documents if a field is of the specified type.
+
+9. Evaluation Selectors
+--------------------
+9.1 $text: Performs text search.
+9.2 $regex:
+9.3 $mod:
+
+10. Array Selectors
+----------------
+10.1 $all
+10.2 $in
+10.3 $elemMath
+10.4 $size
+
+11. Projection Operators
+------------------------
+11.1 $ first element in an array
+11.2 $elemMatch
+11.3 $meta
+11.4 $slice
+
+12 Miscellaneous Operators
+--------------------------
+12.1 $rand Generates a random float between 0 and 1
+
+13 Type Conversion
+------------------
+13.1 Date to Formatted String
+13.2 String to Date
+13.3 String to int
+13.4 int to String
+13.5 Double to int
+13.6 int to double
+
+
+14 Existing things
+------------------
+1. Find missing fields
+2. Find field where values are null.
+3. Find fields where existing
+4. Find fields where type is Int or String
+db.getCollection('case_details').find({
+    country : {$exists: true, $type: 10}
+    }).count()
+	
+	
+
+https://www.mongodb.com/docs/manual/reference/operator/query/type/#std-label-document-type-available-types
+{ field: { $type: <BSON type> } }
+
+
+https://www.mongodb.com/docs/manual/reference/operator/aggregation/
+
+Arithmetic Expression Operators:
+
+{ $add: [ <expression1>, <expression2>, ... ] }
+{ $multiply: [ <expression1>, <expression2>, ... ] }
+{ $divide: [ <expression1>, <expression2> ] }
+{ $subtract: [ <expression1>, <expression2> ] }
+{ $sqrt: <number> }
+{ $pow: [ <number>, <exponent> ] }
+{ $mod: [ <expression1>, <expression2> ] }
+
+String Expression Operators:
+
+db.getCollection('Arith').aggregate([
+{$project : {item : { $toUpper: "$item" }}}
+])
+
+ $project: {
+            item: 1,
+            description: { $ifNull: [ "$description", "Unspecified" ] }
+			}
+
+
+db.getCollection('Arith').aggregate([
+{
+    $project : { month : { $month: "$date" }}
+}
+])
+
+{ $strLenCP: <string expression> }
+
+The $expr operator allows the use of aggregation expressions within the query language, thus you can leverage the use of $strLenCP operator to check the length of the string as follows:
+
+db.usercollection.find({ 
+    name: { $exists: true },
+    $expr: { $gt: [{ $strLenCP: '$name' }, 40] } 
+})
+
+
+
+	TicketModel tm = ticketRepository.findTicketbyTicketId(qaAuditDTO.getCaseId());
+
+-----------------------------------------
+9. Working with Spring Data Repositories
+-----------------------------------------
+
+The goal of the Spring Data repository abstraction is to significantly reduce the amount of boilerplate code required to implement data access layers for various persistence stores.
+
+CrudRepository<T, ID>
+PagingAndSortingRepository<T, ID>
+
+
+long countByLastname(String lastname);
+
+- Spring Data repository abstraction
+- Equivalents
+- The central interface in the Spring Data repository abstraction is Repository.
+
+public interface MongoRepository<T, ID> extends PagingAndSortingRepository<T, ID>, QueryByExampleExecutor<T> {}
+public interface PagingAndSortingRepository<T, ID> extends CrudRepository<T, ID> {}
+public interface CrudRepository<T, ID> extends Repository<T, ID> {}
+public interface Repository<T, ID> {}
+
+List<Person> findByEmailAddressAndLastname(EmailAddress emailAddress, String lastname);
+
+
+List<Person> findDistinctPeopleByLastnameOrFirstname(String lastname, String firstname);
+List<Person> findPeopleDistinctByLastnameOrFirstname(String lastname, String firstname);
+List<Person> findByLastnameIgnoreCase(String lastname);
+Enabling ignoring case for all suitable properties
+List<Person> findByLastnameAndFirstnameAllIgnoreCase(String lastname, String firstname);
+Enabling static ORDER BY for a query
+List<Person> findByLastnameOrderByFirstnameAsc(String lastname);
+List<Person> findByLastnameOrderByFirstnameDesc(String lastname);
+List<Person> findByAddress_ZipCode(ZipCode zipCode); 	
+Page<User> findByLastname(String lastname, Pageable pageable);
+Slice<User> findByLastname(String lastname, Pageable pageable);
+List<User> findByLastname(String lastname, Sort sort);
+List<User> findByLastname(String lastname, Pageable pageable);
+User findFirstByOrderByLastnameAsc();
+User findTopByOrderByAgeDesc();
+Page<User> queryFirst10ByLastname(String lastname, Pageable pageable);
+Slice<User> findTop3ByLastname(String lastname, Pageable pageable);
+List<User> findFirst10ByLastname(String lastname, Sort sort);
+List<User> findTop10ByLastname(String lastname, Pageable pageable);
+Streamable<Person> findByFirstnameContaining(String firstname);
+Streamable<Person> findByLastnameContaining(String lastname);
+User getByEmailAddress(EmailAddress emailAddress);     
+               
+@Nullable
+User findByEmailAddress(@Nullable EmailAddress emailAdress);          
+
+Optional<User> findOptionalByEmailAddress(EmailAddress emailAddress); 

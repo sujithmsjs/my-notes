@@ -1,0 +1,58 @@
+Setup SonarQube for your project:
+1. Download SonarQube from below url:
+https://docs.sonarqube.org/latest/setup/get-started-2-minutes/
+Clcik on from Zip file. File will be downloaded. Place it in anywhere.
+Extract it and goto 
+\bin\windows-x86-64\StartSonar.bat and double click it.
+Sonarqube server will start and we can access it using localhost:9000.
+Default username and password : admin
+
+
+
+3. Now login to http://localhost:9000
+
+
+
+
+
+ two commands we need to run the application
+
+mvn org.jacoco:jacoco-maven-plugin:prepare-agent install
+
+
+mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=admin
+
+
+4. In 10 or 15 minutes we will get reports in the browser.
+
+Download Maven
+https://maven.apache.org/download.cgi
+
+Download Sonar Qube
+https://www.sonarsource.com/products/sonarqube/downloads/
+
+
+mvn sonar:sonar -Dsonar.login=squ_6cb92db83c8516dcf17d89597f741d36965f84c4
+
+
+mvn sonar:sonar \
+  -Dsonar.projectKey=<project_key> \
+  -Dsonar.host.url=<sonarqube_server_url> \
+  -Dsonar.login=<user_token>
+
+
+admin@123
+
+
+
+
+
+mvn sonar:sonar -Dsonar.host.url=http://localhost:9000 -Dsonar.login=squ_6cb92db83c8516dcf17d89597f741d36965f84c4
+
+
+
+mvn sonar:sonar -Dsonar.host.url=http://localhost:9000 -Dsonar.login=sqp_ee619e54e357f27944cc94571766648400f21f2a
+
+
+
+

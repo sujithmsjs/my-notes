@@ -1,0 +1,42 @@
+server:
+  port: 8080 
+
+spring:
+  data:
+  
+  # MONGO DB PROPERTIES 
+    mongodb:
+      uri: mongodb+srv://odeskb2b_devusr:i3yBrwwSuQ1wNlHs@mongodb-atlas.klzrb.mongodb.net/?authSource=admin
+   
+  # MYSQL DB PROPERTIES
+  datasource:
+    url: jdbc:mysql://obs-aurora-mysql-preprod-01-instance-1.ctexk6vnzkdo.ap-south-1.rds.amazonaws.com:3306/odeskb2b
+    username: odeskb2b_usr
+    password: 0D5SKONB2BNUSR
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+      
+      
+  # REDIS CACHE PROPERTIES
+   
+  cache:
+    type: redis
+    
+    redis:
+      cache-null-values: true
+      time-to-live: 300000
+      
+  redis:
+    host: localhost
+    port: 6379
+    timeout: 5000
+    
+jwt:
+    secret: com.onpassive
+    expirationDateInMs: 1000000
+    expiration : 1800000
+    
+onpassive:
+    jwtRefreshExpirationMs: 600000

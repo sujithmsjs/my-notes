@@ -1,0 +1,292 @@
+Comparison Query Operators(8)
+$eq
+$gt
+$gte
+$in
+$lt
+$lte
+$ne
+$nin
+
+Logical Query Operators(4)
+
+$and
+db.getCollection('lifeHacks').find(
+{
+    $and :
+    [
+        {"category" : "Product"},
+        { "tags" : "Love"}
+    ]
+})
+
+$not
+$nor
+$or
+
+
+
+
+db.getCollection('lifeHacks').insertOne({
+        "title" : "HelloCheck",
+        "description" : "This is demo description",
+        "category" : "LifeStyle",
+        "tags" : ['Life'],
+        "date" :new ISODate("2020-05-18T14:10:30Z")
+})
+
+
+
+Tags:
+
+"Life","Trick","Productivity","Content","Gratitude","Love"
+
+
+category:
+Lifestyle
+Product
+Selfhelp
+
+
+// ALL TAGS MUST MATCH
+
+
+
+// ANY ONE TAG SHOULD MATCH
+
+{
+	tags : 
+	{
+		$in : ['Life', "Trick"]
+	}
+}
+
+
+
+
+
+Find all the documents which has atlead two tags?
+db.inventory.find( { "tags": { $size: 3 } } )
+
+
+
+Find all the documents which has both 'Life' and 'Trick' tags.
+db.getCollection('lifeHacks').find(
+{
+	tags :
+	{
+		$all : ['Life', "Trick"]
+	}
+})
+
+Find all the documents which has not 'Life' or 'Trick' tags.
+db.getCollection('lifeHacks').find(
+{
+	tags :
+	{
+		$nin : ['Life', "Trick"]
+	}
+})
+
+
+Find all the documents which has not both 'Life' or 'Trick' tags.
+db.getCollection('lifeHacks').find(
+{
+	tags :
+	{
+		$not : { $all : ['Content', "Trick"] }
+	}
+})
+
+
+
+Find all the docs which has 'Life' tag but not the 'Trick' tag.
+
+
+
+
+All the 'Love' tag elements exclude both 'Trick' and 'Content' tag elemens
+Ex:
+OK: ['Love','Gratitue']
+OK: ['Love']
+OK: ['Love','Trick']
+OK: ['Love','Content']
+NO: ['Love','Trick','Content']
+
+Answer:
+db.getCollection('lifeHacks').find(
+{
+    $and :
+    [
+        { "tags" :  { $not : { $all : ["Trick","Content"]} } },
+        { "tags" :  { $all : ["Love"]} }
+    ]
+})
+
+All the 'Love' and 'Life' tag elements exclude both 'Trick' and 'Content' tag elemens
+Ex:
+NO: ['Love','Gratitue']
+NO: ['Love']
+OK: ['Love','Lift','Trick']
+OK: ['Life','Love','Content']
+NO: ['Love','Trick','Content']
+NO: ['Life','Trick','Content']
+NO: ['Life','Love','Trick','Content']
+
+Answer:
+db.getCollection('lifeHacks').find(
+{
+    $and :
+    [
+        { "tags" :  { $not : { $all : ["Trick","Content"]} } },
+        { "tags" :  { $all : ["Love","Life"]} }
+    ]
+})
+
+
+---
+
+db.getCollection('lifeHacks').find(
+{
+    $and :
+    [
+        { tags : { $all : ['Love','Trick']  }},
+        { tags : { $size : 2}}
+    ]
+}
+)
+
+
+10:14 31-01-2023
+
+$unwind: Deconstructs an array field from the input documents to output a document for each element.
+
+EXAMPLE #1
+db.getCollection('lifeHacks').aggregate(
+[
+
+	{ $unwind : "$tags" },
+
+	{ $match : {"_id" : ObjectId("63d783efabc2c401b0c8aa66")} }
+
+] )
+
+EXAMPLE #2
+db.getCollection('lifeHacks').aggregate(
+[
+
+{ $unwind : { path: "$tags", includeArrayIndex : "index"} },
+
+{ $match : {"_id" : ObjectId("63d783efabc2c401b0c8aa66")} }
+
+] )
+
+
+---
+Q: Find all the tags and with their occurance.
+
+db.getCollection('lifeHacks').aggregate(
+[
+
+{ $unwind : { path: "$tags"} },
+
+{
+    $group : { _id : "$tags", count : {$sum : 1} }
+}
+] )
+
+---
+
+db.getCollection('lifeHacks').aggregate(
+[
+
+{ $unwind : { path: "$tags"} },
+
+{
+    $group : { _id : "$tags", count : {$sum : 1} }
+},
+{
+        $project : {_id : 0 ,"tag" : '$_id', "occurance" : '$count'}
+}
+] )
+
+---
+
+{
+	$lookup:
+	{
+		from: "B",
+		localField: "bid.$id",
+		foreignField: "_id",
+		as: "bs"
+	}
+}
+
+
+
+
+
+
+ // STAGE 3
+    {
+      $replaceRoot: { newRoot: { $mergeObjects: [ { $arrayElemAt: [ "$role", 0 ] }, "$$ROOT" ] } }
+    }
+    ,
+    {
+        $project : {
+            role : 0
+            }
+        }
+
+
+
+ // STAGE 2
+        {
+            $lookup :
+            { 
+                from : "roles",
+                localField: "role.$id",
+                foreignField: "_id",
+                as: "role"
+            }
+        },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
