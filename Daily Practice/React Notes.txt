@@ -477,16 +477,139 @@ The issue with the provided code is that the input field is a controlled compone
 
 
 
+return <ul>
+	{
+		[
+			<li>Hello</li>,
+			<li>Hello</li>,
+			<li>Hello</li>
+		]
+	}
+	</ul>;
 
 
 
 
+Warning: Each child in a list should have a unique "key" prop.
+
+return (
+    <ul>
+      {employees.map((e) => (
+        <li>{e.id}</li>
+      ))}{" "}
+    </ul>
+  );
 
 
 
 
+```javascript
+import { faker } from "@faker-js/faker";
+import { useState } from "react";
+
+const generateEmployee = () => {
+  return {
+    name: faker.name.fullName(),
+  };
+};
+
+const EmployeeList = () => {
+  const fakeData = Array.from({ length: 1 }, generateEmployee);
+
+  const [employees, setEmployees] = useState(fakeData);
+
+  const addBtnHandler = () => {
+    setEmployees((prevEmployees) => [...prevEmployees, generateEmployee()]);
+  };
+
+  const deleteBtnHandler = (name) => {
+    setEmployees((prevEmployees) => {
+      return prevEmployees.filter((employee) => employee.name !== name);
+    });
+  };
+
+  return (
+    <div>
+      <button onClick={addBtnHandler}>Add New</button>
+      <ol>
+        {employees.map((e) => (
+          <li key={e.name}>
+            {e.name}
+            <button onClick={() => deleteBtnHandler(e.name)}>X</button>
+          </li>
+        ))}
+      </ol>
+    </div>
+  );
+};
+
+export default EmployeeList;
+```
 
 
+import { faker } from "@faker-js/faker";
+
+const generateItem = () => {
+  return {
+    name: faker.commerce.productName(),
+    cost: faker.random.numeric({ min: 500, max: 1000 }),
+    year: faker.date.between("2018-01-01", "2023-12-31").getFullYear()
+  };
+};
+
+const fakeData = Array.from({ length: 10 }, generateItem)
+
+
+---
+
+onSubmit={(event) => {
+	event.preventDefault();
+	const formData = new FormData(event.target);
+
+       	const newItem = {
+            id: data.length + 1,
+            item: formData.get('item'),
+            cost: parseInt(formData.get('cost'), 10),
+            quantity: parseInt(formData.get('quantity'), 10),
+            date: formData.get('date'),
+      	};
+
+	setData((prevData) => [...prevData, newItem]);
+	event.target.reset();
+}
+
+
+---
+
+Note: Boolean value won't render on react.
+return (
+    	<div>
+      		{flag && <h1>Hello</h1>}
+     	 	<button onClick={handleOnClick}> {flag ? "Hide" : "Show"} </button>
+    	</div>
+);
+
+---
+
+Toggling flag
+let flag = true;
+flag = !flag;
+
+
+import { useState } from "react";
+
+
+---
+
+const [value, setValue] = useState([]);
+const handleAdd =  event => {
+	// .. aquire newValue ..
+	setValue( prevValue => [...prevValue, newValue] );
+}
+
+
+Till 19:00 28-07-2023
+https://smnsgn-3000.csb.app/
 
 
 

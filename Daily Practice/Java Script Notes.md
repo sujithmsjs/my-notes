@@ -4119,19 +4119,105 @@ us.saveUser2({ id : 450 ,game : 300, middlename : 'Manchala', name : 'Elon Musk'
 us.print();
 ```
 
+```
+
+arr = [10,1,7,2,3,4,5,6,7,2,1];
+
+for(let i in arr){
+	//console.log(i, arr[i]);
+}
+
+//arr.map( (e, i) => {console.info(i,e); return e;})
+
+
+for(let e of arr){
+	//console.log(e);
+}
+
+let set = new Set(arr);
+
+console.log('Array to Set:',[...new Set(arr)].sort((a,b)=> a-b));	// Set
+//console.log(set.constructor.name );	// Set
+//console.log([...set].constructor.name); // Array
+//console.log([].constructor.name); 	// Array
+//console.log([...set].sort());			// [1, 2, 3, 4, 5, 6, 7 ]
+//console.log([...set].sort().map(e => e*e));	// [ 1,  4,  9, 16, 25, 36, 49]
+```
+
+
+```
+// Adjust the last item's percentage to make sure it adds up to 100%
+// arr[arr.length - 1].per += 100 - totalPercentage;
+
+
+console.info(JSON.stringify(arr, null, 5));
+console.info('Total percentage' ,totalPercentage );
+
+// Find percentage and add
+// let name = 'Manchala';
+// let arr2 = arr.map( e => ({ name ,...e})	);
+// console.info(JSON.stringify(arr2, null, 5));
+
+// arr.forEach( e => e.name = name);
+// console.info(JSON.stringify(arr2, null, 5));
+
+```
 
 
 
 
 
 
+```
+const arr = [
+  {
+    item: 'Book',
+    cost: 24020,
+    quenty: 3,
+  },
+  {
+    item: 'Pen',
+    cost: 3220,
+    quenty: 10,
+  },
+  {
+    item: 'Bottle',
+    cost: 1232350,
+    quenty: 1,
+  },
+  {
+    item: 'Mouse',
+    cost: 402320,
+    quenty: 2,
+  },
+	{
+    item: 'PlayStation',
+    cost: 402320,
+    quenty: 10,
+  },
+];
 
+// Find total cost
+let total = arr.reduce((a, i) => a + i.cost, 0);
+console.info('Total cose: ',total);
 
+// Calculate percentages and adjust to make sure they sum up to 100%
+let totalPercentage = 0;
+arr.forEach((e) => {
+	e.total = e.quenty * e.cost; 
+  	e.per = Math.round( e.cost  / total * 100 );
+	console.info('e.cost  / total',e.cost  / total);
+	console.info('e.cost  / total * 100',e.cost  / total * 100);
+	console.info(
+'Math.round(e.cost  / total * 100)',Math.round( e.cost  / total * 100 ));
+  	totalPercentage += e.per;
+});
 
+console.info(JSON.stringify(arr, null, 5));
+console.info('Total percentage' ,totalPercentage );
+```
 
-
-
-
+Till 18:59 28-07-2023
 
 
 
