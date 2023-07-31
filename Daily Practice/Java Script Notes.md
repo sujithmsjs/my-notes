@@ -4145,7 +4145,7 @@ console.log('Array to Set:',[...new Set(arr)].sort((a,b)=> a-b));	// Set
 ```
 
 
-```
+```javascript
 // Adjust the last item's percentage to make sure it adds up to 100%
 // arr[arr.length - 1].per += 100 - totalPercentage;
 
@@ -4168,7 +4168,7 @@ console.info('Total percentage' ,totalPercentage );
 
 
 
-```
+```javascript
 const arr = [
   {
     item: 'Book',
@@ -4217,7 +4217,8 @@ console.info(JSON.stringify(arr, null, 5));
 console.info('Total percentage' ,totalPercentage );
 ```
 
-Till 18:59 28-07-2023
+### Till 18:59 28-07-2023
+
 
 
 

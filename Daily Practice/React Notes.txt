@@ -612,6 +612,56 @@ Till 19:00 28-07-2023
 https://smnsgn-3000.csb.app/
 
 
+USE EFFECT
+------------
+
+- To perform side effects
+- Ex: fetching data, directly updating the DOM, and timers.
+- Syntax: useEffect(<function>, <dependency>)
+
+useEffect(
+	
+	() => {
+		//...	
+	},
+
+	[]
+)
+
+Three types of useages:
+1. No dependency passed
+2. An empty array
+3. With dependencies(Props or state values)
+
+useState:
+Note:
+- Only state variables will render in the given HTML
+- 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
