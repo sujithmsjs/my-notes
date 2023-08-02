@@ -1,24 +1,17 @@
 # Step-1
-
-<!DOCTYPE html>
-<html>
-  <head>
-    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-  </head>
-  <body>
-
-    <div id="mydiv"></div>
-
-    <script type="text/babel">
-      function Hello() {
-	
+```jsx
 	let name = 'Java';
+
 	const myElement = <h1>I Love {name}</h1>;
-	const myElements = [<h1>I Love {name}</h1>, <h1>I Love JSX!</h1>,<h1>I Love JSX!</h1>,<h1>I Love JSX!</h1>];
+
+	const myElements = [	<h1>I Love {name}</h1>,
+				<h1>I Love JSX!</h1>,
+				<h1>I Love JSX!</h1>,
+				<h1>I Love JSX!</h1>
+				];
 
 	const eles = [];
+
 	for(let i=1;i<=10;i++){
 		eles.push(<h1>2 x {i}  = {2 * i} </h1>);
 	}	
@@ -32,11 +25,7 @@
       const container = document.body;
       const root = ReactDOM.createRoot(container);
       root.render(<Hello />)
-    </script>
-
-  </body>
-</html>
-
+```
 ---
 
 import Display from './Display'
@@ -635,9 +624,10 @@ Three types of useages:
 
 useState:
 Note:
-- Only state variables will render in the given HTML
-- 
+- Only state variables will render in the given HTML 
 
+
+# React Full Application
 
 
 

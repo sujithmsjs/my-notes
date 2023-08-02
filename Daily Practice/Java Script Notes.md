@@ -4219,6 +4219,18 @@ console.info('Total percentage' ,totalPercentage );
 
 ### Till 18:59 28-07-2023
 
+let arr = [4,5,3,2,21,4,5,234];
+
+arr.forEach( (e, i) => {
+	console.info(i,  e);
+});
+
+const elems = arr.map( (e, i) => {
+	return `<i key='${i}' >${e}</i>`;
+} );
+
+console.info(elems);
+
 
 
 
