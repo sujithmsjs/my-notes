@@ -1,33 +1,111 @@
-# Step-1
+
+
+# Which values will get rendered
+
 ```jsx
-	let name = 'Java';
+<h1>{true}</h1>
+<h1>{false}</h1>
+<h1>{NaN}</h1>
+<h1>{null}</h1>
+<h1>{undefined}</h1>
+<h1>{""}</h1>
+<h1>{[]}</h1>
+<h1>{[1, 2, 3]}</h1>
+<h1>{}</h1>
+<h1>{Infinity}</h1>
+<h1>{-Infinity}</h1>
+<h1>{0}</h1>
+<h1>{1}</h1>
+```
+> **Note:**
+> `true`, `false`, `null`,`undefined`,`Blank String('')`,`Empty Array([])`,`Empty Object ({})` **won't get rendered.**
 
-	const myElement = <h1>I Love {name}</h1>;
+#### Output
+```html
+<h1></h1>
+<h1></h1>
+<h1>NaN</h1>
+<h1></h1>
+<h1></h1>
+<h1></h1>
+<h1></h1>
+<h1>123</h1>
+<h1></h1>
+<h1>Infinity</h1>
+<h1>-Infinity</h1>
+<h1>0</h1>
+<h1>1</h1>
+```
 
-	const myElements = [	<h1>I Love {name}</h1>,
-				<h1>I Love JSX!</h1>,
-				<h1>I Love JSX!</h1>,
-				<h1>I Love JSX!</h1>
-				];
+#### To avoid empty div's we can use Fragments
+```jsx
+<>
+    // Your code
+</>
+```
+#### Render a array nodes
+```jsx
+return (
+    <div className="App">{[<h1>Hey</h1>, <h1>Hey</h1>, <h1>Hey</h1>]}</div>
+);
+```
 
-	const eles = [];
 
-	for(let i=1;i<=10;i++){
-		eles.push(<h1>2 x {i}  = {2 * i} </h1>);
-	}	
 
-        return <div>
-		{myElements}
-		{eles}
-		</div>;
-      }
 
-      const container = document.body;
-      const root = ReactDOM.createRoot(container);
-      root.render(<Hello />)
+
+> In `package.json` we can find {"main": "src/index.js"} where the main js file will get loaded.
+
+
+
+#### index.js
+```jsx
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+
+import App from "./App";
+
+const rootElement = document.getElementById("root");
+const root = createRoot(rootElement);
+
+root.render(
+  <StrictMode>
+    <App />
+  </StrictMode>
+);
+```
+
+
+
+```jsx
+let name = 'Java';
+const myElement = <h1>I Love {name}</h1>;
+const myElements = [
+	<h1>I Love {name}</h1>,
+	<h1>I Love JSX!</h1>,
+	<h1>I Love JSX!</h1>,
+	<h1>I Love JSX!</h1>
+];
+
+const eles = [];
+
+for(let i=1;i<=10;i++){
+	eles.push(<h1>2 x {i}  = {2 * i} </h1>);
+}	
+
+return <div>
+	{myElements}
+	{eles}
+	</div>;
+}
+
+const container = document.body;
+const root = ReactDOM.createRoot(container);
+root.render(<Hello />)
 ```
 ---
 
+```jsx
 import Display from './Display'
 import "./styles.css";
 
@@ -40,8 +118,9 @@ export default function App() {
     </div>
   );
 }
+```
 
-
+```
 import "./styles.css";
 
 export default function Display() {
@@ -62,11 +141,9 @@ export default function Display() {
     </div>
   );
 }
+```
 
----
-
-In React, there are several ways to send props (properties) to a component. 
-
+# Transfering props
 1. Directly in JSX
 2. Spread operator with JSX
 3. Using named props
@@ -76,344 +153,229 @@ In React, there are several ways to send props (properties) to a component.
 7. Using Class Component
 8. Using the React.cloneElement method
 
-1. Directly in JSX:
 
+```js
+const details = {
+	title: "Hello",
+	subTitle: "Welcome",
+	cost: 50_0000
+};
 ```
-// Parent-1
-function App() {
-  return (
-    <div className="App">
-      <Display id={1234} name="Sujith" salary={12321.5} hiredate={new Date()} />
-    </div>
-  );
+
+#### Passing Props #1
+```jsx
+<Box title="Hello" subTitle="World" cost={1234.53} />
+
+// Using spread operator from Props
+const Box = (props) => {
+  const { title, subTitle, cost } = props;
 }
 
-// Parent-2
-function App() {
-
-  const emp = {
-    id: 12345,
-    name: "Sujith",
-    salary: 1000.45,
-    hiredate: new Date()
-  };
-
-  return (
-    <div className="App">
-      <Display {...emp} />
-    </div>
-  );
+// Using Props and DOT operator
+const Box = (props) => {
+	console.info(props.title);
+	console.info(props.subTitle);
+	console.info(props.cost);
 }
 
+// Spread operator
+const Box = ({ title, subTitle, cost }) => {}
 
-// Child
-function Display(props) {
-  return (
-    <div id="centeredDiv">
-      <p> {props.id} </p>
-      <h1> {props.name} </h1>
-      <h3> {props.salary} </h3>
-      <p> {props.hiredate.toLocaleString()} </p>
-    </div>
-  );
-}
+// Spread operator with default values
+const Box = ({ title, subTitle, cost: c = '1' }) => {}
+
+// Spread operator with alias name default values
+const Box = (
+    { 
+        title : t,
+        subTitle = 'Welcome',
+        cost: c = '1'
+    }
+) => {}
 ```
 
+#### Passing Props #2
+```jsx
+<Box data={details} />
 
-2. Spread operator with JSX
-
-
-```
-// Parent
-// Child
-```
-
-3. Using named props
-
-```
-// Parent
-// Child
-```
-
-4. Passing functions as props
-
-```
-// Parent
-// Child
-```
-
-5. Using Object Destructuring
-
-```
-// Parent
-function App() {
-
-  return (
-    <div className="App">
-      <Display
-        name="Sujith"
-        id={500}
-        salary={1.5e4}
-        hiredate={new Date().toLocaleString()}
-      />
-    </div>
-  );
+const Box = (props) => {
+  const { title, subTitle, cost } = props.data;
 }
 
+const Box = ({ data }) => {
+	const { title, subTitle, cost } = data;
+}
 
-// Child
-function Display({id,name,salary,hiredate}) {
+const Box = ({ data: { title, subTitle, cost } }) => {
+	// Access title, subTitle and cost!
+};
+```
+#### Passing Props #3
+```jsx
+<Box {...details} cost={5678.21} />
+<Box {...details, cost } />
+<Box {...details, ...data } />
+<Box title="Special Title" {...details} />
 
-  return (
-    <div id="centeredDiv">
-      <p> {id} </p>
-      <h1> {name} </h1>
-      <h3> {salary} </h3>
-      <p> {hiredate} </p>
-    </div>
-  );
+// Using props
+const Box = (props) => {
+    console.info(props.title);
+    console.info(props.subTitle);
+    console.info(props.footer);
+    console.info(props.cost);
+}
+```
+#### Passing Props #4
+```jsx
+<Box data={details} cost={42.42} />
+
+// Using props
+const Box = (props) => {
+    const { title, subTitle, cost } = props.data;
+    console.info(props.cost);
 }
 ```
 
-6. Using a Functional Component
+#### Dynamic Colors
 
-```
-// Parent
-// Child
-```
-
-7. Using Class Component
-
-```
-// Parent
-// Child
-```
-
-8. Using the React.cloneElement method
-
-```
-// Parent
-// Child
-```
-
-
-
-
-
-9. Whole Object 
-
-
-
-```
-// Parent
-function App() {
-
-  const emp = {
-    id: 12345,
-    name: "Sujith",
-    salary: 1000.45,
-    hiredate: new Date()
-  };
-
-  return (
-    <div className="App">
-      <Display data={emp} />
-    </div>
-  );
-}
-
-
-// Child
-function Display(props) {
-  return (
-    <div id="centeredDiv">
-      <p> {props.data.id} </p>
-      <h1> {props.data.name} </h1>
-      <h3> {props.data.salary} </h3>
-      <p> {props.data.hiredate.toLocaleString()} </p>
-    </div>
-  );
-}
-
-// Child
-function Display(props) {
-  const data = props.data;
-  return (
-    <div id="centeredDiv">
-      <p> {data.id} </p>
-      <h1> {data.name} </h1>
-      <h3> {data.salary} </h3>
-      <p> {data.hiredate.toLocaleString()} </p>
-    </div>
-  );
-}
-
-```
-
-Observations
-------------
-
-# 001
-
-// Sending whole object
-<Display data={emp} />
-
-// Receiving data into data parameter
-Display({id,name,data,salary,hiredate})
-data.name Valid
-data.salary Valid
-
-
-# 002
-
-// Sending whole object
-<Display data={emp} name='sujith' salary={1.5e4} />
-
-// Receiving data into data parameter
-function Display({id,name,data,salary,hiredate}){
-
-}
-data.id		Valid
-data.hiredate	Valid
-name		Valid
-salary		Valid
-
-# 003
-
-// Sending whole object
-<Display id={1234} name="sujith" salary={1.5e4}/>
-
-// Receiving data into data parameter
-function Display(props) {
-}
-props.id	Valid
-props.name	Valid
-props.salary	Valid
-
-# 004
-
-// Invoking child
-<Display data={emp} />
-
-// Child Fun
-function Display(props) {
-	data = props.data;
-	data.id		Valid
-	data.name	Valid
-	data.salary	Valid
-	data.hiredate	Valid
-}
-
-
-# 005
-// Invoking child
- <Display name='Sujith' color='cyan' salary={1.5e5} id={101} />
-
-// Child Fun
-function Display({id,name,salary,hiredate, color}) {
-
-}
-
-# 006
-// Invoking child
-<Display {...emp} /> ✓
-<Display {emp} /> ✗
-
-// Child Fun
-function Display(props) { {
-	props.id ✓
-	props.name ✓
-	props.salary ✓
-}
-
-# 007
-// Invoking child
+```jsx
+// Caller
 <Display color={color} />
 
-// Child Fun
+// Callee
 function Display(props){
-
 	const styles = {
 		backgroundColor: props.color,
 	}	
-
 	return <div style={styles}>...</div>
 }
+```
 
----
+#### bootstrap
+
+```jsx
 import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 https://source.unsplash.com/featured/300x201
 bootstrap\dist\js\bootstrap.bundle.min.js
----
+```
+## Button event
+```jsx
+import "./styles.css";
 
+export default function App() {
+  const handleClick = (event) => {
+    console.info(event.target.id); // showBtn
+    console.info(event.target.type); // submit
+    console.info(event.target.name); // showBtn
+    console.info(event.target.title);
+    console.info(event.target.tagName); // BUTTON
+    console.info(event.target.className); // btn
+    console.info(event.target.innerText); // Show
+    console.info(event.target.outerText); // Show
+    console.info(event.target.localName); // button
+  };
 
-## BUTTON EVENT(type: "click")
+  return (
+    <button className="btn" id="showBtn" name="showBtn" onClick={handleClick}>
+      Show
+    </button>
+  );
+}
+```
+## Passing attribute to button event handler and composition card
+```jsx
+import "./styles.css";
 
-<button id='id-val' className='demo-class' onClick={clickHandler}>in-value</button>
+export default function App() {
+  const handleClick = (event, name, salary) => {
+    console.info(`Name: ${name}, Salary: ${salary}`);
+  };
 
-const clickHandler = event => {
-	console.info(event.target.innerHTML);	// in-value
-	console.info(event.target.id);		// id-val
-	console.info(event.target.className);	// demo-class
-
-id
-name
-className
-type
-value 
-title 
-innerText
-outerText
-localName
-tagName
-
-
+  return (
+    <Card>
+      <button onClick={(e) => handleClick(e, "Suijth", 1e6)}>Show</button>
+    </Card>
+  );
 }
 
-## USE STATE HOOK
-
-const [value, setValue] = useState(100);
-value++;		// Can't change const value
-setValue(value + 1)	// Okay
-
-## Composition(Card)
-
-Parent:
-
-const CardDiv = (props) => {
-  return <div className="styled-div">{props.children}</div>;
+const Card = (props) => {
+  return (
+    <div style={{ border: "3px solid black", padding: "10px" }}>
+      {props.children}
+    </div>
+  );
 };
+```
 
-Child:
+#### Above code can be written like below
+```jsx
+import "./styles.css";
 
-<CardDiv>
-	<h1>Hello</h2>
-</CardDiv>
+export default function App() {
+  const handleClick = (event, name, salary) => {
+    console.info(`Name: ${name}, Salary: ${salary}`);
+  };
+
+  function fun(event) {
+    handleClick(event, "Sujith", 1e5);
+  }
+
+  return (
+    <button className="btn" id="showBtn" name="showBtn" onClick={fun}>
+      Show
+    </button>
+  );
+}
+```
+
+## useState Hook
+
+```jsx
+import "./styles.css";
+import { useState } from "react";
+
+export default function App() {
+  const [flag, setFlag] = useState(true);
+
+  const handleHide = () => {
+    setFlag((prevFlag) => !prevFlag);
+  };
+
+  return (
+    <div>
+      <button onClick={handleHide}>Hide</button>
+      {flag || <h1>Hey, welcome!</h1>}
+    </div>
+  );
+}
+```
+
+#### Setting State Value
+```
+setValue( prevValue => [...prevValue, newValue] );
+```
 
 
-## Note
 
-In React, you should not directly modify the props passed to a component. Props are intended to be read-only and should not be mutated inside the component.
+#### Note
 
+> In React, you should not directly modify the props passed to a component. Props are intended to be read-only and should not be mutated inside the component.
+```jsx
 const CardDiv = (props) => {
  	props.color = 'green'; // Won't work
 };
+```
 
 
 ## Styles
 
 // Importing Styles from .CSS file
-
-h1 {
-  color: red;
-}
-
+```jsx
 import "./Text.css";
 
 const Text = (props) => {
 
-  // Overring Styles
   const styles = {
     color: "yellow",
     backgroundColor: "black"
@@ -421,9 +383,9 @@ const Text = (props) => {
 
   return <h1 style={styles}>{props.value}</h1>;
 };
-
-## randomcolor
-
+```
+## Random color Pkg
+```jsx
 import rc from "randomcolor";
 
 const randomHslColor = rc.randomColor({
@@ -441,14 +403,49 @@ const getRandomColor = () => {
   const hue = Math.floor(Math.random() * 360); // Random hue between 0 and 359
   return `hsl(${hue}, 100%, 50%)`;
 };
-
+```
 
 # Create new React Project
-
+```bash
 npx create-react-app --version
 npm install --save-dev @faker-js/faker
+```
+
+> **Note:**
+>The issue with the provided code is that the input field is a controlled component, meaning its value is managed by the value state and cannot be changed directly by user input. In a controlled component, the value is only updated through the value prop and the onChange event.
+
+### Rendering a list
+> Warning: Each child in a list should have a unique "key" prop.
+
+```jsx
+import "./styles.css";
+
+export default function App() {
+  const arr = ["Lavender", "Olive", "Teal", "SteelBlue"];
+
+  const handleDel = (event, index, ele) => {
+    console.info(`Element : ${ele}, Index: ${index}`);
+  };
+
+  return (
+    <Card>
+      <ul>
+        {arr.map((ele, idx) => (
+          <li key={idx}>
+            {ele}
+            <button onClick={(e) => handleDel(e, idx, ele)}>Del</button>
+          </li>
+        ))}
+      </ul>
+    </Card>
+  );
+}
+```
 
 
+
+### Faker API
+```jsx
 import { faker } from '@faker-js/faker';
 
 faker.datatype.uuid(),
@@ -457,85 +454,8 @@ faker.internet.domainName(),
 faker.image.avatar(),
 faker.internet.password(),
 faker.date.recent(30)
-
-
-Note:
-The issue with the provided code is that the input field is a controlled component, meaning its value is managed by the value state and cannot be changed directly by user input. In a controlled component, the value is only updated through the value prop and the onChange event.
-
----
-
-
-
-return <ul>
-	{
-		[
-			<li>Hello</li>,
-			<li>Hello</li>,
-			<li>Hello</li>
-		]
-	}
-	</ul>;
-
-
-
-
-Warning: Each child in a list should have a unique "key" prop.
-
-return (
-    <ul>
-      {employees.map((e) => (
-        <li>{e.id}</li>
-      ))}{" "}
-    </ul>
-  );
-
-
-
-
-```javascript
-import { faker } from "@faker-js/faker";
-import { useState } from "react";
-
-const generateEmployee = () => {
-  return {
-    name: faker.name.fullName(),
-  };
-};
-
-const EmployeeList = () => {
-  const fakeData = Array.from({ length: 1 }, generateEmployee);
-
-  const [employees, setEmployees] = useState(fakeData);
-
-  const addBtnHandler = () => {
-    setEmployees((prevEmployees) => [...prevEmployees, generateEmployee()]);
-  };
-
-  const deleteBtnHandler = (name) => {
-    setEmployees((prevEmployees) => {
-      return prevEmployees.filter((employee) => employee.name !== name);
-    });
-  };
-
-  return (
-    <div>
-      <button onClick={addBtnHandler}>Add New</button>
-      <ol>
-        {employees.map((e) => (
-          <li key={e.name}>
-            {e.name}
-            <button onClick={() => deleteBtnHandler(e.name)}>X</button>
-          </li>
-        ))}
-      </ol>
-    </div>
-  );
-};
-
-export default EmployeeList;
 ```
-
-
+```jsx
 import { faker } from "@faker-js/faker";
 
 const generateItem = () => {
@@ -547,10 +467,19 @@ const generateItem = () => {
 };
 
 const fakeData = Array.from({ length: 10 }, generateItem)
+```
 
 
----
+### Working with Arrays
+```jsx
+setEmployees((prevEmployees) => [...prevEmployees, generateEmployee()]);
+export default EmployeeList;
+```
 
+
+
+# useForm Hook
+```jsx
 onSubmit={(event) => {
 	event.preventDefault();
 	const formData = new FormData(event.target);
@@ -566,48 +495,24 @@ onSubmit={(event) => {
 	setData((prevData) => [...prevData, newItem]);
 	event.target.reset();
 }
+```
 
 
----
-
-Note: Boolean value won't render on react.
-return (
-    	<div>
-      		{flag && <h1>Hello</h1>}
-     	 	<button onClick={handleOnClick}> {flag ? "Hide" : "Show"} </button>
-    	</div>
-);
-
----
-
-Toggling flag
-let flag = true;
-flag = !flag;
 
 
-import { useState } from "react";
 
 
----
-
-const [value, setValue] = useState([]);
-const handleAdd =  event => {
-	// .. aquire newValue ..
-	setValue( prevValue => [...prevValue, newValue] );
-}
 
 
-Till 19:00 28-07-2023
-https://smnsgn-3000.csb.app/
 
+# useEffect Hook
 
-USE EFFECT
-------------
 
 - To perform side effects
 - Ex: fetching data, directly updating the DOM, and timers.
 - Syntax: useEffect(<function>, <dependency>)
 
+```jsx
 useEffect(
 	
 	() => {
@@ -616,22 +521,75 @@ useEffect(
 
 	[]
 )
+```
 
-Three types of useages:
+#### Three types of useages:
 1. No dependency passed
 2. An empty array
 3. With dependencies(Props or state values)
 
-useState:
-Note:
-- Only state variables will render in the given HTML 
 
-
-# React Full Application
+> Note:
+> Only state variables will render in the given HTML 
 
 
 
+# Props
 
+#### public/index.html
+```html
+<div id="top-root"></div>
+<div id="root"></div>
+```
+
+#### src/App.js
+```jsx
+return (
+    <div className="App">
+      <h1>Hello CodeSandbox</h1>
+      <div>
+        <div>
+          <div>
+            <div>
+              <Msg />
+            </div>
+          </div>
+        </div>
+      </div>
+      <h2>Start editing to see some magic happen!</h2>
+    </div>
+```
+
+#### src/Msg.js
+```jsx
+import { createPortal } from "react-dom";
+
+export default () => {
+  return (
+    <>
+	{
+		createPortal(<h1>Hello</h1>, document.getElementById("top-root"))
+	}
+    </>
+  );
+};
+```
+
+#### Output:
+```html
+<div id="top-root"><h1>Hello</h1></div>
+<div id="root">
+  <div class="App">
+    <h1>Hello CodeSandbox</h1>
+    <div>
+      <div>
+        <div><div></div></div>
+      </div>
+    </div>
+    <h2>Start editing to see some magic happen!</h2>
+  </div>
+</div>
+```
 
 
 
