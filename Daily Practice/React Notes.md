@@ -207,7 +207,7 @@ const Box = ({ data }) => {
 }
 
 const Box = ({ data: { title, subTitle, cost } }) => {
-	// Access title, subTitle and cost!
+	 return <h1>{[title, subTitle, cost]} </h1>;
 };
 ```
 #### Passing Props #3
@@ -235,6 +235,17 @@ const Box = (props) => {
     console.info(props.cost);
 }
 ```
+#### Passing Props #5
+```jsx
+import styles from "./Box.module.css";
+
+<Box className={styles.box} data={emp} />
+
+const Box = ({ className, data: { title, subTitle, cost } }) => {
+  return <h1 className={className}>{[className, title, subTitle, cost]} </h1>;
+};
+```
+
 
 #### Dynamic Colors
 
@@ -507,6 +518,7 @@ onSubmit={(event) => {
 
 # useEffect Hook
 
+`useEffect` is a React hook used for handling side effects in functional components. Side effects can include data fetching, subscriptions, or manually interacting with the DOM. It allows you to perform certain actions after the component has rendered or after a specific prop or state has changed.
 
 - To perform side effects
 - Ex: fetching data, directly updating the DOM, and timers.
@@ -590,29 +602,94 @@ export default () => {
   </div>
 </div>
 ```
+## useRef and Style Modules
 
+Applying mutlipule module styles to the single element
 
+1. Template literals 
 
+```jsx
+<h1 className={`${styles.box} ${styles.invalid}`}>
+  Invalid inputs
+</h1>
+```
 
+2. String concatenation
 
+```jsx
+<h1 className={styles.box + ' ' + styles.invalid}>
+  Invalid inputs
+</h1>
+```
 
+#### src/Box.module.css
+```css
+.box {
+  padding: 10px;
+  margin: 10px;
+  font-size: 20px;
+  display: inline-block;
+}
 
+.valid {
+  color: green;
+}
 
+.invalid {
+  color: red;
+}
+```
+#### src/App.js
+```
+import "./styles.css";
+import { useState, useRef } from "react";
+import styles from "./Box.module.css";
 
+export default function App() {
+  const [data, setData] = useState({});
 
+  const fnInputRef = useRef();
+  const lnInputRef = useRef();
 
+  const handleHide = (event) => {
+    event.preventDefault();
 
+    const firstName = fnInputRef.current.value;
+    const lastName = lnInputRef.current.value;
 
+    setData(() => ({
+      firstName,
+      lastName
+    }));
+  };
 
+  return (
+    <div>
+      <form>
+        <input className={styles.box} type="text" ref={fnInputRef} />
+        <input className={styles.box} type="text" ref={lnInputRef} />
+        <button className={styles.box} onClick={handleHide}>
+          Show
+        </button>
+      </form>
 
+      <Box className={styles.box} data={data} />
+    </div>
+  );
+}
 
-
-
-
-
-
-
-
-
-
-
+const Box = ({ className, data: { firstName, lastName } }) => {
+  let invalid = firstName?.trim().length < 1 || lastName?.trim().length < 1;
+  return (
+    <div>
+      {invalid ? (
+        <h1 className={`${styles.box} ${styles.invalid}`}>Invalid inputs</h1>
+      ) : (
+        <h1 className={`${styles.box} ${styles.valid}`}>
+          {firstName + " " + lastName}
+        </h1>
+      )}
+    </div>
+  );
+};
+```
