@@ -138,5 +138,25 @@ alert(h);      // 200
 
 
 
+```javascript
+// Original object
+const productData = {
+  data: {
+    title: 'Product',
+    subTitle: 'Description',
+    cost: 50
+  }
+};
 
+// Adding a new member to productData
+productData.newMember = 'Additional Information';
 
+// Destructuring the object
+const { data: { title, subTitle, cost }, newMember } = productData;
+
+// Using the extracted properties
+console.log(title);        // Output: 'Product'
+console.log(subTitle);     // Output: 'Description'
+console.log(cost);         // Output: 50
+console.log(newMember);    // Output: 'Additional Information'
+```
