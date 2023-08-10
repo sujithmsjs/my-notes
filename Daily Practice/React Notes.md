@@ -541,6 +541,46 @@ useEffect(
 3. With dependencies(Props or state values)
 
 
+### Text field REST call when stop typing.
+
+```jsx
+import "./styles.css";
+import styles from "./App.module.css";
+import { useEffect, useState } from "react";
+
+export default function App() {
+  const [text, setText] = useState("");
+  const [disp, setDesp] = useState("");
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      if (text.length > 0) {
+        console.info("API Call...");
+        setDesp(text);
+      } else {
+        console.info("Waiting for text...");
+      }
+    }, 1000);
+
+    return () => {
+      console.info("Typing...");
+      clearTimeout(timeoutId);
+    };
+  }, [text]);
+
+  const handleClick = (event) => {
+    setText(event.target.value);
+  };
+
+  return (
+    <div className="App">
+      <input onChange={handleClick} type="text" />
+      <h2 className={styles.message}>{disp}</h2>
+    </div>
+  );
+}
+```
+
 > Note:
 > Only state variables will render in the given HTML 
 
@@ -602,7 +642,41 @@ export default () => {
   </div>
 </div>
 ```
+
 ## useRef and Style Modules
+
+
+> It can be used to store a mutable value that does not cause a re-render when updated.
+
+```jsx
+import "./styles.css";
+import React, { useState, useEffect, useRef } from "react";
+
+function App() {
+  const [countState, setCountState] = useState(0);
+  const count = useRef(0);
+  const renders = useRef(0);
+
+  const handleClick = (event) => {
+    count.current = count.current + 1;
+  };
+
+  useEffect(() => {
+    renders.current = renders.current + 1;
+  });
+
+  return (
+    <div>
+      <h1>Change the content: {count.current}</h1>
+      <h1>Renders: {renders.current}</h1>
+      <button onClick={handleClick}>Click</button>
+      <button onClick={() => setCountState(() => count.current)}>Render</button>
+    </div>
+  );
+}
+
+export default App;
+```
 
 Applying mutlipule module styles to the single element
 
@@ -693,3 +767,484 @@ const Box = ({ className, data: { firstName, lastName } }) => {
   );
 };
 ```
+
+## useReducer
+
+```jsx
+import React, { useReducer } from "react";
+
+// Reducer function
+const reducer = (state, action) => {
+  console.info(state, " ", action);
+  switch (action.type) {
+    case "INCREMENT":
+      return { count: state.count + 1 };
+    case "DECREMENT":
+      return { count: state.count - 1 };
+    default:
+      return state;
+  }
+};
+
+const Counter = () => {
+  const initialState = { count: 0 };
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  return (
+    <div>
+      <h1>Count: {state.count}</h1>
+      <button onClick={() => dispatch({ type: "INCREMENT" })}>Increment</button>
+      <button onClick={() => dispatch({ type: "DECREMENT" })}>Decrement</button>
+    </div>
+  );
+};
+
+export default Counter;
+```
+
+```jsx
+import { useState } from "react";
+import { useReducer } from "react";
+import "./styles.css";
+
+const reduce = (state, action) => {
+  // console.info(action.type);
+  // console.info(action);
+  switch (action.type) {
+    case "RESET":
+      return { key: "", value: "" };
+    case "KEY":
+      // return { key: action.event.target.value, value: state.value };
+      // return { key: action.value, value: state.value };
+      return { ...state, key: action.value };
+    case "VALUE":
+      // return { key: state.key, value: action.event.target.value };
+      // return { key: state.key, value: action.value };
+      return { ...state, value: action.value };
+    default:
+      return state;
+  }
+};
+
+export default function App() {
+  const [from, dispatch] = useReducer(reduce, { key: "", value: "" });
+  const [data, setData] = useState([]);
+
+  const handleAdd = () => {
+    if (from.key !== "" && from.value !== "") {
+      setData((prevState) => {
+        return [from, ...prevState];
+      });
+      dispatch({ type: "RESET" });
+    } else {
+      alert("Please do provide values");
+    }
+  };
+
+  return (
+    <div className="App">
+      <input
+        type="text"
+        placeholder="Key"
+        value={from.key}
+        onChange={(e) =>
+          dispatch({ type: "KEY", event: e, value: e.target.value })
+        }
+      />
+      <input
+        type="text"
+        placeholder="Value"
+        value={from.value}
+        onChange={(e) =>
+          dispatch({ type: "VALUE", event: e, value: e.target.value })
+        }
+      />
+      <button onClick={handleAdd}>Add</button>
+      <table>
+        <thead>
+          <tr>
+            <th>Key</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          {data?.map((e, i) => (
+            <tr key={i}>
+              <td>{e.key}</td>
+              <td>{e.value}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+```
+
+
+
+
+### ToDo List
+
+-	Simple button to add the TODO list.
+-	When I click on the TODO it will toggle between stricked and unstricked.
+
+```jsx
+import React, { useReducer } from "react";
+import "./styles.css";
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "ADD_TODO":
+      return [...state, { text: action.text, completed: false }];
+    case "TOGGLE_TODO":
+      return state.map((todo, index) =>
+        index === action.index ? { ...todo, completed: !todo.completed } : todo
+      );
+    default:
+      return state;
+  }
+};
+
+export default function TodoList() {
+  const [todos, dispatch] = useReducer(reducer, []);
+
+  const handleAddTodo = (text) => {
+    dispatch({ type: "ADD_TODO", text });
+  };
+
+  const handleToggleTodo = (index) => {
+    dispatch({ type: "TOGGLE_TODO", index });
+  };
+
+  return (
+    <div className="App">
+      <h1>Todo List</h1>
+      <ul>
+        {todos.map((todo, index) => (
+          <li
+            key={index}
+            style={{
+              textDecoration: todo.completed ? "line-through" : "none"
+            }}
+            onClick={() => handleToggleTodo(index)}
+          >
+            {todo.text}
+          </li>
+        ))}
+      </ul>
+      <button onClick={() => handleAddTodo(prompt("Enter todo text:"))}>
+        Add Todo
+      </button>
+    </div>
+  );
+}
+```
+
+## ToDo Manager
+
+```jsx
+import { useReducer, useState } from "react";
+import "./styles.css";
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "Add":
+      console.info("Add clicked ", state);
+      return [{ title: action.title, isDone: false }, ...state];
+    case "Toggle":
+      return state.map((e, i) => {
+        return i !== action.index ? e : { ...e, isDone: !e.isDone };
+      });
+    default:
+      break;
+  }
+};
+
+const init = [
+  {
+    title: "Learn React",
+    isDone: false
+  }
+];
+
+export default function App() {
+  const [todoList, dispatcher] = useReducer(reducer, init);
+  const [titleState, setTitle] = useState({
+    value: "",
+    isValid: true,
+    isDirty: false
+  });
+
+  const handleAdd = (event) => {
+    if (titleState.value.length >= 4) {
+      dispatcher({ type: "Add", title: titleState.value });
+      setTitle({ value: "", isValid: true, isDirty: false });
+    } else {
+      setTitle({ value: "", isValid: false, isDirty: true });
+    }
+  };
+
+  const handleTextField = (event) => {
+    setTitle((prev) => {
+      const value = event.target.value;
+      if (value.length >= 4) {
+        return {
+          value,
+          isValid: true,
+          isDirty: true
+        };
+      } else {
+        return {
+          value,
+          isValid: false,
+          isDirty: true
+        };
+      }
+    });
+  };
+
+  const showError = () => {
+    return !titleState.isValid && titleState.isDirty;
+  };
+
+  //console.info(JSON.stringify(todoList, null, 5));
+  return (
+    <>
+      <h1>ToDo Manager</h1>
+      <input
+        value={titleState.value}
+        type="text"
+        onChange={(event) => handleTextField(event)}
+      />
+
+      {showError() ? <p>Please enter atleat 4 characters</p> : ""}
+
+      <p className="log">{JSON.stringify(titleState)}</p>
+      <button onClick={(event) => handleAdd(event)}>Add</button>
+      <ul>
+        {todoList.map((obj, index) => (
+          <li
+            style={{
+              textDecoration: obj.isDone ? "line-through" : "none"
+            }}
+            key={index}
+            onClick={(event) => dispatcher({ type: "Toggle", index })}
+          >
+            {obj.title}
+          </li>
+        ))}
+      </ul>
+    </>
+  );
+}
+
+```
+
+# API call on text typing stops.
+
+```jsx
+import "./styles.css";
+import styles from "./App.module.css";
+import { useEffect, useReducer, useState } from "react";
+
+const textReduce = (state, action) => {
+  switch (action.type) {
+    case "TYPING":
+      console.info("Text typing...");
+      return action.value;
+    case "STOPED":
+      console.info("Text Stopped?!");
+      return action.value;
+    default:
+      break;
+  }
+};
+
+export default function App() {
+  const [text, textDispatch] = useReducer(textReduce, "");
+
+  useEffect(() => {
+    // console.info("Inside use effect start...");
+    const timeoutId = setTimeout(() => {
+      if (text.length > 0) {
+        textDispatch({ type: "STOPED", value: text });
+      } else {
+        console.info("Waiting for text...");
+      }
+    }, 1000);
+
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, [text]);
+
+  const handleClick = (event) => {
+    textDispatch({ type: "TYPING", value: event.target.value });
+  };
+
+  return (
+    <div className="App">
+      <input onChange={handleClick} type="text" />
+      <h2 className={styles.message}>{text}</h2>
+    </div>
+  );
+}
+```
+
+# useContext 
+
+- To share state between deeply nested components.
+- To avoid "prop drilling"
+
+Create Context:
+Context Provider
+
+## Prop drilling
+
+```jsz
+import "./styles.css";
+import { useEffect, useState } from "react";
+
+export default function App() {
+  const [value, setValue] = useState();
+
+  const handleValueChange = (value) => {
+    setValue(value);
+  };
+
+  return (
+    <>
+      <Parent onValueChange={handleValueChange} />
+      <Child value={value} />
+    </>
+  );
+}
+
+function Parent(props) {
+  const [value, setValue] = useState(0);
+
+  const handleClick = (event) => {
+    const btn = event.target.innerHTML;
+    switch (btn) {
+      case "Inc":
+        setValue((prev) => prev + 1);
+        break;
+      case "Desc":
+        setValue((prev) => prev - 1);
+        break;
+      default:
+        break;
+    }
+
+    console.info(btn);
+  };
+
+  useEffect(() => {
+    props.onValueChange(value);
+  }, [value, props]);
+
+  return (
+    <div>
+      <h1>{value}</h1>
+      <button onClick={handleClick}>Inc</button>
+      <button onClick={handleClick}>Desc</button>
+    </div>
+  );
+}
+
+function Child(props) {
+  return <h1>Received: {props.value}</h1>;
+}
+```
+
+## Simple useContext Example
+
+```jsx
+import "./styles.css";
+import { createContext, useContext, useState } from "react";
+
+const ValueContext = createContext();
+
+export default function App() {
+  const [value, setValue] = useState(0);
+
+  return (
+    <ValueContext.Provider value={{ value, setValue }}>
+      <h1>App {value}</h1>
+      <Child />
+      <Parent />
+    </ValueContext.Provider>
+  );
+}
+
+function Parent() {
+  const { value, setValue } = useContext(ValueContext);
+
+  return (
+    <div>
+      <h1>Parent: {value}</h1>
+      <button onClick={() => setValue((prev) => prev + 1)}> Inc </button>
+    </div>
+  );
+}
+
+function Child() {
+  const { value, setValue } = useContext(ValueContext);
+  return <h1>Child: {value}</h1>;
+}
+```
+
+
+## useRef Example
+
+```javascript
+import "./styles.css";
+import React, { useState, useEffect, useRef } from "react";
+
+function App() {
+  const [countState, setCountState] = useState(0);
+  const count = useRef(0);
+  const renders = useRef(0);
+
+  const handleClick = (event) => {
+    count.current = count.current + 1;
+  };
+
+  useEffect(() => {
+    renders.current = renders.current + 1;
+  });
+
+  return (
+    <div>
+      <h1>Change the content: {count.current}</h1>
+      <h1>Renders: {renders.current}</h1>
+      <button onClick={handleClick}>Click</button>
+      <button onClick={() => setCountState(() => count.current)}>Render</button>
+    </div>
+  );
+}
+
+export default App;
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

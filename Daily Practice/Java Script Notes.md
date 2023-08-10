@@ -3837,6 +3837,15 @@ Install: npm install howler
 Install: npm install babylonjs
 • NES.css - NES-inspired CSS framework
 Install: npm install nes.css
+
+
+
+
+
+
+# Promise
+### Promise, Promises, .catch, .then
+
 A Promise is an object that represents the eventual completion (or failure) of an asynchronous
 operation and its resulting value. It is a way to handle asynchronous operations in a more
 structured and manageable manner.
@@ -3853,6 +3862,118 @@ Note:
 for...of only work with iterables, not with object. For array it will give values instead of indexes.
 for...in works with iterables as well as objects. For array, it will give indexes. For an object it will
 give key values.
+
+
+#### Promise with then
+
+```javascript
+let promise = new Promise((resolve, reject) => {
+
+	resolve('Done');
+	reject(new Error('No content'));
+	
+}).then(
+	result => {
+		console.info('Result: ', result);
+	},
+	error => {
+		console.info('Error: ', error);
+	}
+);
+```
+
+#### Only on fullfilled
+
+```javascript
+let promise = new Promise((resolve, reject) => {
+	resolve('Done');
+}).then(
+	result => {
+		console.info('Result: ', result);
+	}
+)
+```
+#### Only on rejected
+
+```javascript
+let promise = new Promise((resolve, reject) => {
+
+	//resolve('Done');
+	reject(new Error('No content'));
+
+}).then( null,
+	error => {
+		console.info('Error Occored');
+	}
+)
+```
+
+#### Promise with catch
+
+```javasript
+let promise = new Promise((resolve, reject) => {
+	reject(new Error('Hey, get out of here man!!'));
+}).then(
+	result => {
+		console.info('Result: ', result);
+	}
+).catch(error => {
+	console.log("Error message:", error.message);
+	console.log("Error name:", error.name);
+	console.log("toString:", error.toString());
+	console.log("Is instance of Error:", error instanceof Error);
+})
+```
+
+#### Promise with finally block
+
+```javasript
+let promise = new Promise((resolve, reject) => {
+	reject(new Error('Hey, get out of here man!!'));
+}).then(
+	result => {
+		console.info('Result: ', result);
+	}
+).catch(error => {
+	console.log("Error message:", error.message);
+}).finally(
+	() => {
+		console.info('Promise is ready!');
+	}
+)
+```
+
+#### Promise example
+
+```javasript
+const fetchData = () => {
+	const promise = new Promise(
+		(resolve, reject) => {
+			let value = Math.random();
+			if (value > 0.5) {
+				resolve(value);
+			} else {
+				reject(new Error('Proper value not generated!'));
+			}
+		}
+	);
+	return promise;
+}
+
+fetchData().then(results => {
+	console.info(results);
+}).catch(error => {
+	console.info(error.message);
+}).finally(
+	() => {
+		console.info('Finished..:]');
+	}
+);
+```
+
+
+
+
 
 ```javascript
 let arr = ["A", "B"]
