@@ -103,7 +103,7 @@ const container = document.body;
 const root = ReactDOM.createRoot(container);
 root.render(<Hello />)
 ```
----
+
 
 ```jsx
 import Display from './Display'
@@ -120,7 +120,7 @@ export default function App() {
 }
 ```
 
-```
+```jsx
 import "./styles.css";
 
 export default function Display() {
@@ -163,6 +163,7 @@ const details = {
 ```
 
 #### Passing Props #1
+
 ```jsx
 <Box title="Hello" subTitle="World" cost={1234.53} />
 
@@ -294,7 +295,10 @@ export default function App() {
   );
 }
 ```
+
 ## Passing attribute to button event handler and composition card
+
+
 ```jsx
 import "./styles.css";
 
@@ -320,6 +324,8 @@ const Card = (props) => {
 ```
 
 #### Above code can be written like below
+
+
 ```jsx
 import "./styles.css";
 
@@ -363,7 +369,7 @@ export default function App() {
 ```
 
 #### Setting State Value
-```
+```jsx
 setValue( prevValue => [...prevValue, newValue] );
 ```
 
@@ -372,6 +378,8 @@ setValue( prevValue => [...prevValue, newValue] );
 #### Note
 
 > In React, you should not directly modify the props passed to a component. Props are intended to be read-only and should not be mutated inside the component.
+
+
 ```jsx
 const CardDiv = (props) => {
  	props.color = 'green'; // Won't work
@@ -395,7 +403,9 @@ const Text = (props) => {
   return <h1 style={styles}>{props.value}</h1>;
 };
 ```
+
 ## Random color Pkg
+
 ```jsx
 import rc from "randomcolor";
 
@@ -417,6 +427,7 @@ const getRandomColor = () => {
 ```
 
 # Create new React Project
+
 ```bash
 npx create-react-app --version
 npm install --save-dev @faker-js/faker
@@ -456,6 +467,7 @@ export default function App() {
 
 
 ### Faker API
+
 ```jsx
 import { faker } from '@faker-js/faker';
 
@@ -466,6 +478,7 @@ faker.image.avatar(),
 faker.internet.password(),
 faker.date.recent(30)
 ```
+
 ```jsx
 import { faker } from "@faker-js/faker";
 
@@ -482,6 +495,7 @@ const fakeData = Array.from({ length: 10 }, generateItem)
 
 
 ### Working with Arrays
+
 ```jsx
 setEmployees((prevEmployees) => [...prevEmployees, generateEmployee()]);
 export default EmployeeList;
@@ -490,6 +504,7 @@ export default EmployeeList;
 
 
 # useForm Hook
+
 ```jsx
 onSubmit={(event) => {
 	event.preventDefault();
@@ -507,13 +522,6 @@ onSubmit={(event) => {
 	event.target.reset();
 }
 ```
-
-
-
-
-
-
-
 
 
 # useEffect Hook
@@ -713,8 +721,10 @@ Applying mutlipule module styles to the single element
   color: red;
 }
 ```
+
 #### src/App.js
-```
+
+```jsx
 import "./styles.css";
 import { useState, useRef } from "react";
 import styles from "./Box.module.css";
@@ -767,6 +777,7 @@ const Box = ({ className, data: { firstName, lastName } }) => {
   );
 };
 ```
+<<<<<<< HEAD
 
 ## useReducer
 
@@ -1248,3 +1259,5 @@ export default App;
 
 
 
+=======
+>>>>>>> 134c5c06ff9dd571863342a759dc19fc60244d9d
