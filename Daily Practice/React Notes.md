@@ -1241,23 +1241,42 @@ export default App;
 
 
 
+---
+```
+defaultValue:
+Pass it as the defaultValue string for text inputs. Checkboxes and radio buttons should specify the initial value with the defaultChecked boolean instead.
+
+override that behavior by calling e.preventDefault()
+
+ Read the form data with new FormData(e.target)
+
+function handleSubmit(e) {
+    // Prevent the browser from reloading the page
+    e.preventDefault();
+
+    // Read the form data
+    const form = e.target;
+    const formData = new FormData(form);
+
+    // Or you can work with it as a plain object:
+    const formJson = Object.fromEntries(formData.entries());
+    console.log(formJson);
+}
 
 
+Note
+Give a name to every <input>, for example <input name="firstName" defaultValue="Taylor" />. The name you specified will be used as a key in the form data, for example { firstName: "Taylor" }.
+
+Pitfall
+If you pass value without onChange, it will be impossible to type into the input. When you control an input by passing some value to it, you force it to always have the value you passed. So if you pass a state variable as a value but forget to update that state variable synchronously during the onChange event handler, React will revert the input after every keystroke back to the value that you specified.
 
 
+defaultValue
+onChange
+readOnly
+
+You need to read e.target.checked rather than e.target.value for checkboxes.
 
 
+```
 
-
-
-
-
-
-
-
-
-
-
-
-=======
->>>>>>> 134c5c06ff9dd571863342a759dc19fc60244d9d

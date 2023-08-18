@@ -139,9 +139,133 @@ new Promise(function(resolve, reject) {
 
 
 
+# Promise
+### Promise, Promises, .catch, .then
+
+A Promise is an object that represents the eventual completion (or failure) of an asynchronous
+operation and its resulting value. It is a way to handle asynchronous operations in a more
+structured and manageable manner.
+A Promise can be in one of three states:
+• Pending: The initial state of a Promise. It is neither fulfilled nor rejected.
+• Fulfilled: The Promise has successfully completed, and a value is available. This is typically
+referred to as resolving the Promise.
+• Rejected: The Promise encountered an error or failure during execution. This is typically
+referred to as rejecting the Promise.
+Unlike synchronous operations, which are executed sequentially and block the program until
+they are completed, asynchronous operations allow the program to continue executing other
+tasks while waiting for the completion of the asynchronous task.
+Note:
+for...of only work with iterables, not with object. For array it will give values instead of indexes.
+for...in works with iterables as well as objects. For array, it will give indexes. For an object it will
+give key values.
 
 
+#### Promise with then
 
+```javascript
+let promise = new Promise((resolve, reject) => {
+
+	resolve('Done');
+	reject(new Error('No content'));
+	
+}).then(
+	result => {
+		console.info('Result: ', result);
+	},
+	error => {
+		console.info('Error: ', error);
+	}
+);
+```
+
+#### Only on fullfilled
+
+```javascript
+let promise = new Promise((resolve, reject) => {
+	resolve('Done');
+}).then(
+	result => {
+		console.info('Result: ', result);
+	}
+)
+```
+#### Only on rejected
+
+```javascript
+let promise = new Promise((resolve, reject) => {
+
+	//resolve('Done');
+	reject(new Error('No content'));
+
+}).then( null,
+	error => {
+		console.info('Error Occored');
+	}
+)
+```
+
+#### Promise with catch
+
+```javasript
+let promise = new Promise((resolve, reject) => {
+	reject(new Error('Hey, get out of here man!!'));
+}).then(
+	result => {
+		console.info('Result: ', result);
+	}
+).catch(error => {
+	console.log("Error message:", error.message);
+	console.log("Error name:", error.name);
+	console.log("toString:", error.toString());
+	console.log("Is instance of Error:", error instanceof Error);
+})
+```
+
+#### Promise with finally block
+
+```javasript
+let promise = new Promise((resolve, reject) => {
+	reject(new Error('Hey, get out of here man!!'));
+}).then(
+	result => {
+		console.info('Result: ', result);
+	}
+).catch(error => {
+	console.log("Error message:", error.message);
+}).finally(
+	() => {
+		console.info('Promise is ready!');
+	}
+)
+```
+
+#### Promise example
+
+```javasript
+const fetchData = () => {
+	const promise = new Promise(
+		(resolve, reject) => {
+			let value = Math.random();
+			if (value > 0.5) {
+				resolve(value);
+			} else {
+				reject(new Error('Proper value not generated!'));
+			}
+		}
+	);
+	return promise;
+}
+
+fetchData().then(results => {
+	console.info(results);
+}).catch(error => {
+	console.info(error.message);
+}).finally(
+	() => {
+		console.info('Finished..:]');
+	}
+);
+```
 
 
 

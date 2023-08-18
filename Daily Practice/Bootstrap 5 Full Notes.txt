@@ -1,5 +1,104 @@
 Bootstrap 5 Full Notes
 
+Bootstrap 5 CDN
+
+
+
+
+
+
+
+Simple file structure
+----------------------
+
+<body>
+	<div class="container-fluid">
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-2">
+			</div>
+			<div class="col-md-10.">
+			</div>
+			<div class="col-md-2">
+			</div>
+		</div>
+	</div>
+
+Containers
+----------
+.container
+.container-fluid
+.pt-5 (Padding top)
+.my-5 (Margin y axis)
+.text-<color>
+.bg-<color>
+.container-<size>
+
+size: sm, md, lg, xl, xxl
+
+Bootstrap 5 Grids
+-----------------
+<div class="row">
+  <div class="col-<size>-*"></div>
+  <div class="col-*-*"></div>
+</div>
+
+Ex: col-sm-3
+.col-sm|md|lg|xl|xxl
+
+
+Typography
+----------
+.display-1 to .display-6
+.text-start/break/center/end/nowarp
+
+Button
+------
+.btn
+.btn-lg/md/sm
+.btn-block
+
+<div class="btn-group">
+  <button type="button" class="btn btn-primary">Apple</button>
+  <button type="button" class="btn btn-primary">Samsung</button>
+  <button type="button" class="btn btn-primary">Sony</button>
+</div>
+
+
+
+
+
+Colors
+------
+.text-muted : grey
+.text-primary : blue
+.text-success : green
+.text-info : cyan
+.text-warning : orange
+.text-danger : red
+.text-secondary : light grey
+.text-white
+.text-dark : black
+.text-body
+.text-light : white
+
+
+Table
+-----
+.table
+.table-striped
+.table-bordered
+.table-hover
+.table-dark
+.table-dark and .table-striped
+.table-hover
+
+
+
+
+
 CARDS
 -----
 div | .card
