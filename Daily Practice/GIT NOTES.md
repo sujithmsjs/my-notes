@@ -72,16 +72,16 @@ git switch ui
 
 
 
-```git
+```bash
 git remote show origin
 ```
-```git
+```bash
 git clean -f -fd
 git reset --hard
 git switch -c '<new-branch-name>'
 git switch <existing-branch>
 ```
-```git
+```bash
 git stash list
 git stash save "bugfix"
 git stash apply bugfix
