@@ -112,19 +112,37 @@ nov·ice:A person new to or inexperienced in a field or situation.
 Automated Linters
 
 Abondon:
-
-
-
-
- the modus operandi 
-
-
-sanity test
-
-
-npm install @mui/material @emotion/react @emotion/styled
-
+The modus operandi 
 Meterial UI
+
+
+
+10:37 24-08-2023
+
+hse orientation program
+- health, safety, and environmental (HSE)
+- personal protective equipment (PPE)
+
+Employer
+A person or organization that employs people.
+
+com·pre·hen·sive
+Complete; including all or nearly all elements or aspects of something.
+
+
+The main difference between a pantry and a cafeteria is their purpose. A pantry is a room or cupboard where food and other household supplies are stored, while a cafeteria is a restaurant or dining room where food is served to customers.
+
+
+induction course
+
+
+
+
+
+
+
+
+
 
 
 

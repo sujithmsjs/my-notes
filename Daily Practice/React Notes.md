@@ -1,4 +1,87 @@
 
+# React Cheatsheet
+
+```bash
+npm install -g create-react-app
+npx create-react-app my-react-app
+cd my-react-app
+npm start
+npm run build
+```
+# bootstrap
+
+```bash
+npm i bootstrap
+npm install react-bootstrap bootstrap
+```
+```jsx
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+https://source.unsplash.com/featured/300x201
+```
+
+# Json Server
+[Learn more](https://www.npmjs.com/package/json-server#getting-started)
+```bash
+npm i json-server
+npm i -g json-server
+npm install -g json-server
+```
+
+
+**Add to scripts:**
+```json
+"serve-json": "json-server --watch db.json --port 4000"
+```
+
+**Start JSON Server**
+```
+npm run serve-json
+npm run json-server --watch db.json --port 4000
+```
+
+# Toastify
+[Learn more](https://fkhadra.github.io/react-toastify/introduction/)
+```
+npm i react-toastify
+npm install --save react-toastify
+```
+
+
+```jsx
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+<ToastContainer
+	position="top-center"
+	autoClose={5000}
+	hideProgressBar
+	newestOnTop={false}
+	closeOnClick
+	rtl={false}
+	pauseOnFocusLoss
+	draggable
+	pauseOnHover
+	theme="colored"
+/>
+
+<ToastContainer />
+
+toast("Wow so easy!");
+toast.info('')
+toast.success('')
+toast.warning('')
+toast.error('')
+```
+
+# React Bootstrap
+[Learn more](https://react-bootstrap.netlify.app/docs/getting-started/introduction)
+```jsx
+import { Button } from 'react-bootstrap';
+```
+
 
 # Which values will get rendered
 
@@ -594,7 +677,8 @@ export default function App() {
 
 
 
-# Props
+# Portals
+> portal, portals, div soup
 
 #### public/index.html
 ```html
@@ -619,6 +703,8 @@ return (
       <h2>Start editing to see some magic happen!</h2>
     </div>
 ```
+
+
 
 #### src/Msg.js
 ```jsx
@@ -777,9 +863,8 @@ const Box = ({ className, data: { firstName, lastName } }) => {
   );
 };
 ```
-<<<<<<< HEAD
 
-## useReducer
+# useReducer
 
 ```jsx
 import React, { useReducer } from "react";
@@ -1279,4 +1364,216 @@ You need to read e.target.checked rather than e.target.value for checkboxes.
 
 
 ```
+
+# useContext extra
+
+
+
+
+
+
+// Create an AuthContext
+const AuthContext = createContext();
+
+### AuthProvider
+```jsx
+export const AuthProvider = ({ children }) => {
+	return (
+    		<AuthContext.Provider value={{ loggedIn, username, login, logout }}>
+      			{children}
+    		</AuthContext.Provider>
+	);
+}
+```
+
+- Create a context object
+- Context object container provider
+Ex:
+const AuthContext = createContext();
+AuthContext.Provider
+- privider provides the values to the children
+
+### App
+```jsx
+function App() {
+  return (
+  
+      <AuthProvider>
+        <Content />
+      </AuthProvider>
+
+  );
+}
+```
+
+# Content
+```
+const { loggedIn, username, login, logout } =  useContext(AuthContext);
+```
+
+### Example 
+
+### index.js
+```jsx
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
+
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+
+import App from "./App";
+
+import AuthProvider from "./auth/AuthProvider";
+
+const rootElement = document.getElementById("root");
+const root = createRoot(rootElement);
+
+root.render(
+  <StrictMode>
+    <AuthProvider>
+      <App />
+    </AuthProvider>
+  </StrictMode>
+);
+
+```
+
+### App.js
+```jsx
+import { useState } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import { useForm } from "react-hook-form";
+import AuthProvider from "./auth/AuthProvider";
+import Home from "./comps/Home";
+import Changer from "./comps/Changer";
+
+export default App = () => {
+  return (
+    <div className="container">
+      <Home />
+      <Changer />
+    </div>
+  );
+};
+
+```
+
+### AuthProvider.js
+```jsx
+import { createContext, useContext, useState } from "react";
+
+export const AuthContext = createContext();
+
+export const useAuth = () => {
+  return useContext(AuthContext);
+};
+
+const AuthProvider = (props) => {
+  const [number, setNumber] = useState(0);
+
+  return (
+    <AuthContext.Provider value={{ number, setNumber }}>
+      {props.children}
+    </AuthContext.Provider>
+  );
+};
+
+export default AuthProvider;
+
+```
+
+### Changer.js
+```jsx
+import { useContext } from "react";
+import AuthProvider, { AuthContext } from "../auth/AuthProvider";
+
+export default Changer = () => {
+  const auth = useContext(AuthContext);
+  const { number, setNumber } = auth;
+
+  const handleAdd = () => {
+    setNumber((prevNumber) => prevNumber + 1);
+  };
+
+  return (
+    <button className="btn btn-success" onClick={handleAdd}>
+      Add 1
+    </button>
+  );
+};
+```
+
+### Home.js
+```jsx
+import { useContext } from "react";
+import AuthProvider, { AuthContext } from "../auth/AuthProvider";
+
+export default Home = () => {
+  const { number, setNumber } = useContext(AuthContext);
+  return <h1>Home {number}</h1>;
+};
+```
+
+# Model
+```jsx
+import { useState } from 'react';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+
+function Example() {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  return (
+    <>
+      <Button variant="primary" onClick={handleShow}>
+        Launch static backdrop modal
+      </Button>
+
+      <Modal
+        show={show}
+        onHide={handleClose}
+        backdrop="static"
+        keyboard={false}
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>Modal title</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          I will not close if you click outside me. Don not even try to press
+          escape key.
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="primary">Understood</Button>
+        </Modal.Footer>
+      </Modal>
+    </>
+  );
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
