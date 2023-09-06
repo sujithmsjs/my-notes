@@ -8,12 +8,30 @@ cd my-react-app
 npm start
 npm run build
 ```
-# bootstrap
+
+### Devtools Hook Form
+
+```
+npm i @hookform/devtools
+```
+
+```jsx
+<div>
+	<form>
+	</form>
+ 	<DevTool control={control} />
+</div>
+```
+
+
+
+### bootstrap
 
 ```bash
 npm i bootstrap
 npm install react-bootstrap bootstrap
 ```
+
 ```jsx
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -22,7 +40,19 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 https://source.unsplash.com/featured/300x201
 ```
 
-# Json Server
+### React Bootstrap
+[Learn more](https://react-bootstrap.netlify.app/docs/getting-started/introduction)
+```jsx
+import { Button } from 'react-bootstrap';
+```
+
+### Zod
+
+```
+
+```
+
+### Json Server
 [Learn more](https://www.npmjs.com/package/json-server#getting-started)
 ```bash
 npm i json-server
@@ -42,7 +72,7 @@ npm run serve-json
 npm run json-server --watch db.json --port 4000
 ```
 
-# Toastify
+### Toastify
 [Learn more](https://fkhadra.github.io/react-toastify/introduction/)
 ```
 npm i react-toastify
@@ -76,11 +106,7 @@ toast.warning('')
 toast.error('')
 ```
 
-# React Bootstrap
-[Learn more](https://react-bootstrap.netlify.app/docs/getting-started/introduction)
-```jsx
-import { Button } from 'react-bootstrap';
-```
+
 
 
 # Which values will get rendered
@@ -680,62 +706,121 @@ export default function App() {
 # Portals
 > portal, portals, div soup
 
-#### public/index.html
+### Protals Example 1
+
+#### public\index.html
+
 ```html
-<div id="top-root"></div>
-<div id="root"></div>
+ <body>
+    <div id="top-root"></div>
+    <div id="root"></div>
+    <div id="bottom-root"></div>
+  </body>
 ```
 
-#### src/App.js
+#### src\App.js
+
 ```jsx
-return (
+import ReactDOM from "react-dom";
+
+function App() {
+
+  const topRoot = document.getElementById('bottom-root');
+  console.info(topRoot);
+
+  return (
     <div className="App">
-      <h1>Hello CodeSandbox</h1>
       <div>
         <div>
           <div>
             <div>
-              <Msg />
+              <div>
+                <div>
+                  <h1>Before the portal call</h1>
+                  {ReactDOM.createPortal(<h1>This is Portal</h1>, topRoot)}
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <h2>Start editing to see some magic happen!</h2>
     </div>
+  );
+}
+
+export default App;
+```
+#### Output
+
+```html
+    <body>
+      <div id="top-root">
+        <h1>This is Portal</h1>
+      </div>
+      <div id="root">
+        <div className="App">
+          <div>
+            <div>
+              <div>
+                <div>
+                    <div>
+                      <div>
+                        <h1>Before the portal call</h1>
+                      </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="bottom-root"></div>
+    </body>
 ```
 
+### Protals Example 2
 
+#### public/index.html
 
-#### src/Msg.js
+```html
+<body>
+	<div id="backdrop-root"></div>
+	<div id="overlay-root"></div>
+	<div id="root"></div>
+<body>
+```
+
+#### src/MyModel.js
+
 ```jsx
-import { createPortal } from "react-dom";
-
-export default () => {
+const ModalOverlay = (props) => {
   return (
-    <>
-	{
-		createPortal(<h1>Hello</h1>, document.getElementById("top-root"))
-	}
-    </>
+    ...
   );
 };
+
+const MyModel () => {
+	return ({
+		ReactDOM.createPortal(
+        	<Backdrop onConfirm={props.onConfirm} />,
+       	 	document.getElementById('backdrop-root'))
+	});
+}
 ```
 
-#### Output:
-```html
-<div id="top-root"><h1>Hello</h1></div>
-<div id="root">
-  <div class="App">
-    <h1>Hello CodeSandbox</h1>
-    <div>
-      <div>
-        <div><div></div></div>
-      </div>
-    </div>
-    <h2>Start editing to see some magic happen!</h2>
-  </div>
-</div>
+#### src/App.js
+
+```jsx
+	<MyModel />
 ```
+
+
+
+
+
+
+
+
 
 ## useRef and Style Modules
 
