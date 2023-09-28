@@ -1,5 +1,103 @@
 # React Router DOM
 
+### Basics
+```jsx
+// Elements Provided by Router
+1. <RouterProvider>
+2. <Outlet />
+3. <NavLink>
+4. <Link>
+
+// Hooks Provided by Router
+1. useRouteLoaderData
+2. useLoaderData
+3. useActionData
+4. useRouteError
+5. useParams
+6. useNavigation
+7. useNavigate
+8. useSubmit
+
+// Methods Provided by Router
+
+1. createBrowserRouter([])
+2. json({}, {})
+3. redirect('/events')
+
+
+// Creating Router
+const router = createBrowserRouter([
+	// Routes
+])
+
+// Using Router Provider
+<RouterProvider router={router} />
+
+
+// A Route can have
+
+{
+	id  : 'fakeId'
+	path : '/'
+	index : true
+	element : <>
+	loader : ({request, params}) => {}
+	action: ({request, params}) => {}
+	errorElement: <>
+	children: []
+}
+
+const data = useRouteLoaderData('route-id');
+const data = useLoaderData();
+const data = useActionData();
+const error = useRouteError();
+const params = useParams();
+
+const navigation = useNavigation();
+navigation.state === 'loading'
+
+- idle
+- loading
+- submitting
+
+const navigate = useNavigate();
+navigate('/products');
+navigate('..')
+
+json-helper-functionjson(
+      { message: 'Hello' },
+      {
+        status: 500,
+      }
+    );
+
+
+const error = useRouteError();
+ if (error.status === 500) {
+    message = error.data.message;
+  }
+
+return redirect('/events');
+throw json({ message: 'Could not save event.' }, { status: 500 });
+
+// Progamatically submitting data
+const submit = useSubmit();
+submit(null, { method: 'delete' });
+
+
+<Outlet />
+<NavLink
+              to="/"
+              className={({ isActive }) =>
+                isActive ? classes.active : undefined
+              }
+              end
+>
+              Home
+</NavLink>
+<Link to="/products">the list of products</Link>
+```
+
 ```jsx
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
