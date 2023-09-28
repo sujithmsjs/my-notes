@@ -52,6 +52,7 @@ export default App;
 ```
 ### 05-layout-wrapper-route
 
+
 ```jsx
 const router = createBrowserRouter([
   {
@@ -64,6 +65,7 @@ const router = createBrowserRouter([
   }
 ]);
 ```
+
 ```jsx
 import { Outlet } from 'react-router-dom';
 
@@ -83,6 +85,7 @@ function RootLayout() {
 
 export default RootLayout;
 ```
+
 ```jsx
 import { Outlet } from 'react-router-dom';
 ```
