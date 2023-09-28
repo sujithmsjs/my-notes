@@ -1,6 +1,6 @@
 # React Router DOM
 
-```javascript
+```jsx
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import HomePage from './pages/Home';
@@ -52,7 +52,7 @@ export default App;
 ```
 ### 05-layout-wrapper-route
 
-```
+```jsx
 const router = createBrowserRouter([
   {
     path: '/',
@@ -64,7 +64,7 @@ const router = createBrowserRouter([
   }
 ]);
 ```
-```
+```jsx
 import { Outlet } from 'react-router-dom';
 
 import MainNavigation from '../components/MainNavigation';
@@ -83,13 +83,13 @@ function RootLayout() {
 
 export default RootLayout;
 ```
-```
+```jsx
 import { Outlet } from 'react-router-dom';
 ```
 
 ### 06-error-route-404
 
-```
+```jsx
 const router = createBrowserRouter([
   {
     path: '/',
@@ -105,7 +105,7 @@ const router = createBrowserRouter([
 
 ### 07-using-navlinks
 
-```
+```jsx
 import { NavLink } from 'react-router-dom';
 
 <NavLink
@@ -125,7 +125,7 @@ import { NavLink } from 'react-router-dom';
 
 ### 08-navigating-programmatically
 
-```
+```jsx
 import { Link, useNavigate } from 'react-router-dom';
 
 function HomePage() {
@@ -153,7 +153,7 @@ export default HomePage;
 
 ### 09-dynamic-routes
 
-```
+```jsx
 const router = createBrowserRouter([
   {
     path: '/',
@@ -168,7 +168,7 @@ const router = createBrowserRouter([
 ]);
 ```
 
-```
+```jsx
 import { useParams } from 'react-router-dom';
 
 function ProductDetailPage() {
@@ -186,7 +186,7 @@ export default ProductDetailPage;
 ```
 ### 10-absolute-relative-paths
 
-```
+```jsx
 const router = createBrowserRouter([
   {
     path: '/',
@@ -206,7 +206,7 @@ const router = createBrowserRouter([
 
 ### 11-index-routes
 
-```
+```jsx
 const router = createBrowserRouter([
   {
     path: '/',
@@ -223,7 +223,7 @@ const router = createBrowserRouter([
 
 ### 14-challenge-solution
 
-```
+```jsx
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 
@@ -250,7 +250,7 @@ const router = createBrowserRouter([
 
 ### 15-data-fetching-example
 
-```
+```jsx
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 import EditEventPage from './pages/EditEvent';
@@ -290,7 +290,7 @@ export default App;
 
 ### 16-added-loader
 
-```
+```jsx
 {
             index: true,
             element: <EventsPage />,
@@ -307,7 +307,7 @@ export default App;
           }
 ```
 
-```
+```jsx
 import { useLoaderData } from 'react-router-dom';
 
 import EventsList from '../components/EventsList';
@@ -323,7 +323,7 @@ export default EventsPage;
 
 ### 17-loader-in-separate-file
 
-```
+```jsx
 {
             index: true,
             element: <EventsPage />,
@@ -331,7 +331,7 @@ export default EventsPage;
           }
 ```
 
-```
+```jsx
 import { useLoaderData } from 'react-router-dom';
 
 import EventsList from '../components/EventsList';
@@ -358,7 +358,7 @@ export async function loader() {
 
 ### 18-user-feedback-usenavigation
 
-```
+```jsx
 import { Outlet, useNavigation } from 'react-router-dom';
 
 const navigation = useNavigation();
@@ -369,7 +369,7 @@ const navigation = useNavigation();
 ### 19-returning-responses
 
 ### 20-error-handling
-```
+```jsx
 export async function loader() {
   const response = await fetch('http://localhost:8080/events');
 
@@ -386,7 +386,7 @@ export async function loader() {
 
 ### 21-json-helper-function
 
-```
+```jsx
 export async function loader() {
   const response = await fetch('http://localhost:8080/events');
 
@@ -402,7 +402,7 @@ export async function loader() {
   }
 }
 ```
-```
+```jsx
 import { useRouteError } from 'react-router-dom';
 import MainNavigation from '../components/MainNavigation';
 
@@ -438,7 +438,7 @@ export default ErrorPage;
 
 ### 22-dynamic-routes-loader
 
-```
+```jsx
 <Link to={event.id}>
 
 export async function loader({request, params}) {
@@ -457,7 +457,7 @@ export async function loader({request, params}) {
 ```
 
 ### 23-userouteloaderdata
-```
+```jsx
 {
             path: ':eventId',
             id: 'event-detail',
@@ -477,11 +477,11 @@ export async function loader({request, params}) {
 
 ### 24-action-data-submission
 
-```
+```jsx
 { path: 'new', element: <NewEventPage />, action: newEventAction }
 ```
 
-```
+```jsx
 import { json, redirect } from 'react-router-dom';
 
 import EventForm from '../components/EventForm';
@@ -520,7 +520,7 @@ export async function action({ request, params }) {
 
 ### 25-deleting
 
-```
+```jsx
 import { Link, useSubmit } from 'react-router-dom';
 
 function EventItem({ event }) {
@@ -536,7 +536,7 @@ function EventItem({ event }) {
   // ...
  }
 ```
-```
+```jsx
 import { useRouteLoaderData, json, redirect } from 'react-router-dom';
 
 import EventItem from '../components/EventItem';
@@ -585,7 +585,7 @@ export async function action({ params, request }) {
 ```
 ### 26-form-submission-usenavigation
 
-```
+```jsx
 import { Form, useNavigate, useNavigation } from 'react-router-dom';
 
 import classes from './EventForm.module.css';
@@ -659,7 +659,7 @@ export default EventForm;
 
 ### 27-validation-returning-data
 
-```
+```jsx
 import {
   Form,
   useNavigate,
@@ -682,7 +682,7 @@ const isSubmitting = navigation.state === 'submitting';
 
 
 ### 28-reusing-action
-```
+```jsx
 children: [
           {
             index: true,
