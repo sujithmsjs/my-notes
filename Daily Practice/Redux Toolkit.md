@@ -67,7 +67,7 @@ const counterSlice = createSlice({
 // Slice provide sever useful fields
 counterSlice.actions
 counterSlice.reducer
-```
+```jsx
 export const { increment, decrement } = counterSlice.actions;
 
 export default counterSlice.reducer;
@@ -86,8 +86,7 @@ const store = configureStore({
 });
 ```
 
----
-```
+```jsx
 initialState: {value : 0}
 
 increase : state => {
@@ -98,12 +97,13 @@ reducer : {
 	counter : //...
 }
 ```
+```jsx
 const value = useSelect(state => state.counter.value);
 
 
 Action object:
 {"type":"counter/addValue","payload":""}
-
+```
 
 payload: undefined
 type: "auth_local/login"
