@@ -1,5 +1,196 @@
 # React Router DOM
 
+```
+{
+    path: "/prods/:id",
+    element: <Products />,
+    loader: ({ request, params }) => {
+      console.info(request.method);
+      console.info(request.url);
+      return request.url;
+    }
+  }
+```
+```
+const method = request.method;
+  const data = await request.formData();
+  
+  const searchParams = new URL(request.url).searchParams;
+  const mode = searchParams.get('mode') || 'login';
+
+  if (mode !== 'login' && mode !== 'signup') {
+    throw json({ message: 'Unsupported mode.' }, { status: 422 });
+  }
+```
+### Query Params(Search params)
+
+```
+https://www.flipkart.com/search?q=firebolt%20cobra%20screen%20gaurd&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off
+```
+
+```
+ const [searchParams] = useSearchParams();
+  const isLogin = searchParams.get('mode') === 'login';
+```
+```
+{
+    path: "/prods/:id",
+    element: <Products />,
+    loader: ({ request, params }) => {
+      const searchParams = new URL(request.url).searchParams;
+      console.info(searchParams.get("name"));
+      console.info(searchParams.get("love"));
+      console.info(searchParams.get("page"));
+      return 100;
+    }
+  }
+  ```
+  ### Search Params Example
+  ```javascript
+  import {
+  Link,
+  useLoaderData,
+  useParams,
+  useSearchParams
+} from "react-router-dom";
+const Products = () => {
+  const data = useLoaderData();
+  const params = useParams();
+  const [searchParams] = useSearchParams();
+  const mode = searchParams.get("mode");
+  const modeInvert = mode === "A" ? "B" : "A";
+  return (
+    <>
+      <h1>Products</h1>
+      <h4>Loader Data {data}</h4>
+      <Link to="..">Back</Link>
+      <h1>Mode : {mode}</h1>
+      <Link to={`?mode=${modeInvert}`}>Mode {modeInvert}</Link>
+    </>
+  );
+};
+export default Products;
+  ```
+### Search Params inside loader
+ ```javascript
+ const router = createBrowserRouter([
+  { path: "/", element: <Home /> },
+  {
+    path: "/prods/:id/:type",
+    element: <Products />,
+    loader: ({ request, params }) => {
+      console.info(request.method);
+      console.info(request.url);
+      return [params.id, params.type].join();
+    }
+  },
+  {
+    path: "/prods/:id",
+    element: <Products />,
+    loader: ({ request, params }) => {
+      const searchParams = new URL(request.url).searchParams;
+      console.info(searchParams.get("name"));
+      console.info(searchParams.get("mode"));
+      console.info(searchParams.get("love"));
+      console.info(searchParams.get("page"));
+      return 100;
+    }
+  }
+]);
+ ```
+  
+ ### Throwing Json without values
+ ```javascript
+ throw json({}, {});
+ ```
+**Output**
+ ```json
+ {
+     "status": 200,
+     "statusText": "",
+     "internal": false,
+     "data": {}
+}
+ ```
+  
+ ### Throwing Json with values
+ ```javascript
+ if (true) {
+    throw json(
+        { message : 'This page not found'},
+        {status : 404, statusText : 'NOT Found'}
+    );
+}
+```
+**Output**
+```
+{
+     "status": 404,
+     "statusText": "NOT Found",
+     "internal": false,
+     "data": {
+          "message": "This page not found"
+     }
+}
+ ```
+  
+ ### Count down timer
+ ```javascript
+ import React, { useState, useEffect } from "react";
+
+function CountdownTimer({ initialTime, speed = 1000, onTimeout = () => {} }) {
+  const [timeRemaining, setTimeRemaining] = useState(initialTime);
+  console.info("Inside CountdownTimer");
+  useEffect(() => {
+    let intervalId;
+
+    if (timeRemaining > 0) {
+      intervalId = setInterval(() => {
+        setTimeRemaining((prevTime) => prevTime - 1);
+      }, speed);
+    } else {
+      onTimeout();
+    }
+
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, [timeRemaining]);
+
+  return (
+    <div>
+      <h1>{timeRemaining}</h1>
+    </div>
+  );
+}
+
+export default React.memo(CountdownTimer);
+ ```
+ **Navidating on Timeout**
+  ```javascript
+<CountdownTimer
+        initialTime={100}
+        speed={100}
+        onTimeout={() => navigate("/")}
+/>
+  ```
+ ### From Action
+ ```javascript
+ action: async ({ request, params }) => {
+          const data = await request.formData();
+          const email = data.get("email");
+          const isValid = email.endsWith("gmail.com");
+
+          console.info("Method: ", request.method);
+
+          if (isValid) {
+            return redirect("/");
+          } else {
+            return "Invalid email address";
+          }
+        }
+ ```
+
 ### Basics
 ```jsx
 // Elements Provided by Router
