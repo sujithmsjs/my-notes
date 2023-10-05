@@ -34,7 +34,7 @@ Overall, Redux Toolkit streamlines the development process and reduces the amoun
 
 React Redux Toolkit is a library that simplifies the process of managing state in a React application using Redux. It provides a set of utility functions and abstractions that make it easier to write Redux code.
 
-
+```jsx
 npm install @reduxjs/toolkit
 npm i bootstrap
 npm install react react-dom redux react-redux @reduxjs/toolkit
@@ -45,7 +45,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 // Creating a Slice
 const counterSlice = createSlice({})
-
+```
 
 
 // Three properties you need to provide to create a Slice.
@@ -53,7 +53,7 @@ const counterSlice = createSlice({})
 1. name
 2. initialState
 3. reducers
-
+```jsx
 const counterSlice = createSlice({
 
   name: 'counter',
@@ -63,11 +63,11 @@ const counterSlice = createSlice({
   reducers: {},
 
 });
-
+```
 // Slice provide sever useful fields
 counterSlice.actions
 counterSlice.reducer
-
+```
 export const { increment, decrement } = counterSlice.actions;
 
 export default counterSlice.reducer;
@@ -84,10 +84,10 @@ const store = configureStore({
     counter: counterReducer,
   },
 });
-
+```
 
 ---
-
+```
 initialState: {value : 0}
 
 increase : state => {
@@ -97,7 +97,7 @@ increase : state => {
 reducer : {
 	counter : //...
 }
-
+```
 const value = useSelect(state => state.counter.value);
 
 
@@ -125,7 +125,7 @@ Here's how Immer works:
 
 Here's a simple example of how you can use Immer with Redux Toolkit:
 
-```javascript
+```jsx
 import { createSlice } from "@reduxjs/toolkit";
 import produce from "immer";
 
