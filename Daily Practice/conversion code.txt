@@ -1,0 +1,68 @@
+
+
+const range = (s, e, t) => Array.from({length : (e - s) / t + 1 }, (_, i) => s + i * t);
+
+const rc =  (a, b) => range(a.charCodeAt(0), b.charCodeAt(0), 1);
+const chars = rc('0','9').concat(rc('A','Z')).concat(rc('a','z'));
+
+const convert = (n, p) => {
+let out = [];
+while( n > 0){
+    let t = Math.floor(n % p);
+    n = Math.floor(n / p);
+    out.unshift( String.fromCharCode( chars[t]) );
+}    
+return out;
+}
+
+ 
+for(let i = 8008188022 ; i <= 8008189022;i++){
+    console.info( i + ' ' + convert(i, 62).join('') )
+}
+
+8008188022 8jxXWw
+8008188029 8jxXX3
+8008188036 8jxXXA
+8008188043 8jxXXH
+8008188050 8jxXXO
+
+
+56B 800M 235K
+
+
+
+const range = (s, e, t) => Array.from({length : (e - s) / t + 1 }, (_, i) => s + i * t);
+
+const rc =  (a, b) => range(a.charCodeAt(0), b.charCodeAt(0), 1);
+const chars = rc('0','9').concat(rc('A','Z')).concat(rc('a','z'));
+
+const chars2 = chars.map( e => String.fromCharCode(e));
+
+const b = 62;
+const s = 'zzzzzz'.split('').reverse();
+const l = s.length;
+let sum = 0;
+for(let i = l - 1; i >= 0; i--){
+    let index = chars2.indexOf(s[i]);
+    console.info( i,s[i],index, sum +=  index *  Math.pow(b, i));
+    
+}
+
+console.info(sum)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,32 @@
+{
+  "employees": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "age": 30,
+      "email": "john@example.com",
+      "isActive": true,
+      "salary": 5000.50,
+      "hobbies": ["reading", "traveling", "gaming"],
+      "address": {
+        "street": "123 Main St",
+        "city": "New York",
+        "country": "USA"
+      }
+    },
+    {
+      "id": 2,
+      "name": "Jane Smith",
+      "age": 28,
+      "email": "jane@example.com",
+      "isActive": false,
+      "salary": 4000.75,
+      "hobbies": ["hiking", "painting"],
+      "address": {
+        "street": "456 Elm St",
+        "city": "Los Angeles",
+        "country": "USA"
+      }
+    }
+  ]
+}

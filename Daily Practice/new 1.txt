@@ -1,0 +1,69 @@
+new Date()
+new Date().getTime()		// 1697100422294
+new Date(1697100422294)		// 9090909099009
+new Date().toISOString()	// '2023-10-12T08:45:07.005Z'
+new Date('2023-10-12T08:45:07.005Z')
+new Date().toLocaleString("en-US", { timeZone: "UTC" })
+new Date().toLocaleDateString("en-US", { timeZone: "Asia/Kolkata" })
+
+
+---
+
+let students = [
+	{name: 'kiran', age:24, dept: 'ECE'},
+	{name: 'Raju', age:24, dept: 'ECE'},
+	{name: 'Naveen', age:24, dept: 'ECE'},
+	{name: 'Swami', age:24, dept: 'CSE'},
+	{name: 'Sujith', age:24, dept: 'ECE'},
+	{name: 'prakesh', age:24, dept: 'CSE'},
+	{name: 'bhole', age:24, dept: 'MECH'},
+	{name: 'kiran', age:24, dept: 'ECE'},
+]
+
+let dept = {}
+
+for(let s of students){
+
+	if(!dept[s.dept]){
+   	dept[s.dept] = [];
+   }
+
+	dept[s.dept].push(s.name);
+	
+	
+}
+
+console.info(dept);
+
+/* for(let s of students) {
+   if(!dept[s.dept]) {
+      dept[s.dept] = []
+   }
+   dept[s.dept].push(s)
+}
+console.log(dept) */
+
+/* let deptmap = new Map();
+let deptSet = new Set();
+
+
+for(let s of students){
+   if(deptmap.has(s.dept)){
+      console.log("... s ...", JSON.stringify(deptmap, null, 5));
+      const stds = deptmap.get(s.dept);
+      stds.push(s);
+      deptmap.set(s.dept, stds);
+   }else{
+         console.log("... d ...");
+      
+       deptmap.set(s.dept,[s]);
+       console.log(JSON.stringify(deptmap, null, 5));
+   }
+}
+
+const depts = []
+deptmap.forEach((value, key) => {
+    console.info(key + " : " + value)
+});
+
+console.info(deptmap); */

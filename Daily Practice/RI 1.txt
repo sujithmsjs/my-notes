@@ -1,0 +1,80 @@
+useEffect
+
+- Call useEffect at the top level of your component to declare an Effect
+
+useEffect(setup, dependencies?) 
+
+SETUP CODE : The function with your Effect’s logic. Your setup function may also optionally return a cleanup function.
+
+DEPENDENCIES : The list of all reactive values referenced inside of the setup code. Reactive values include props, state, and all the variables and functions declared directly inside your component body.
+
+CLEAN UP CODE: 
+
+
+React calls your setup and cleanup functions whenever it’s necessary, which may happen multiple times:
+
+Caveats:
+- Should be called at the top level of the component.
+- Can't call inside loops or conditions.
+
+STRESS TEST:
+To help you find bugs, in development React runs setup and cleanup one extra time before the setup. This is a stress-test that verifies your Effect’s logic is implemented correctly.
+
+MOUNTS: when your component is added to the page (mounts).
+UNMOUNTS: your component is removed from the page (unmounts).
+
+Note: 
+An Effect lets you keep your component synchronized with some external system (like a chat service). Here, external system means any piece of code that’s not controlled by React, such as:
+
+A timer managed with setInterval() and clearInterval().
+An event subscription using window.addEventListener() and window.removeEventListener().
+A third-party animation library with an API like animation.start() and animation.reset().
+
+
+Wrapping Effects in custom Hooks:
+
+Effects are an “escape hatch”: you use them when you need to “step outside React” and when there is no better built-in solution for your use case.
+
+
+RACE CONDITION:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+If you’re not connecting to any external system, you probably don’t need an Effect.

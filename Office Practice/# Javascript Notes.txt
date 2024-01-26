@@ -1,0 +1,637 @@
+# Javascript Notes
+
+Interaction: alert, prompt, confirm
+Type Conversions
+Nullish coalescing operator '??'
+Function expressions
+Arrow functions
+
+## Expressions
+
+```javascript
+null == ''		// false
+null == null		// true
+null == undefined	// true
+undefined == null	// true
+undefined == undefined	// true
+123 === '123'		// false
+123 == '123'		// true
+{} == {}		// SyntaxError
+{} === {}		// SyntaxError
+[] == []		// false
+[] === []		// false
+100 + '200' + 300	// '100200300'
+'100' + 200 + 300	// '100200300'
+100 + 200 + '300'	// '300300'
+100 + 200 - '300'	// 0
+100 + 200 * '300'	// 60100
+'100' - 200 + 300	// 200
+0x1234 			// 4660
+0b1010 			// 10
+0xff 			// 255
+1e1			// 10
+7e6			// 7000000
+7e6.toString()		// '7000000'
+10000..toString(2);	// '10011100010000'
+typeof 1e6		// 'number
+10 + '5'		// '105'
+10 - '5'		// 5
+10 + 5			// 15
+'100' - 50 		// 50
+1234.toString(16)	// SyntaxError
+1234..toString(16)	// '4d2'
+5 ** 5			// 312
+typeof 231332424n	// bigint
+/^[0-9]$/.test(2)	// true
+/^[0-9]$/.test('7')	// true
+/^[0-9]$/.test('7')		// true
+/^[0-9]{4}$/.test('1234')	// true
+/^[0-9]{4}$/.test(4561)		// true
+/^Sujith$/i.test('SuJiTH')	// true
+/[0-9]/.constructor.name	// 'RegExp'
+
+typeof undefined	// "undefined"
+typeof 0	// "number"
+typeof 10n	// "bigint"
+typeof true	// "boolean"
+typeof "foo"	// "string"
+typeof Symbol("id")	// "symbol"
+typeof Math	// "object"  (1)
+typeof null	// "object"  (2)
+typeof alert	// "function"  (3)
+
+!!''	// false
+!! ' '	// true
+!! false	// false
+!!true		// true
+!!0	// false
+!!23432	// true
+!!0.001 	// true
+!!0.0001	// true
+!! NaN		// false
+!! Infinity	// true
+!! -Infinity	// true
+
+true - true	// 0
+true - false	// 1
+false - true	// -1
+false - false	// 0
+true * true	// 1
+true + true	// 2
+
+3 + +'7'	// 10
+3 + -'7'	// -4
+3*'7'	// 21
+"6" / "2"	// 3
+```
+
+`typeof x` as same as `typeof(x)`
+
+
+## Data types
+
+Seven primitive data types
+1. Number
+2. BigInt
+3. String
+4. Boolean
+5. null
+6. undefined
+7. Objects
+And one non-primitive data type:
+8. Symbols
+9. Arrays
+
+
+## 1. Number
+
+// no error
+let message = "hello";
+message = 123456;
+
+let n = 123;
+n = 12.345;
+
+12321.toString(23) // SyntaxError
+12321..toString(23);
+
+
+## 2. BigInt
+
+typeof 231332424n	// Postfix with 'n'
+1e30n	// SyntaxError!
+
+## 3. String
+
+## 4. Boolean (logical type)
+- true
+- false
+
+> undefined is NaN as a number, not 0.0
+> "0" and space-only strings like " " are true as a boolean.
+> Five Falsy values: (0, null, undefined, NaN, "") 
+
+## 5. null
+## 6. undefined
+## 7. Objects
+	And one non-primitive data type:
+## 8. Symbols
+## 9. Arrays
+
+
+## Interaction
+
+```javascript
+alert("Hello");
+let age = prompt('How old are you?', 100);
+let isBoss = confirm("Are you the boss?");
+```
+
+## Type Conversions
+
+```javascript
+alert( Number("   123   ") ); // 123
+alert( Number("123z") );      // NaN (error reading a number at "z")
+alert( Number(true) );        // 1
+alert( Number(false) );       // 0
+
+
+String('234324'); 	// '234324'
+312321313 + ''		// '312321313'
+String(true)		// 'true'
+String(false)		// 'false'
+String(null)		// 'null'
+
+parseInt(123.456)	// 123
+parseInt('123.456in')	// 123
+parseFloat('123.456in')	// 123.456
+parseFloat('123.456in')	// 123.456
+parseFloat('123px')	// 123
+parseInt('123px')	// 123
+parseInt('123.0px')	// 123
+parseInt('99%')		// 99
+
+alert( Boolean(1) ); // true
+alert( Boolean(0) ); // false
+alert( Boolean("hello") ); // true
+alert( Boolean("") ); // false
+
+> undefined is NaN as a number, not 0.
+> "0" and space-only strings like " " are true as a boolean.
+
+
+"" + 1 + 0	// '10'
+"" == 0		// true
+"" - 1 + 0	// -1
+true == 1	// true
+false == 0	// true
+'0' == 0	// true
+true + false	// 1 
+true + true	// 2
+parseInt(true)	// NaN
+6 / "3"		// 
+"2" * "3"	// 
+4 + 5 + "px"	// 
+"$" + 4 + 5	// 
+"4" - 2		// 
+"4px" - 2	//
+"  -9  " + 5	// 
+"  -9  " - 5	// 
+null + 1	// 
+undefined + 1	// 
+" \t \n" - 2	// 
+
+
+```
+
+Basic operators
+
+```javascript
++true	// 1
++false	// 0
++''	// 0
+-'-20'	// 20
++'-300'	// -300
+
+// No effect on numbers
+let x = 1;
+alert( +x ); // 1
+
+let y = -2;
+alert( +y ); // -2
+
+// Converts non-numbers
+alert( +true ); // 1
+alert( +"" );   // 0
+```
+
+```javascript
+let apples = "2";
+let oranges = "3";
+
+// "23", the binary plus concatenates strings
+alert( apples + oranges );
+
+// both values converted to numbers before the binary plus
+alert( +apples + +oranges ); // 5
+```
+
+### Assignment
+
+let a, b, c;
+a = b = c = 2 + 2;
+
+### Modify-in-place
+> We often need to apply an operator to a variable and store the new result in that same variable.
+
+```javascript
+let n = 2;
+n = n + 5;
+n = n * 2;
+```
+
+
+```javascript
+// `a = 10` in every line
+10 > (a = a + 1)	// false
+10 > (a = a + 0)	// false
+10 > (a = a - 1)	// true
+```
+
+
+```javascript
+let a = 10, b = 20, c = 30;
+let d = (a,b,c)
+d	// 30
+d = (a + b. b + c, a + c)
+d	// 40
+(1 + 2, 3 + 4)	// 7
+```
+
+
+```javascript
+// Example 1
+let a = 1, b = 1;
+
+let c = ++a;
+let d = b++;
+
+a	// 2
+b	// 2
+c	// 2
+d	// 1
+
+// Example 2
+let a = 2, b = 4
+let c = ++a * b++;
+c	// 12
+
+// Example 3
+let a = 5;
+let b = ++a + a++;
+b	// 12
+
+// Example 4
+let a = 2;
+1 + (a *= 2);	// 5
+
+
+```
+
+```javascript
+typeof typeof 10;	// 'string'
+~5	// 6
++[]	// 0
+!+[]	// true
+
+
+## Comparisons
+
+#### String comparison
+> To see whether a string is greater than another, JavaScript uses the so-called “dictionary” or “lexicographical” order
+
+'Z' > 'A'	// true
+'Z' > 'a'	// false
+'App' > 'Ape'	// true
+'Bee' > 'Be'	// true
+'Glow' > 'Glee'	// true
+'10' > '0'	// true
+'10' > '1'	// true
+'10' > '2'	// false
+'10' > 2	// true
+10 > '2'	// true
+
+null == undefined ); // true
+null === undefined ); // false
+null == "\n0\n"
+null === +"\n0\n"
+
+
+// Strange result: null vs 0
+alert( null > 0 );  // (1) false
+alert( null == 0 ); // (2) false
+alert( null >= 0 ); // (3) true
+
+
+// An incomparable undefined
+// The value undefined shouldn’t be compared to other values
+alert( undefined > 0 ); // false (1)
+alert( undefined < 0 ); // false (2)
+alert( undefined == 0 ); // false (3)
+```
+
+
+### Conditional operator ‘?’
+```javascript
+let result = condition ? value1 : value2;
+let accessAllowed = (age > 18) ? true : false;
+```
+
+### Nullish coalescing operator '??'
+
+
+
+> && will give first falsy value or last truly value.
+
+Falsy Values:
+1. FALSE
+2. BLANK STRING('')
+3. NOT A NUMBER(NaN)
+4. UNDEFINED
+5. ZERO INTEGER(0)
+6. NULL
+
+```javascript
+5 && 10 && 20	// 20
+5 && 0 && 20	// 0
+0 && 10 && 20	// 0
+10 && Infinity && 30	// 30
+10 && -Infinity && 30	// 30
+10 && NaN && 30 // NaN
+10 && undefined && 30	// undefined
+```
+
+> || will give first truly value or last falsy value.
+
+```javascript
+undefined || null || 'Hello'	// 'Hello'
+false || '' || undefined || null || 0 || NaN || 1234 //	1234
+```
+
+
+> ?? Won't consider 0,'',NaN,false as falsy values
+
+```javascript
+null ?? 0 ?? 10		// 0
+undefined ?? 0 ?? null	// 0
+undefined ?? null ?? false ?? 'Str'	// false
+undefined ?? null ?? NaN ?? 'Str'	// NaN
+```
+
+> Due to safety reasons, JavaScript forbids using ?? together with && and || operators, unless the precedence is explicitly specified with parentheses.
+
+```javascript
+let x = 1 && 2 ?? 3;  	// Syntax error
+let x = (1 && 2) ?? 3; 	// Works
+10 ?? 5 * 3 ?? 20	// 10
+(10 ?? 5) * (3 ?? 20)	// 30
+```
+
+
+## Functions
+- Can access outer varable
+- Local varable scope is limitted to the function
+
+```javascript
+function show(){
+}
+
+function max(...nums){
+}
+
+function pow(base, exp){
+}
+
+// Default values
+function area(length = 5, width = 10){
+}
+
+// Complex expression
+function showMessage(from, text = anotherFunction()) {
+  
+}
+
+function showObject({name, age}){
+}
+
+function showObject({name = 'Sujith', age = 27 }){
+}
+
+```
+
+
+## Function expressions
+> A function is a value representing an “action”
+
+```javascript
+let sayHi = function() {
+  console.info( "Hello" );
+};
+
+sayHi	// shows the function code
+sayHi()	// Invokes the function
+```
+
+## Callback functions
+
+```javascript
+let sayHi = function() {
+  console.info( "Hello" );
+};
+
+sayHi	// shows the function code
+sayHi()	// Invokes the function
+
+let x = sayHi;
+x();	// Invokes the actual function
+
+// Call back function
+function run(myFun){
+	myFun(); // Invoking a function
+}
+
+run(x);
+run(sayHi);
+```
+
+## Arrow functions
+
+```javascript
+let func = (arg1, arg2, ..., argN) => expression;
+
+let welcome = (age < 18) ?
+  () => alert('Hello!') :
+  () => alert("Greetings!");
+
+welcome(); // invoking function
+```
+
+## Objects
+
+CRUD Operation on objects
+
+```javascript
+const person = {
+	name : 'Altman',
+	age : 30,
+}
+
+// Read as JSON
+console.info(JSON.stringify(person) );
+
+// Read properties
+
+
+// Delete a property
+delete person.name;
+
+// Update a property
+person.age = 40;
+
+// Add new Property
+person.salary = 1e5;
+```
+
+## Sample Objects
+```javascript
+
+let fname = 'Global name';
+
+const person = {
+	fname: 'Altman',
+	age: 30,
+	addr: {
+		fname: 'Jernifar lawrence',
+		street: 'Nehru Nager',
+		pin: 507123,
+		findPeople() {
+			console.info(6, `You're neibhour is ${this.fname}`)
+		}
+	},
+	sayHi() {
+		let fname = 'Sujith'; // Local varible
+		console.info(7, `Instance name:${this.fname}; Local name:${fname}`);
+	},
+	accessGlobalVar() {
+		// Note: You can access class instance variables without `this` keyword.
+		console.info(8.1, `Global name:${fname}`);
+	},
+	toString() {
+		return JSON.stringify(this, null, 5);
+	}
+}
+
+// Read as JSON
+console.info(JSON.stringify(person));
+
+// Read properties
+console.info(1, person.fname);
+console.info(2, person['fname']);
+console.info(3.1, person['addr']['street']);
+console.info(3.2, person.addr['street']);
+console.info(4.1, person.addr.pin);
+console.info(4.2, person['addr'].pin);
+console.info(4.3, person['addr']?.pin); //Optional chaining
+console.info(4.4, person.addr.pin);
+console.info(4.5, person['addr']['pin']);
+console.info(4.6, person['addr']?.['pin']);
+// Invoking Functions
+person['addr']['findPeople']();
+person.addr.findPeople();
+person.sayHi();
+person['sayHi']();
+person.accessGlobalVar();
+person.accessInstanceVar();
+// Optional chaining
+person?.addr?.findPeople?.();
+person?.['addr']?.['findPeople']?.();
+person.sayBye?.(); // Avoid calling undefined function
+person['sayBye']?.();
+person.sayHi(); // Invoking function
+
+// Delete a property
+delete person.fname;
+
+// Deleting a subproperty
+delete person.addr.pin;
+
+// Update a property
+person.age = 40;
+
+// Update a sub property
+person.addr.fname = '24 Area';
+
+// Add new Property
+person.salary = 1e5;
+
+// Add a Sub property
+console.info(person.toString());
+```
+
+
+Output 
+```
+1 Altman
+2 Altman
+3.1 Nehru Nager
+3.2 Nehru Nager
+4.1 507123
+4.2 507123
+4.3 507123
+4.4 507123
+4.5 507123
+4.6 507123
+6 You're neibhour is Jernifar lawrence
+6 You're neibhour is Jernifar lawrence
+7 Instance name:Altman; Local name:Sujith
+7 Instance name:Altman; Local name:Sujith
+8.1 Global name:Global name
+8.2 Access name:Global name
+6 You're neibhour is Jernifar lawrence
+6 You're neibhour is Jernifar lawrence
+7 Instance name:Altman; Local name:Sujith
+{
+     "age": 40,
+     "addr": {
+          "fname": "24 Area",
+          "street": "Nehru Nager"
+     },
+     "salary": 100000
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
