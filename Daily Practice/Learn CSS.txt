@@ -1,0 +1,121 @@
+CSS
+
+element Selector:
+
+p {}
+
+id Selector
+
+#para {}
+
+Class Selector
+ 
+.center {}
+
+Class and Element
+
+p.center {}
+
+
+h1, h2, p {}
+
+
+background-color: green;
+opacity: 0.3;
+background-image: url("paper.gif");
+background-repeat: repeat-x;
+background-repeat: no-repeat;
+background-position: right top;
+margin-right: 200px;
+background-attachment: fixed/scroll;
+
+background-color
+background-image
+background-repeat
+background-attachment
+background-position
+
+
+background-color: lightgrey;
+  width: 300px;
+  border: 15px solid orange;
+  padding: 50px;
+  margin: 20px;
+  outline: 5px solid yellow;
+  outline-offset: 5px;
+
+
+<body>
+	<header>
+		<div>
+			<nav>
+			</nav>
+		</div>
+	<header>
+
+	<main>
+		<section>
+		</section>
+		<section>
+		</section>
+	</main>
+</body>
+
+
+text-align: center/left/right/justify
+text-decoration: overline/line-through/underline/
+text-decoration-color: purple
+text-transform: uppercase/lowercase/capitalize
+
+
+
+a {
+  text-decoration: none;
+}
+
+
+
+text-indent
+letter-spacing
+line-height
+word-spacing
+white-space
+
+font-family: Tahoma, Verdana, sans-serif;
+
+
+---
+
+
+<div style="overflow-x: auto;">
+  <table>
+  </table>
+</div>
+
+CSS Layout - The display Property
+1. Block-Level
+2. Inline
+3. None
+
+CSS Layout - The position Property
+
+static
+relative
+fixed
+absolute
+sticky
+
+div.static {
+  position: static;
+  border: 3px solid #73AD21;
+}
+
+float and clear
+
+
+
+
+
+
+
+

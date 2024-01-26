@@ -1,0 +1,16 @@
+const faker = require('faker');
+
+// Function to generate a fake user
+function generateFakeUser() {
+  const name = faker.name.findName();
+  const age = faker.random.number({ min: 18, max: 70 });
+  const dept = faker.random.arrayElement(['HR', 'IT', 'Finance', 'Marketing']);
+  const dateOfJoin = faker.date.past(10); // Random date from the past 10 years
+
+  return { name, age, dept, dateOfJoin };
+}
+
+// Generate an array of 10 fake users
+const fakeUsers = Array.from({ length: 10 }, generateFakeUser);
+
+console.log(fakeUsers);

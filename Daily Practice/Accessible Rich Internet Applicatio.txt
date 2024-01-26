@@ -1,0 +1,7 @@
+Accessible Rich Internet Applications (ARIA)
+
+- Avoid hardcoding IDs in React.
+- generate a unique ID with useId.
+
+
+Hydration:

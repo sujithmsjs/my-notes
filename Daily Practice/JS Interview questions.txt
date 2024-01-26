@@ -1,0 +1,10 @@
+
+currying: It is a technique of translating the evaluation of a function that takes multiple arguments into evaluating a sequence of functions, each with a single argument. It returns a new function until all the arguments are provided.
+
+Example:
+const multiply = (a) => (b) => (c) => a * b * c;
+const multiplyByTwo = multiply(2); // Returns (b) => (c) => 2 * b * c;
+const multiplyByThree = multiplyByTwo(2); // Returns (c) => 2 * 2 * c;
+console.log(multiplyByThree(5)); //Return  2 * 2 * 5;
+console.log(multiplyByThree(10));   //Return  2 * 2 * 10;
+

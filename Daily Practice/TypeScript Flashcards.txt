@@ -1,0 +1,71 @@
+TypeScript is a _____ superset of JavaScript which adds _____ typing.	syntactic, static
+JavaScript is a _____ typed language.	loosely
+Transpiles 
+TypeScript is _____ into JavaScript using a compiler.	transpiled
+How many times of Type Assignment in TS?	Explicit, Implicit
+let firstName: string = "Dylan"; Which type?	Explicit
+let firstName = "Dylan";	Implicit
+Infer	Having TypeScript "guess" the type of a value is called infer.
+_____ assignment forces TypeScript to infer the value.	Implicit
+When Unable to Infer which is default type	any
+Unable to Infer default any disabled by		noImplicitAny in tsconfig.json
+
+types used for disabling type checking any, unknown
+
+any is a type that disables type checking and effectively allows all types to be used.
+unknown is a similar, but safer alternative to any.
+
+How to define an array in TS
+const names: string[] = [];
+
+How to define readonly String array
+const names: readonly string[] = ["Dylan"];
+
+Type Inference in arrays
+const numbers = [1, 2, 3];
+
+What is tuple?
+A tuple is a typed array with a pre-defined length and types for each index.
+
+Define our tuple?
+let ourTuple: [number, boolean, string];
+
+Initialize a tuple?
+ourTuple = [5, false, 'Coding God was here'];
+
+How to define Readonly Tuple?
+const ourReadonlyTuple: readonly [number, boolean, string] = [5, true, 'The Real Coding God'];
+
+Define Named Tuples?
+const graph: [x: number, y: number] = [55.2, 41.3];
+
+How you Destructure a Tuples?
+const graph: [number, number] = [55.2, 41.3];
+const [x, y] = graph;
+
+
+Define a car object usings types.
+
+const car: { type: string, model: string, year: number } = {
+  type: "Toyota",
+  model: "Corolla",
+  year: 2009
+};
+
+
+type todo = {id : number, title: string, status : boolean  } ;
+
+const todos : todo[] = [];
+
+todos.push({
+    id : 12,
+    title: 'Sujith',
+    status: true
+});
+
+console.info(todos);
+
+
+
+
+

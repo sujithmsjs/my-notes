@@ -1,0 +1,5 @@
+## SyntaxError: Missing initializer in const declaration
+> Const variable must be initialize before use
+
+## ReferenceError: emp is not defined
+> Viriable must declare before doing operation opon it.
