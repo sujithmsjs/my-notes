@@ -1,0 +1,120 @@
+
+
+
+OAuth2 is the industry-standard protocol for authorization. 
+
+
+1. CLIENT
+2. OAUTH2 PROVIDERS
+3. USER
+4. RESOURCE SERVER
+5. AUTHORIZATION REQUEST
+6. CLIENT ID : This property represents the client ID assigned to your application by the OAuth2 provider. 
+7. REDIRECT URI: the URL where the OAuth2 provider should redirect the user after authentication and authorization.
+8. AUTHORIZATION URL: This property is the URL of the authorization endpoint provided by the OAuth2 provider.
+9. TOKEN URL: This property is the URL of the token endpoint provided by the OAuth2 provider. It's where your application exchanges authorization grants (like authorization codes) for access tokens.
+10. SCOPE: This property specifies the permissions or scopes that your application requests from the user. It defines what data your application wants to access on behalf of the user.
+
+
+CSRF attacks:
+
+
+
+
+OAuth2 Grant types
+The most common OAuth2 Grant types are Authorization Code and Implicit Flow.
+
+-----------------------------------
+OAuth 2.0 Authorization Code Grant:
+-----------------------------------
+
+
+
+
+
+
+
+
+
+https://tasoskakour.com/blog/react-use-oauth2
+
+
+
+
+
+
+
+
+
+
+
+OAuth stands for "Open Authorization." It's a protocol that allows users to grant third-party applications limited access to their resources without exposing their credentials. The "2.0" in OAuth 2.0 indicates that it's the second version of the OAuth protocol, which introduced significant improvements over the original OAuth 1.0 protocol.
+
+What is OAuth 2.0?
+OAuth 2.0 is an authorization framework that allows third-party services to access a user's data without needing their password. It provides a secure way for users to grant permissions to third-party applications to act on their behalf.
+
+Basic Actors in OAuth 2.0:
+Resource Owner: The user who owns the data and grants access to it.
+Client: The application or service that wants to access the user's data.
+Authorization Server: The server that authenticates the user and issues access tokens.
+Resource Server: The server that hosts the user's data.
+Steps in OAuth 2.0 Flow:
+Authorization Request:
+
+The client requests authorization from the user to access their data. It redirects the user to the authorization server.
+User Authentication:
+
+The user logs in to the authorization server and confirms whether to grant access to the client.
+Authorization Grant:
+
+If the user grants permission, the authorization server issues an authorization grant to the client. This grant represents the user's consent to access their data.
+Access Token Request:
+
+The client presents the authorization grant to the authorization server and requests an access token.
+Access Token Issuance:
+
+If the authorization grant is valid, the authorization server issues an access token to the client. The access token is a credential that the client can use to access protected resources on behalf of the user.
+Accessing Protected Resources:
+
+The client presents the access token to the resource server when accessing the user's data.
+The resource server validates the access token and grants access to the requested resources if the token is valid.
+Key Concepts:
+Access Token: A credential that allows the client to access protected resources on behalf of the user. It represents the user's authorization to access specific data.
+Authorization Grant: A permission or consent given by the user to the client to access their data.
+Scope: Specifies the level of access that the client is requesting. It defines what resources the client can access and what operations it can perform.
+Refresh Token: An optional token that can be used to obtain a new access token when the current one expires. It provides a way to maintain long-term access to the user's data without requiring them to re-authenticate.
+Benefits of OAuth 2.0:
+Enhanced Security: Users don't need to share their passwords with third-party services, reducing the risk of unauthorized access to their accounts.
+User Control: Users have control over which data they want to share with third-party applications and can revoke access at any time.
+Scalability: OAuth 2.0 is widely adopted and supported by many platforms and services, making it suitable for building scalable and interoperable authentication and authorization systems.
+In summary, OAuth 2.0 provides a standardized and secure way for users to grant permissions to third-party applications to access their data without sharing their credentials. It's a fundamental technology used in modern web and mobile applications to enable seamless integration and data access across different services.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

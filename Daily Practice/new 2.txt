@@ -1,0 +1,5 @@
+1. Records
+2. Canonical constructor
+3. Sealed Classes 
+
+- fine-grained

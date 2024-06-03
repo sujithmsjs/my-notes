@@ -1,0 +1,18 @@
+
+books:
+  author: Vineeth Manchala
+  title: Atomic Habits
+  pages: 500
+  timeTaking : 30h
+  sizeInGB: 2GB
+  chapters:
+    1 : First
+    2 : Secound
+    3 : Third
+  emails:
+   - sujithmsjs@gmail.com
+   - sujithyld@gmail.com
+  address:
+    area: Yellandu
+    country: India
+    pin: 123456

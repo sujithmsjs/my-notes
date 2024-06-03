@@ -140,9 +140,6 @@ const prodId = params.prodId;
 
 Relative and Absolute Paths
 
-
-
-
 Absolute Paths starts with '/', it means that it will come after the domin name.
 
 Absolute paths:

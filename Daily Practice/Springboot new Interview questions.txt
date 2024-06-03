@@ -1,0 +1,82 @@
+
+
+DISABLE WEBSERVER
+-----------------
+1. Application properties
+spring.main.web-application-type=none
+
+2. ApplicationContext
+
+new SpringApplicationBuilder(MyApplication.class)
+                .web(WebApplicationType.NONE)
+                .run(args);
+				
+				
+SpringApplication application = new SpringApplication(ChangeServerApplication.class);
+		application.setWebApplicationType(WebApplicationType.NONE);
+		application.run(args);
+
+
+SpringApplication.run(ChangeServerApplication.class, args);
+
+
+
+
+
+3. Exclude server in pom.xml
+
+
+<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-tomcat</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		
+ADDING MULTIPLE DATABASES
+-------------------------
+
+Datasource
+- Driver class
+- url
+- password
+- 
+
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/ContactBook?serverTimezone=UTC
+    username: root
+    password: apple
+	
+spring.data.mongodb.uri=${MONGODB_DATABASE_URL\:mongodb\://localhost\:27017/quotes}
+spring.data.mongodb.auto-index-creation=true
+springdoc.pathsToMatch=/api/**
+
+
+
+### Server PORT ###
+server.port=8080
+
+
+
+### Data Source ###
+spring.datasource.url=jdbc:h2:mem:testdb
+spring.datasource.driverClassName=org.h2.Driver
+spring.datasource.username=sa
+
+### JPA Props ###
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true
+spring.jpa.hibernate.ddl-auto = create
+
+### H2 Database Settings ###
+spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+spring.jpa.defer-datasource-initialization=true
+spring.h2.console.enabled=true
+
+# logging.level.org.hibernate=DEBUG

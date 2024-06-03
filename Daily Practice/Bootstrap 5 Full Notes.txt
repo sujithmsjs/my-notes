@@ -49,6 +49,62 @@ Ex: col-sm-3
 .col-sm|md|lg|xl|xxl
 
 
+Alignment
+- Vertical Alignment
+- Horizontal Alignment
+- Column breaks
+- Reordering
+
+
+
+
+
+
+
+
+
+
+
+
+row-cols
+Horizontal alignment:
+
+justify-content:
+
+justify-content-md-center
+justify-content-center
+
+-start/center/end/around/betwen/evenly
+
+
+Vertical alignment:
+
+
+Ordering:
+
+order-last/first/int
+Ex:
+<div class="col order-5">
+<div class="col order-last">
+<div class="col order-first">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Typography
 ----------
 .display-1 to .display-6
@@ -125,6 +181,14 @@ div | .progress-bar-animated
 </div>
 
 year, date, month
+
+
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+		//...
+	</div>
+</div>
 
 
 

@@ -34,7 +34,7 @@ Overall, Redux Toolkit streamlines the development process and reduces the amoun
 
 React Redux Toolkit is a library that simplifies the process of managing state in a React application using Redux. It provides a set of utility functions and abstractions that make it easier to write Redux code.
 
-```jsx
+
 npm install @reduxjs/toolkit
 npm i bootstrap
 npm install react react-dom redux react-redux @reduxjs/toolkit
@@ -45,7 +45,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 // Creating a Slice
 const counterSlice = createSlice({})
-```
+
 
 
 // Three properties you need to provide to create a Slice.
@@ -53,21 +53,17 @@ const counterSlice = createSlice({})
 1. name
 2. initialState
 3. reducers
-```jsx
+
 const counterSlice = createSlice({
-
   name: 'counter',
-
   initialState: {},
-
   reducers: {},
-
 });
-```
+
 // Slice provide sever useful fields
 counterSlice.actions
 counterSlice.reducer
-```jsx
+
 export const { increment, decrement } = counterSlice.actions;
 
 export default counterSlice.reducer;
@@ -84,9 +80,10 @@ const store = configureStore({
     counter: counterReducer,
   },
 });
-```
 
-```jsx
+
+---
+
 initialState: {value : 0}
 
 increase : state => {
@@ -96,14 +93,13 @@ increase : state => {
 reducer : {
 	counter : //...
 }
-```
-```jsx
+
 const value = useSelect(state => state.counter.value);
 
 
 Action object:
 {"type":"counter/addValue","payload":""}
-```
+
 
 payload: undefined
 type: "auth_local/login"
@@ -125,7 +121,7 @@ Here's how Immer works:
 
 Here's a simple example of how you can use Immer with Redux Toolkit:
 
-```jsx
+```javascript
 import { createSlice } from "@reduxjs/toolkit";
 import produce from "immer";
 
@@ -208,6 +204,432 @@ Here are some examples of non-draftable values:
    ```
 
 Immer works most effectively with plain JavaScript objects and arrays that are not deeply frozen or have not been turned into non-draftable values by other means. When working with non-draftable values, you may need to handle updates differently, such as by creating new instances or objects to represent the updated state.
+
+
+What is Redux?
+Redux is a state management library that allows you to manage the state of your JavaScript applications more efficiently and predictably.
+
+
+Why Should I Use Redux?
+
+Redux can help simplify the state management process, especially when dealing with complex and interconnected components. Here are some reasons why you might want to use Redux in your application:
+
+Centralized state management: With Redux, you can maintain the state of your entire application in a single store, making it easier to manage and access data across components.
+
+Predictable state updates: Redux has a clear flow of data, which means changes to the state can only happen when you create an action and send it through Redux. This makes it easy to understand how your application's data will change in response to user actions.
+
+Easier debugging: With Redux DevTools, you have a clear record of all the changes to your application's state. This makes locating and fixing issues in your code easier, saving you time and effort in the debugging process.
+
+Better performance: By minimizing the number of state updates and reducing the need for prop drilling, Redux helps improve your application's performance.
+
+
+
+
+27-09-2023
+
+Redux Toolkit in 5 words:
+
+- Provider
+- configureStore
+- createSlice
+- useDispatch hook
+- useSelector hook
+
+
+
+1. Provider:
+
+import { Provider } from 'react-redux';
+
+<Provider store={activeStore}>
+	<App />
+</Provider>
+
+2. configureStore
+
+import { configureStore } from "@reduxjs/toolkit"
+
+const store = configureStore({
+    reducer: {
+		//... All the reducers
+    }
+});
+
+
+3. createSlice
+
+
+const mySlice = createSlice(
+	{
+		name : '...',
+		initialState : {...},
+		reducers : {...}
+	}
+)
+
+4. useDispatch hook
+
+import { useDispatch } from 'react-redux';
+
+const dispatch = useDispatch();
+dispatch(login())
+dispatch(login({email: '', pwd: ''}))
+dispatch(addValue(inputRef.current.value));
+
+5. useSelector hook
+import { useSelector } from 'react-redux';
+
+const state = useSelector(state => state);
+const value = useSelector(state => state.counter.value);
+{
+	counter: {
+		value: 102
+	}
+}
+
+
+
+
+
+
+
+How to install Redux
+Redux requires a few dependencies for its operations, namely:
+
+Redux: The core library enables the redux architecture.
+React Redux: Simplifies connecting your React components to the Redux store.
+Redux Thunk: Allows you to write asynchronous logic in your Redux actions.
+Redux DevTools Extension: Connects your Redux application to Redux DevTools
+
+
+
+How Does Redux Work?
+1. Store
+2. Actions
+3. Dispatch
+4. Reducers
+
+
+import { createSlice } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
+
+What is slice?
+- A slice the segment of the data in the store.
+- Which can be created, updated, deleted individually without effecting other fields.
+
+How to create Slice?
+- createSlice method can be used to create new slice.
+- createSlice method return A slice object.
+- We can get actions and reduce of the slice using appropriate methods.
+- Every slice has a name, initialState and a set of Actions which are enclosed inside reducers.
+
+
+const mySlice = createSlice(
+	{
+		name : '...',
+		initialState : {...},
+		reducers : {...}
+	}
+)
+
+How to create Reducer functions?
+- While creating the Slice, need to provide the initialState and a few set of methods that can modifty that date.
+- Those modifying fuctions are called Reducer fuctions.
+- reducer fucntions need to get loading in side reducer.
+
+
+reducers : {
+	login : (s, a) => {},
+	logout : (s, a) => {},
+	getUser : (s, a) => {},
+	refresh : (s, a) => {},
+}
+
+
+*s : State
+*a : Action
+
+
+- Every function will take two parameters
+1. Previous State: It is the previous state of the slice
+2. Action object: It contains the payload object where data is provided. Dispatch function will call the Reducer function with Action object.
+
+Ex:- 
+
+Note:
+- For primitive datatypes you should RETURN NEW STATE.
+- For reference types you should MUTATE THE PREVIOUS STATE.
+
+Ex 1:-
+
+```javascript
+initialState : 100
+
+dispatch(addValue());
+
+reducers: {
+	addValue: (value) => {
+		return value + 1;
+    }
+}
+```
+
+Ex 2:-
+
+Note: Action object contains payload. you should not use payload directly.
+
+```javascript
+initialState : 100
+
+dispatch(addValue(123));
+
+reducers: {
+	addValue: (value, action) => {
+		return value + action.payload; // 100 + 123
+    }
+}
+```
+
+Actions:
+- An action is an object that describes what changes need to be made to the state of your application.
+- It sends data from your application to the Redux store and serves as the only way to update the store.
+- Actions method on Slice will return a set of methods which are declared inside reducers.
+Ex:-
+const {login,logout, getUser,refresh} = mySlice.actions;
+
+What is Slice Reducer?
+- A reducer is a function that takes in the current state of an application and an action as arguments, and returns a new state based on the action.
+- We can get the Slice reducer by calling mySlice.reducer method.
+
+
+const myReducer mySlice.reducer;
+
+Redux store:
+- The Redux store is like a giant container that holds all the data for your application.
+- The store is the single source of truth for your application's state.
+- This means that any component in your application can access it to retrieve and update data
+- Every store contains a reducer.
+- Configure Store method used to create the new store.
+- A Store has a Reducer that can be combination of the multiple Reducers.
+
+
+The root reducer
+- It combines all the individual reducers in the application.
+- Every store has a root reducer
+- configureStore and combineReducers methods can be used to create a store combining all the reducer in redux.
+
+
+const store = configureStore({
+    reducer: {
+		//... All the reducers
+    }
+});
+
+Ex:-
+
+const store = configureStore({
+    reducer: {
+        counter: counterReducer,
+        auth: authReducer,
+        list: listReducer,
+        auth_local: authReducer_LS,
+        menu: menuReducer
+    }
+});
+
+
+
+
+
+
+Dispatch
+In Redux, dispatch is a function provided by the store that allows you to send an action to update the state of your application.
+
+
+
+import { Provider } from 'react-redux';
+<Provider store={store}>
+	<App />
+</Provider>
+
+
+# Simplifies
+
+### Step 1:
+
+- Whole application should be wrapped inside the Redux Provider.
+- A Store should provide the the Provider
+- The Provider will share the store to whole application.
+
+<Provider store={store}>
+	<App />
+</Provider>
+
+### Step 2: 
+
+How to create store?
+- A Redux store can be created using configureStore method.
+- configureStore will take the a bunch of slice reducers to create a root reducer.
+
+const store = configureStore({
+    reducer: {
+		//... All the reducers
+    }
+});
+
+Ex:- 
+
+const store = configureStore({
+    reducer: {
+        counter: counterReducer,
+        auth: authReducer,
+        list: listReducer
+    }
+});
+
+
+### Step 3:
+
+How to create a Slice?
+- A slice can be created using the create Slice method.
+
+const mySlice = createSlice(
+	{
+		name : '...',
+		initialState : {...},
+		reducers : {...}
+	}
+)
+
+### Step 4:
+
+Getting Reducer and Actions from Slice
+
+mySlice.actions:
+- It will provide a object of actions.
+- Destructured the `mySlice.actions` to get the actions.
+
+Ex:-
+export const { login, logout } = mySlice.actions;
+
+mySlice.reducer:
+- It will return a reducer function
+
+Ex:-
+export const myReducer = mySlice.reducer;
+
+### Step 5:
+
+How to call an action?
+
+import { useDispatch } from "react-redux";
+const dispatch = useDispatch();
+
+
+dispatch(login());
+dispatch(logout());
+
+### Step 6:
+
+Dispatching with parameters
+
+dispatch(itemActions.addItem({ item, cost }));
+
+addItem: (state, action) => {
+	// action.payload will hold the data send by dispatcher
+}
+
+### Step 7:
+
+STORE STRUCTURE:
+
+import { configureStore, createSlice } from "@reduxjs/toolkit"
+import authReducer_LS from "./authSlice_LS";
+const slice1 = createSlice({
+    name: 'slice1',
+    initialState: 1234,
+})
+
+const slice2 = createSlice({
+    name: 'slice2',
+    initialState: false,
+})
+
+const slice3 = createSlice({
+    name: 'slice3',
+    initialState: 'name',
+})
+
+const slice4 = createSlice({
+    name: 'slice4',
+    initialState: [1, 2, 3, 4, 5],
+})
+
+const slice5 = createSlice({
+    name: 'slice5',
+    initialState: {
+        id: 101,
+        name: 'Sujith',
+        active: false
+    },
+})
+
+export const reducer1 = slice1.reducer;
+export const reducer2 = slice2.reducer;
+export const reducer3 = slice3.reducer;
+export const reducer4 = slice4.reducer;
+export const reducer5 = slice5.reducer;
+
+
+const fakeStore = configureStore({
+    reducer: {
+        data1 : reducer1,
+        data2 : reducer2,
+        data3 : reducer3,
+        data4 : reducer4,
+        data5 : reducer5,
+        auth_local: authReducer_LS,
+    }
+})
+
+export { fakeStore };
+
+
+### Store
+```json
+{
+    "data1": 1234,
+    "data2": false,
+    "data3": "name",
+    "data4": [1, 2, 3, 4, 5],
+    "data5": {
+        "id": 101,
+        "name": "Sujith",
+        "active": false
+    },
+    "auth_local": {
+        "isLogin": true
+    }
+}
+```
+
+How to select the data from STORE?
+
+const state = useSelector(state => state); // Total state
+const state = useSelector(state => state.data1); // 1234
+const state = useSelector(state => state.data4); // [1, 2, 3, 4, 5]
+const state = useSelector(state => state.data5.name); // Sujith
+const state = useSelector(state => state.data4[1]); // 2
+
+
+
+
+
+
+
+
+
+
 
 
 

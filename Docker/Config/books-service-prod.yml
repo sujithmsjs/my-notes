@@ -1,0 +1,17 @@
+books:
+  author: "{cipher}345f0cc37a8ca17c2bf65f577341e4616a990194744728b126ce5c593097576e"
+  title: Atomic Habits
+  pages: 225
+  timeTaking : 30h
+  sizeInGB: 2GB
+  chapters:
+    1 : "{cipher}d07a4f7b24fbb6ac8b9986cdd940f344e584514148f20e8995d879d790b526ce"
+    2 : Secound
+    3 : Third
+  emails:
+   - sujithmsjs@gmail.com
+   - sujithyld@gmail.com
+  address:
+    area: Yellandu
+    country: India
+    pin: 123456

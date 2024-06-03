@@ -1,0 +1,1771 @@
+
+1. https://acrobat.adobe.com/id/urn:aaid:sc:AP:e2ba25c3-1d8a-4467-95da-4af51d9ce6bd  ==> SQL queries
+
+2.https://javaconceptoftheday.com/solving-real-time-queries-using-java-8-features-employee-management-system/  ==> employee class using java 1.8 features-employee-management-system/
+
+3.https://java.scjp.jobs4times.com/  ==> core java In de-tailed theory
+
+4.https://acrobat.adobe.com/id/urn:aaid:sc:AP:b794c90f-5872-45a2-afbb-644f6e4f78e5 ==> core java interview questions and answers
+
+5.https://acrobat.adobe.com/id/urn:aaid:sc:AP:9a11d8c5-3259-4448-9b15-e2b85dd98599 ==> core java interview questions and answers
+
+6.https://acrobat.adobe.com/id/urn:aaid:sc:AP:4f8b558f-56e0-4630-8a1d-2d167ba701f4 ==> spring-boot interview questions and answers
+
+7.https://acrobat.adobe.com/id/urn:aaid:sc:AP:157151e8-10d9-48b6-b026-0ca7ea39325a ==> UI Technlogies (html,css.javascript)
+
+8.https://acrobat.adobe.com/id/urn:aaid:sc:AP:d7e24cc4-8bf4-41f6-9e90-42021db12114 ===> core java interview questions and answers
+
+9.https://acrobat.adobe.com/id/urn:aaid:sc:AP:f08ff70c-67af-4678-874b-60b4070cf758 ==> academy notes for questions and practices
+
+10.https://java2blog.com/java-coding-interview-questions/  ==> java2blog questions
+
+11. Say that a "clump" in an array is a series of 2 or more adjacent elements of the same value. Return the number of clumps in the given array.
+ 
+countClumps([1, 2, 2, 3, 4, 4]) → 2
+countClumps([1, 1, 2, 1, 1]) → 2
+countClumps([1, 1, 1, 1, 1]) → 1
+
+
+12.print the elements in list reverse order with out for loop 
+
+ int array[]={1,7,3,4,5,6,2};
+ 
+ output:  2 6 5 4 3 7 1
+ 
+13.How the hashcode and equals method functionality working in hashmap
+ 
+14.Serialization concept
+ 
+15.@PostConstruct @Component @Service  JUnit test cases for CRUD
+ 
+16.yield method in multithreading
+ 
+17.@FunctionalInterface and marker interface
+
+18.Web service SOAP structure
+19.springboot advantages
+20.Design patterns- creational, structural, Behavioural
+
+21.Assuming  a String ="My name" by using stream we can write in java 
+
+22.
+take example String = "srinivaswelcometoworld"; in this string I need to findout for duplicates count in different ways.
+
+ 
+Reverse String
++++++++++++++++++++++
+ 
+String str="shyam";
+String rev="";
+Palindrome
+String str="shyam";
+for(int i=str.length-1;i>=0;i--)
+{
+rev+=str.charAt(i);
+}
+if(str.equals(rev))
+{
+System.out.println("String is palindrome");
+}
+ 
+reverse a number
+++++++++++++++++
+
+int i=87654;
+int dummy=0,num;
+ 
+while(i>0)
+{
+num=i%10;
+dummy=dummy*10+num;
+i=i/10;
+}
+System.out.println(dummy);
+
++++++++++++
+ 
+Singleton 
++++++++++++++++++++++++++
+ 
+Class Employee
+{
+private static Employee instance;
+private Employee(){}
+public static Employee getInstance()
+{
+if(instance==null){
+instance=new Employee();
+return instance;
+}
+}
+
+
+
+Coding Exercise: write java code to reverse number string. Sample:
+1. Input: 123 -> Output: 321
+2. Input: -247 -> Output: -742
+
++++++++++++++++++++
+ 
+String str="123";
+String rev="";
+if(str!=null){
+if(str.substring(0,1).equals("-")){
+rev="-";
+}
+ 
+for(int i=str.length()-1:i>=0;i--){
+rev=rev+str.charAt(i);
+}
+System.out.println(rev);
+}
++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+Option 1: pros/cons
+Option 2: ...
+ 
+What happens if
+Input: +247
+Or
+Input: null
+
+Design pattern for factory
+++++++++++++++++
+ 
+interface Datasource{
+public void connection();
+}
+ 
+Class Sqldatasource implements Datasource{
+public void connection(){
+System.out.println("SQl DataSource");
+}
+}
+ 
+Class MySqldatasource implements Datasource{
+public void connection(){
+System.out.println("MySQL DataSource");
+}
+}
+ 
+class datasourceFactory
+{
+Datasource datasource;
+public Datasource getConnection(String type){
+if(type.equals("SQL")){
+datasource=new Sqldatasource();
+}
+if(type.equals("MySQL")){
+datasource=new MySqldatasource();
+}
+return datasource;
+}
+}
+++++++++++++++++++++++++++
+
+1.fibanacci series
+2.innner join and outerjoin how we need to fetch the records by using queries.  
+3.Exception hieararchy
+4.failsafe and failfast 
+5.what are the realtime issues u are facing in the organization
+6.what are the springboot annotations and brifly
+7. what are the exceptions u are facing in realtime sceanrios
+
+
+1.Kubernate in detailed explanation .
+2.Blue green deployment and in details explaination.
+3,explain CI/CD pipeline and design and images and container and brifly.
+4.Microservice Design patterns.
+5.1 millon of code you have how to seperate the individual services 
+in like high level architecture
+6.Scrum and agile methodlogy in detailed. 
+
+7.Create a method level Annotation @LogMethodParam which logs parameters passed to method.
+
++++++++++++++++++++++++++++++++++
+
+
+08-01-2024
+
++++++++++++
+
+1.why springboot is  called "opinonated"?
+
+2.how do you have access to the model in your view ? where does it come from ??
+
+3.what is the @Requestparam used for ??
+
+4.Difference between application.properties and application.yml
+
+5.what is the root application context  in spring mvc ? how is it loaded ??
+
+6.Comparator and comparable 
+
+7.Explain about the IOC container
+
+8.what is seralization and have you implement seralization in your project ??
+
+9.what is the use of intern() in string
+
+10.where you have implemented multi threading in your project 
+
+11.write a program to find if the given string is balanced or not 
+
+  Example of balanced string : "{}()","[{()}]","({[]})"
+  
+12.why we sholud not handle errors 
+  
+13. where in your project have you used concurrentHashmap
+
+14.what is the benefit of design patterns.
+
+++++++++++++++++++++++++++++++++++++
+
+1.string reverse in java using java 8
+
+2.string is threadsafe r not and why 
+
+3.what is the difference between stringbuffer and stringbulider
+
+4.what is jsonobject and tell me
+
+5.what is the diff between union and unionall
+
+6.what is the diff between primarykey and unique key
+
+7.what is the use of springBean
+
+8.what are the design patterns
+
+9.singleton is it thread safe
+
+10.what is the difference between jar and war
+
+11.how we need to generate the jar and war files with maven and commandprpt
+
+12.in the table latest regards of 5
+
+13.how you are storing in the file and blob r string.
+
+14.what is the diff b/w put and post and what is the use of put ?? 
+
+15.write is  the post call method with annotations
+
+16.design patterns for singleton
+
+17.what is Noclassdeffounderror
+
+18.employee and department realtionship 
+
+19.
+
++++++++++++++++++
+
+1.pending from string reverse and array reverse using streams ??
+
+2.
+
+
++++++++++++++++++++++
+
+LTI Mindtree interview ==> 29-01-2024
+
+1.what is the use of Transient keyword
+
+2.what is the volatile keyword in java
+
+3.write down singleton class
+
+
+4.write down simple sum of two values using lamda expression.
+
+5.what is the concurrenthashmap 
+
+6.can we create our own Annotation how we can do??
+
+7.what u mean by the caching
+
+8.what is the differnce between pointcut and jointcut
+
+9.what is compile time polymerphism.
+
+Interview process mock interview 
+
++++++++++++++++++++++++
+
+1.what are the java features introduce in java 8
+
+2.why the functional interface
+
+3.why java is not pure java oriented language.
+
+4.Internal working of hashmap any changes in java 8
+
+5.what changes are done in java 8 in garbage collection.
+
+Java 8 introduced several enhancements and improvements to the Garbage Collection (GC) mechanism. 
+Some of the notable changes include the introduction of the G1 (Garbage-First) collector as a fully 
+supported garbage collector, and the addition of the Metaspace to replace the PermGen space for class 
+metadata storage. Let's take a closer look at these changes:
+
+6.why was default method introduce in java 8
+
+7.multiple inheritance is not allowed in java
+
+8.
+
+
+
+
++++++++++++++++++++++++++++++++++++++
+
+
+1.Transactional internal work implementation
+
+2.what is the difference between arraylist and linkedlist
+
+++++++++++++++++++++++
+
+Date :: 27-01 -2024
+
++++++++++++++
+
+1. I have an arraylist  in the list 100 elements in some are duplicate elements by using java8 liberary how we can do it 
+
+
+Date : 28-01-2024
+
+++++++++++++++++++
+
+1.In A String count the vowels count
+
+2.Take one integer array and return in desc order 
+
+3.String s= "12q3q4ryt"; and find the sum of the value 
+
+
+4. what is  the use of  default methods and purpose 
+
+5.what is the use of super keyword
+
+6.what is the use of throw keyword and usecase
+
+7.how to stop sum we need to stop in thread.
+
+8.I have 3 variable a and b and c I am writing to afile i dont want C, so how can I do ?
+
+9. what is synchroinzation ?
+
+10.what is treeset ??
+
+11.I have Employee table in that Columns (id,name,Department,Salary) from Department wise I need to fetch the salary ?? write down the sql query
+
+ Ans ::SELECT Department, 
+  AVG(Salary) AS AverageSalary
+FROM employee
+GROUP BY Department;
+
+12.String is Immutable
+
+13.how can I create our own immutable class, what are the steps we need to required ??
+
+14. Parnet and child class specific methods ,how we need to call ??
+
+15.why we need to create a immutable object in the Integer, why this specifially in string ??
+
+16.how many objects created for string constant pool and this questions ??
+
+17.what is the differnece between error and exception??
+
+18.Give me sum idea on hashtable ??
+
+19.what is the differnce between hashtable and hashset ??
+
+20.what is the differnece betwwen linkedlist and hashset ?/
+
+21.I have one requirement like whatever we have database we need to retrive from database and writedown from the excel so what we need to do the steps ??
+
+22.what is the purpose of marker interface.
+
+Problem with having a normal interface in place of a marker interface:
+Our intention is just to provide metadata to the JRE. I assume you are mentioning the interface with abstract methods.
+If we use the interface with abstract methods instead of a marker interface, we have to implement those methods in the class implementing it(Which is not our intention).
+
+23.what are the bean scopes in spring.
+
+24.Curriculer dependency parts.
+
+25.IOC Container.
+
+26.I have ever tried any bean at runtime by forcefully.
+
+27.what is the lazy loading.
+
+28.@transactinal
+
++++++++++++++++++++++++++++++++++
+
+mock interview questions ??
+
+1. Introduction and background of the candidate.
+2. Experience with Spring and Spring Boot.
+3. Use of actuator in projects.
+4. Changing and configuring management endpoints in Spring Boot.
+5. Aspect-Oriented Programming (AOP) knowledge and usage.
+6. Exception handling strategies in projects.
+7. Scenario-based question on microservices.
+8. Designing and choosing databases for microservices.
+9. Security in microservices, including JSON Web Tokens and OAuth.
+10. Branching and repository management in Git and Bitbucket.
+11. Spring Boot profiling and managing common properties across microservices.
+12. Code review and PR review process.
+13. Unit testing with JUnit and Mockito.
+14. Docker usage and container management.
+15. CI/CD pipelines and Jenkins.
+16. Use of design patterns like Singleton, Builder, and Factory.
+17. Understanding and application of SOLID principles.
+18. Use of Kibana for log monitoring.
+19. CloudWatch for monitoring and alarms.
+20. Microservices interaction, both synchronous and asynchronous.
+21. Distributed transactions and the Saga design pattern.
+22. Kubernetes for container orchestration.
+23. Docker image versioning and management.
+24. Terraform and infrastructure creation.
+25. Feedback and discussion on interview performance.
+
++++++++++++++
+
+what are the springboot top 5 exceptions??
+
+1.NosuchBeandefination Exception.
+
+
+this exception when we dont have bean for particuler then it can be used so it will through this exception
+
+2.Nonuniquebeandefination exception
+
+how you can achive this 
+
+1.@qualifier("seviceimpl2")
+
+2 nd option 
+
+@servcieimple class we can declare @primary
+
+3.Bean creation exception
+
+
+ ex: emp depends on person 
+
+    person depends on emp this issue is facing for curriculer dependency
+
+to overcome this @Lazy annotation
+
+
+4.Bean Instantion exception
+
+5.Application context Exception
+
+
+++++++++++++++++++++++++++++++
+
+1.Creational Design Pattern
+Factory Pattern:
+  This allows you to create new types of animals (new concrete products) without 
+  modifying the existing code, adhering to the open/closed principle of design patterns.
+ 
+Abstract Factory Pattern
+Singleton Pattern
+Prototype Pattern
+Builder Pattern.
+ 
+ 
+2. Structural Design Pattern
+Adapter Pattern
+Bridge Pattern
+Composite Pattern
+Decorator Pattern
+Facade Pattern
+Flyweight Pattern
+Proxy Pattern
+
+
+ 
+ 
+3. Behavioral Design Pattern
+Chain Of Responsibility Pattern
+Command Pattern
+Interpreter Pattern
+Iterator Pattern
+Mediator Pattern
+Memento Pattern
+Observer Pattern
+State Pattern
+Strategy Pattern
+Template Pattern
+Visitor Pattern
+
+
+
+
+
+
+you are given an undirected graph consisting of N vertices, numberd from 1 to N, and M edges, the graph is discribed by two arrays, A and B both of length M.A pair(A[k],B[K]), for K 0 to M-1, describes an edge between vertex A[K] and vertex B[K]
+ 
+your task is to assign all values from the range [1...N] to the vertices of the graph, giving one number to each of the verices, Do it in such away that the sum overall edges of the values at the edges` end points is maximul.
+ 
+for example given N = 5, A=[2,2,1,2], B=[1,3,4,4], that graph has 4 edges: (2,1),(2,3),(1,4),(2,4). in order to obtain the maximum sum of weights, you can assign the following values to the vertices: 3,5,2,4,1 (to vertices 1,2,3,4,5 respectively)
+ 
+this way we obtain the sum of values at all edge` endpoints = 7+8+7+9 = 31:
+ 
+edge(2,3): 7 = 5(vertex2)+2(vertex3)  
+edge(2,1): 8 = 5(vertex2)+3(vertex1) 
+edge(1,4): 7 = 3(vertex1)+4(vertex4) 
+edge(2,4): 9 = 5(vertex2)+4(vertex4)
+ 
+notice that the value assigned to vertex 5 did not have any effect on the final result as it is not an end point of any edge.
+that, given a positive integer N and two arrays A,B of M positive Integers, returns the maximum possible sum of values of the edges` endpoints.
+ 
+example: given N = 5, A=[2,2,1,2], B=[1,3,4,4], the function should return 31 as explianed above  
+
++++++++++++++++++++++++++++++++++++++++++++++++++++
+You are writing an endpoint that returns the total number of items bought in your online store by a given user. Orders in your system are stored in an external service called OrdersService. Your task is to:
+ 
+• write an endpoint in the given UsersController class;
+ 
+• write a method in the given UsersService class that counts the number of items bought by the given user;
+ 
+• configure the UsersController and UsersService classes.
+ 
+Solving this task requires from you editing the following three files. Please make sure they are all present in your final solution.
+ 
+com.codility.app. AppConfiguration
+ 
+com.codility.app.UsersController
+ 
+⚫com.codility.app. UsersService
+ 
+Interfaces
+ 
+The UsersService class declares:
+ 
+⚫ a field ordersService: private OrdersService ordersService
+ 
+⚫ a method getNumberOfItems Bought: public int getNumberOfItemsBought(String username)
+ 
+The UsersController class declares:
+ 
+1.a field usersService: private UsersService usersService
+ 
+2 .  A method totalItemsBought: public Map<String, Integer> totalItemsBought()
+ 
+they are all present in your initial solution
+ 
+ 
+Environment
+ 
+Your application is written with the Spring Framework.
+ 
+Your Spring context is already populated with the OrdersService bean that implements the following interface:
+ 
+package com.codility.external;
+ 
+import java.util.List;
+ 
+public interface OrdersService {
+ 
+List<Item> itemsBought(String username);
+ 
+}
+ 
+Note that OrdersService is located in the com.codility.external package, whereas your application uses the com.codility.app package.
+ 
+requirements
+ 
+1. Make sure that the AppConfiguration class is treated as a Spring configuration bean.
+ 
+2. Configure Spring to scan for beans in the com.codility.external package.
+ 
+3. Prepare the OrdersService bean (please refer to the signatures described above):
+ 
+• Inject the OrdersService bean into the ordersService field.
+ 
+• Use it in the getNumberOfItemsBought method to count the number of items bought by the given user.
+ 
+4. Inject UsersService into UsersController.
+ 
+5. Use it in the totalItems Bought method to fetch the number of items bought by the given user.
+ 
+6. The totalItems Bought method should implement the following contract:
+ 
+⚫ endpoint URL: /users/(username}/items/total, where username is a path variable;
+ 
+• response JSON format: ("totalItemsBought": number), where number is the number of items bought by the given user;
+ 
+⚫ status code 200 in case of a successful response.
+ 
+7. Make sure you pass the username variable to the totalItemsBought call.
+ 
+8. For simplicity, you don't have to write any input validation or error handling.
+ 
+9. You are working with the Spring Framework version 5.1.7 and Java 8.
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+You are given a 0-indexed m x n binary matrix grid.
+A 0-indexed m x n difference matrix diff is created with the following procedure:
+Let the number of ones in the ith row be onesRowi.
+Let the number of ones in the jth column be onesColj.
+Let the number of zeros in the ith row be zerosRowi.
+Let the number of zeros in the jth column be zerosColj.
+diff[i][j] = onesRowi + onesColj - zerosRowi - zerosColj
+Return the difference matrix diff.
+Input: grid = [[0,1,1],[1,0,1],[0,0,1]]
+Output: [[0,0,4],[0,0,4],[-2,-2,2]]
+Example 2:
+Input: grid = [[1,1,1],[1,1,1]]
+Output: [[5,5,5],[5,5,5]]
+
++++++++++++++++++++
+
+
+Microservice Design Problem Statement 
+Use SpringBoot version 2+, Host below microservices in a aws free tier account.
+ 
+TASK 1  
+ 
+Goal: Create a three service microservice project to demonstrate orchestration, rest api invocation, error handling, tracing of logs in javaEE or Node.js Services should communicate with aws hosted URLs
+ 
+ 
+1st Service) Expose two http methods, one get and one post (add swaggerUI).
+From the get method return “Up” if service is up. The post method should return the concatenated responses of the Get call of Service 2 and the Post call of Service 3 using the same payload({The json})
+ 
+2nd Service) It contains one get method which is called by the first service to fetch a string”Hello” wrapped with a spring response entity.
+ 
+3rd Service) This exposes one post method which is called by first service to print/log the passed json and return the concatenated name elements as a string (example - “John Doe”) 
+ 
+Print logs before each method call with a traceID to trace the call flow. 
+ 
+The json.
+{
+“Name”: “John”,
+“Surname”:”Doe”
+} 
+ 
+Concatenated Response :-
+{
+“Hello John Doe”
+}
+ 
+Extra: Handle exception when passed Json in post calls is not valid
+
+
+Create 
+Db Connection: 
+Host a database in local or aws (postgres or mysql or in memory db(H2)).
+Configure your microservice to connect to db.
+Create Hibernate Entity Class  based on the below table requirement to auto create tables in hosted db.
+Populate the db from a post request with the below data or directly insert into db.
+ 
+Expose endpoints to fetch requests based on Id and complete list of objects.
+While getting the complete table, Modify the result set(arrays or list) to form nested object structure.
+Below is the nested output in json.Associate color to each object according to table.
+ 
+Create a table with fields ID, Name, Color, ParentId and populate with below data.
+Don't use ORM to map or form parent child relationships. Write an algorithm to form the relationship after fetching the list from db, in an efficient way.
+ 
+ 
+id
+	
+parentid
+	
+name
+	
+color
+
+
+1
+	
+0
+	
+Warrior
+	
+red
+
+
+2
+	
+0
+	
+Wizard
+	
+green
+
+
+3
+	
+0
+	
+Priest
+	
+white
+
+
+4
+	
+0
+	
+Rogue
+	
+yellow
+
+
+5
+	
+1
+	
+Fighter
+	
+blue
+
+
+6
+	
+1
+	
+Paladin
+	
+lighblue
+
+
+7
+	
+1
+	
+Ranger
+	
+lighgreen
+
+
+8
+	
+2
+	
+Mage
+	
+grey
+
+
+9
+	
+2
+	
+Specialist wizard
+	
+lightgrey
+
+
+10
+	
+3
+	
+Cleric
+	
+red
+
+
+11
+	
+3
+	
+Druid
+	
+green
+
+
+12
+	
+3
+	
+Priest of specific mythos
+	
+white
+
+
+13
+	
+4
+	
+Thief
+	
+yellow
+
+
+14
+	
+4
+	
+Bard
+	
+blue
+
+
+15
+	
+13
+	
+Assassin
+	
+lighblue
+ 
+ 
+ 
+Nested Json response. Ignore Dangling Branches Scenario.
+ 
+[
+  {
+    "Name": "Wizard",
+    "Sub Classes": [
+      {
+        "Name": "Mage"
+      },
+      {
+        "Name": "Specialist wizard"
+      }
+    ]
+  },
+  {
+    "Name": "Priest",
+    "Sub Classes": [
+      {
+        "Name": "Cleric"
+      },
+      {
+        "Name": "Druid"
+      },
+      {
+        "Name": "Priest of specific mythos"
+      }
+    ]
+  },
+  {
+    "Name": "Warrior",
+    "Sub Classes": [
+      {
+        "Name": "Fighter"
+      },
+      {
+        "Name": "Paladin"
+      },
+      {
+        "Name": "Ranger"
+      }
+    ]
+  },
+  {
+    "Name": "Rogue",
+    "Sub Classes": [
+      {
+        "Name": "Thief",
+        "Sub Classes": [
+          {
+            "Name": "Assassin"
+          }
+        ]
+      },
+      {
+        "Name": "Bard"
+      }
+    ]
+  }
+]
+ 
+    
+
+++++++++++++++++++++++++++++++++++++++++
+
+int[] myArray = {1, 2, 3, 4, 5};
+
+String[] stringarray = {srinu,raja,rani,srinu};
+
+String[] stringarray = {srinu,raja,rani,srinu};  In a given String remove the duplicates and provide the solution in different ways for java 
+
+Input ::
+
+[{name : kiran,Branch :EEE},
+{name : sai,Branch :EEE},
+{name : raja,Branch :CSE},
+{name : mani,Branch :CSE},]
+
+Expected output ::
+{
+EEE : [{name : kiran,Branch :EEE}
+       {name : sai,Branch :EEE} ],
+CSE : [{name : raja,Branch :CSE}
+       {name : mani,Branch :CSE} ]
+	   
+	   message":"File input to S3 - filename: video_nid_55.mp4, size: 12426969, content type: video/mp4
+}
+
+
++++++++++++++++++++++++++++++++++
+
+
+
+how we need to prepare for the interview ??
+
+
+core java concepts 
+1.java4times
+
+
+2. java 8 features and In detailed  we need to display and problems
+
+3. microservices in detailed 
+
+4. spring and springboot 
+
+5.hibernate 
+
+6.database queries
+
+
++++++++++++++++++++++++++
+
+1.hashmap and concurrenthashmap difference
+
+2.how do you handle exception handling in springboot application
+
+3.kafka server
+
+4.message  server
+
+5.microservices design pattern u need to learn 
+
+6. putmapping and patchmapping
+
+7. what are the java 8 features and explain in detailed
+
+8.what is diff between map and filter
+
+9.what is the use of lamda expression.
+
+10.fail fast and fail safe
+
+11.how should handle with id is not found in db id not found exception how do u handled ??
+
+12.what are the design patterns in microservices 
+
+
+Please share to process further Also Please share me your technical details in below tabular format , 
+you can add/omit changes as per your skills, this is just an example.
+
+Server          	   ex:Linux and Windows
+SAN               	ex:IBM
+Backup Tool       	ex:Commvault
+Monitoring tool    	ex:Manage Engine OPManager
+Call Logging Tool   	ex:Jira
+Patch Management    	 ex:SCCM / Intune
+Operating System    	ex:Windows
+
+
+e type lo manamu ame use chesthunmo kavali
+
++++++++++++++++++++++
+
+TCS interview questions:
+
+04-03-2024
+
+
+1.reversed array of idex 2 to reverse of idx 5
+
+ip [3,8,5,0,1,9,6,6]
+
+0p [3,8,9,0,1,5,6,6]
+
+
+
+
+
+2.Curd repository and jpa repository diff and what is the use
+
+
+4.synchroniaze and asynchroinzation difference ??
+
+5.@Transactional annotation what is the use of it ??
+
+
+6.how it works internally for hashmap ??
+
+7.@Controller and @restController diff in detailed 
+
+8.what is the differnce between hashmap and concureent hashmap
+
+9.what is the hashtable and hashmap
+
+10.what is the diff between collections and stream
+
+11.what are the stream opeartions  and java 8 features 
+
+
+12.how can we handle exception in microservices
+
+13.take one  example for filenot found  exception
+
+14.what is the diff b/w primary key and foreign key
+
+
+15.diff between controller and restcontroler
+
+16.requestparam and requestbody diff
+
+17.what is the use of singleton class and can u write.
+
+18.what is the method overriding
+
+19.springboot application have can we handle two databases
+
+20.what is the diff put and patchmapping
+
+21.string  reverse program
+
+22.what is the use of threads
+
+23.
+
+
+
+
++++++++++++++++
+
+I have one requirement i1 and i3 is interface and both have default m1 method is there and my question is i2 class implements i1,i3 and 
+
+i need to call i1 interface m1 method how we need to call
+
++++++++++++++++++++
+
+Hi Murali for this month 26 & 27 & 28, I am not able to come to office , Because my child have Annaprasdhamu formalities , 
+Please kindly give the permission the those days.
+
+++++++++++++++++++
+
+1.INNER JOIN:
+
+SELECT employees.name AS employee_name, departments.name AS department_name
+FROM employees
+INNER JOIN departments ON employees.department_id = departments.id;
+
+The INNER JOIN ensures that only rows with matching department IDs in both tables are returned.
+
+
+2.LEFT JOIN (or LEFT OUTER JOIN):
+
+SELECT students.name AS student_name, grades.grade_letter
+FROM students
+LEFT JOIN grades ON students.grade_id = grades.id;
+
+ The LEFT JOIN ensures that all rows from the students table are returned, along with matching rows from the grades table. 
+ If there is no matching row in the grades table, NULL values are returned for the columns from the grades table.
+
+3.RIGHT JOIN (or RIGHT OUTER JOIN):
+
+SELECT orders.order_id, orders.order_date, customers.customer_name
+FROM orders
+RIGHT JOIN customers ON orders.customer_id = customers.customer_id;
+
+ The RIGHT JOIN ensures that all rows from the customers table are returned, along with matching rows from the orders table. 
+ If there is no matching row in the orders table, NULL values are returned for the columns from the orders table.
+
+4. FULL JOIN (or FULL OUTER JOIN):
+
+SELECT employees.employee_id, employees.employee_name, departments.department_name
+FROM employees
+FULL JOIN departments ON employees.department_id = departments.department_id;
+
+
+The FULL JOIN ensures that all rows from both the employees and departments tables are returned.
+
+5.CROSS JOIN:
+
+SELECT students.student_id, students.student_name, subjects.subject_id, subjects.subject_name
+FROM students
+CROSS JOIN subjects;
+
+The CROSS JOIN combines every row from the students table with every row from the subjects table, 
+resulting in a list of all possible combinations of students and subjects.
+
+6.SELF JOIN:
+
+SELECT e.employee_id, e.employee_name, m.employee_name AS manager_name
+FROM employees e
+INNER JOIN employees m ON e.manager_id = m.employee_id;
+
+++++++++++++++++
+
+CGI Interview 
+
+
+
+Merging two lists into single list using java 8
+
+ex: input : list1 [1,2,3,4,5]
+
+            list2 [3,4,5,6,7,8]
+	
+Remove duplicates from Merging  list and  provide  unique elements in the  list using java 8	
+			
+Merged List: [1, 2, 3, 4, 5, 3, 4, 5, 6, 7, 8]
+
++++++++++++++++++++++++++++++
+
+CGI Interview 
+
++++++++++++++++
+
+1.To find the highest salary of the Second employee using java 1.8 features?
+
+2.How can we create String ImmutableString class?
+
+3.can you explain the java 1.8 features and explain In detailed?
+
+4.what are the terminal and non terminal operations??
+
+5.what is the difference between map and flatmap can u explain In detailed ??
+
+6.what are the advantages of java 1.8 explain in detailed ??
+
+7.optiional class advantage of java 1.8 feature
+
+
++++++++++++++++++++++++++
+
+
+++++++++++++
+
+Infosys 2nd round :: 07-03-2024
+
++++++++++++++++++
+
+
+1.Equals and hashcode method like sample example??
+
+2.what are the java 8 features ?
+
+3.Date and time api introduced in java 8
+
+4.what are  the oops concepts?
+
+5.what are the dependencies provided by the mysql while connecting to database ?
+
+6.providing pom.xml dependency for my sql it should work to running the application?
+
+
+7.what is the diff b/w is and has relationship  and give me one example??
+
+8.@trasient keyword
+
+9.Aggregation and Composition write one  example ??
+
+
++++++++++++++++++++++++++++
+
+java developer roles and responsiblities
+
+++++++++++++++++++++
+
+1.Requirement analysis.
+
+its coming from the client to functionality team 
+
+2.Query log documentation.
+
+3.connect with the product team and functional team for those queries related stuff and FT clarify for all the douts we need to start the development.
+
+4.Raise a request for gitrepo Creation.
+
+5..Raise a request for pipeline Creation.
+
+6.Database tables Design.
+
+what are the tables we need to create and what are the columns and realtionship between for both tables.
+
+after completting design we need to start the devlopemnt procedure.
+
+7.Developement/Coding
+
+Based on our requirement we need to develop the code after we need to perform unit testing ??
+
+8. unit testing ==>whatever we are written and that code need to be tested, it is called known as unit testing
+
+9.once unit testing is passed we need to review the code.
+
+Code review (SonarQube)
+
+10. it is naming conventions  and the best practcise u are not following are any mistakes are identified and are any bugs in the code 
+that s the reason sonarQube will work
+
+
+11.Code Integartion ==> for all the developers code need to should be in one place it is known as code Integartion??
+
+12.our code should not disturb and existing code should not be disturbed, will Integarting itself
+
+13.Code Deployment In dev environment, whatever we are written the code it should be workng as expected or not we need to check in the dev after deployment 
+
+completed succesfully.
+
+14.After Integartion testing
+
+15.Bug fixing
+
+16.QA team. is any raised for QA team that bugs we need work on it accordingly.
+
+after everything is working as expected and no major blockers found in the QA, they will give the sign-off for the QA Environment.
+
+After testing completed UAT is nothing but user accceptance testing is nothing (Client side )
+
+after bug fixes moved to Production environment will ba accessed by end user.
+
+
+We have any issues for production we need to check and monitor the Grafana logs  as well we need to analize and recitify those issues.
+
+Documentation
+
+KT for new team members
+
+
+In house traings in the company
+
+Connect with manager with feedback 
+
+++++++++++++++++++++++++++++++++++++++++
+2nd round of infosys
+
+1.what is the difference between @before and @after annotation.
+
+2.kafka questions asking in detailed
+
+3.@topic
+
+4.In the kafka how we need 3 Listeners  it is running 3 listeners I need to stop one listeneer how we can stop it ??
+
+5.diff b/w apache kafka and spring kafka 
+
+6.junit test cases and questions
+
+7.what is the use of restcontroller method procedure exactly from the scratch
+
+8.how we need to change to mysql to postgresql in the springboot application in the very spanof time ??
+
+9.mysql queries form basic questions
+
+10.@Id annotation primary key not provided in the entity I have two coulmns there is no primary key how we need to handle ??
+
+11.@async annotation what is the use of it
+
+12.kafka related more questions?
+
+13.what is the use of it dialect ?
+
+14.what are the springbean scopes 
+
+15.what are the spring profiles 
+
+what is the difference between application.properties and bootstrap.yml
+
+16.basic logical problems how we need to expose it??
+
+17.did you face any performance issues then how we can handle ??
+
+18.@EmbeededId annotation what is the use of it ??
+
+19.what is the diff between Aggregation and composition
+
+20.diff b/w equals and hashcode method
+
+@async annotation what is the use of it
+
+21.
+
++++++++++++++++++++++
+
+Currently I am working on OES-User  management project, 
+In this project we go-founders users ,guest users and website users register through the link.
+ we have sign and Signup (registration) page. for Sign we are providing valid User credentails implemeted on JWT authentication.
+
+
+once landing to the user application dashbaord we are provide complete details of user activity like(My wallet amount ,Total revenue earned,Number of affilaite users,
+the upcoming product details,top product purchsed customers.)
+
+
+Coming to marketplace banner and products are cmng from the admin team here we need to show the user side
+
+
+1.My favouaraite  tab user want to favouarite the product like or dislike
+2.My subscriptions tab  whatever he subscribed he need to display the data from substartdate and subenddate and plan(what is the plan he is taken) details 
+3.My wallet for maintaining for transactions for each debit and credit records
+4.My Revenue is for under my childs How much i get the commission for payout and credits
+5.My order page we need to display the total information for order summary for product details
+6.Mycontacts we need to display the contacts list for through join for my contact details
+7.My invite we need to show all the records whom i need to sent timeleft and mail address and date
+8.My users how many members are joined through my link we can see all the members list
+9.Mylinks its coming from the website team and onpassive links and we cann see here
+10.My calender form its coming from the individual products like o-mail and o-net, we can sechedule and event and meetings we can see all the information
+11.Ticket status if we raised any issue from the aplication they raise the ticket and information proceeses through Customer support team they will raise the jiraid and contact to the suport team 
+
+In the header section become an affilate tab,and send invitation,OES-id  and Profile section and lanagaugae selction 
+In the leftside pannel for o-mail and o-net and o-trim this are free products 
+there are multiple tabs in the navigation are marketpalce & My favouariate,and My subscriptions and My wallet and My revenue and 
+Myorders and Mycontacts and Myinvites and Myusers and Mylinks & My calender and Ticket Status
+
+
+
+
+and user he can free trial the o-connect for 15 days  free trail, and free trial is completed user can purchase the product through his wallet and card 
+are any crypto currency 
+
+
+we are implemented the gateway like for auravia payment gateway, and total proceesing and rocketfuel
+
+
++++++++++++++++++
+e -zest solutions:
+
+
+1.what is the sequence in mysql
+
+2.what is the sequence command we need to use to reset ??
+
+3.what is static variables how we need to handle in java
+
+4.linkedhashmap can you tell me ??
+
+5.hashing and encoding difference
+
+6.how we can logout form the session in mvc application.
+
+
+7.option method in restful services
+
+8.what is the meaning of the brute force attack
+
+9.connection pooling in jpa and hibernate
+
+10.Swagger implemenentation
+
+11.how we need to read the excel sheet and save the data in database 
+
+12.how we need to read the image and save the database how we need to do??
+
+13.url whitelisting what is that ??
+
+
+++++++++++++++++++++
+
+Infosys 1 st round
+++++++++++++
+
+1.In the employee class age,name, salary so I need to findout the average salary of employees and whose age is older then 30 in java 8 
+
+2.In the string to uppercase have we need to convert the lowecase no need to use predefined methods
+
+3.spring bean life cycle
+
+4.what are the spring bean scopes
+
+5.what are the restfulapi endpoints you developed
+
+6.how we need to pass the  Requestparam and pathvariable
+
+7.Requestbody as well.
+
+8.how we need to handle the exception without using  try clock is it possible
+
+9.what are the terminal methods and non terminal methods
+
+10.what is the use of flatmap
+11.what is the use of lamda expression
+
+12.can we creatre abstract class for object creation.
+
+13.what is the abstarct the class
+
+14.dockers and kubernates for any idea for Ai tools
+
++++++++++++++++++++++++++++++++
+
+The Gap realted questions ::
+
+++++++++++++++++++++
+
+Java
+Strings
+Collection Framework
+Exceptional handling 
+Garbage Collection 
+Serialization 
+oops
+Difference between static and final
+difference between hash tree and sorted tree
+what code do u generally write in finally block
+ 
+Spring boot vs spring framework
+all basic annotations
+how do u have implement a basic spring application 
+how do you connect to a database
+how does transaction management happen what are the ways
+what is fault tolerance 
+api gateway
+
+
+1. Difference between static and non static.
+2. Spring profiles.
+3. Actuator
+4. Difference between post and put.
+5. Consumer and producer in Java 8
+6. Predicate in Java 8
+7. Functional Interface in Java 8
+8. How do you covet unit testing in your project.
+9. Pls draw the architectual diagram of the api and your project
+10. Inner Join outer join
+11. Left Join and right Join.
+12. Rest api's
+13. Thread Life cycle.
+
+++++++++++++++++++++
+
+Xenlogic questions preparation ::
+
++++++++++++++++
+
+
+
+1.Array System
+2.OOPs concept
+3.SpringBoot
+4.Hibernate
+5.Maven
+6.Restful
+7.Database
+8.Angular js
+
++++++++++++++++++++++
+
+Infosys
++++++++++++++++++++
+
+1.Indexes what is the use of it in mysql ??
+
+2.multiple Database configuration how we need to apply in the spring-boot application
+
+3.how we are deploying in the UAT environment in your project?
+
+
+4.@Transcational annotation, what are the  different ways we need to do ?
+
+5.StringjOiner what is the use of class it ?
+
+6.can you write the query for empname and empsalary based on the sum we need to display the employeename
+
++++++++++++++++++++++++++
+
+Sql queries 
+
+++++++++++++++
+
+Select all records where the second letter of the City is an "a".
+
+SELECT * FROM Customers
+WHERE City LIKE '_a%';
+
+Select all records where the first letter of the City is an "a" or a "c" or an "s".
+
+SELECT * FROM Customers
+WHERE City LIKE '[acs]';
+
+Select all records where the first letter of the City starts with anything from an "a" to an "f".
+
+SELECT * FROM Customers
+WHERE City LIKE '[a-f]%';
+
+Select all records where the first letter of the City is NOT an "a" or a "c" or an "f".
+
+SELECT * FROM Customers
+WHERE City LIKE '
+[!acf]
+%';
+
+Use the IN operator to select all the records where Country is either "Norway" or "France".
+
+SELECT * FROM Customers
+where Country in
+ 
+('Norway'
+ 'France'
+)
+;
+
+Use the IN operator to select all the records where Country is NOT "Norway" and NOT "France".
+
+SELECT * FROM Customers
+where Country not in
+ ('Norway', 'France');
+ 
+ Use the BETWEEN operator to select all the records where the value of the Price column is between 10 and 20.
+ 
+ SELECT * FROM Products
+WHERE Price 
+between 10 and 20
+;
+
+Use the BETWEEN operator to select all the records where the value of the Price column is NOT between 10 and 20.
+
+SELECT * FROM Products
+WHERE Price 
+not beween 10 ad 20
+;
+
+
+Use the BETWEEN operator to select all the records where the value of the ProductName column is alphabetically between 'Geitost' and 'Pavlova'.
+
+SELECT * FROM Products
+WHERE ProductName 
+between 'Geitost' and 'Pavlova'
+;
+
+When displaying the Customers table, make an ALIAS of the PostalCode column, the column should be called Pno instead.
+
+SELECT CustomerName,
+Address,
+PostalCode 
+as Pno
+
+FROM Customers;
+
+When displaying the Customers table, refer to the table as Consumers instead of Customers.
+
+
+SELECT *
+FROM Customers 
+as Consumers
+;
+
+Insert the missing parts in the JOIN clause to join the two tables Orders and Customers, using the CustomerID field in both tables as the relationship between the two tables.
+
+SELECT *
+FROM Orders
+LEFT JOIN Customers
+on orders.CustomerID
+=
+Customers.CustomerID
+;
+
+Choose the correct JOIN clause to select all records from the two tables where there is a match in both tables.
+
+SELECT *
+FROM Orders
+inner join Customers
+
+ON Orders.CustomerID=Customers.CustomerID;
+
+Choose the correct JOIN clause to select all the records from the Customers table plus all the matches in the Orders table.
+
+SELECT *
+FROM Orders
+right join Customers
+
+ON Orders.CustomerID=Customers.CustomerID;
+
+List the number of customers in each country.
+
+SELECT 
+count
+(CustomerID),
+Country
+FROM Customers
+group by Country
+;
+
+List the number of customers in each country, ordered by the country with the most customers first.
+
+SELECT 
+count
+(CustomerID),
+Country
+FROM Customers
+group by Country
+
+ORDER BY 
+count(CustomerID) desc
+;
+
++++++++++++++++++++++++++
+
+using java 8 age
+
+1.I have employee the whose salary is more then 5000 and we need to display the employees names??
+
+
+List<String>   names = emplist.stream().filter(employee -> employee.getSalary()>5000)
+
+.map(Employee::getName).sorted().collect(Collections.tolist());
+ 
+names.forEach(System.out::println);
+ 
++++++++++++++++++++++++
+
+2.String repeat characters we need to display?
+ 
+String s = "aabccee";
+ 
+Set<Charactor> repatechars = s.chars().mapToObj(c ->(char)c).filter(c->s.index(c)!= s.lastindexOf(c)).
+ 
+collect(Collectors.toSet());
+
+
+
+3. I have employees whose age is morethen 30 and need to display the Gender of the employees
+
+
+.List<Employee> employees  = emplist.stream().filter(employee -> employee.getAge()>30).sorted(Comparartor.comparing(Employee::getGender)
+ 
+.thenComparingInt(Employee::getAge).collect(Collections.toList());
+ 
+System.out.println(employess);
+
+
+ 
+To find  the 5th employeesalary of the mysql query  dont want to use any top and limit?
+
+ 
+select distinct salary employee e1 where 5=(select count (distinct salary)
+
+from employee e2 where e2.salary>=e1.salary);
+
+++++++++++++++++++++++++
+
+Interview Questions for Imphasis
+
+++++++++++++++++++++++
+
+1.String s = "Alle Srinivas is a java developer";
+
+
+find out the first repeat character in the string using streams can you give me exactly one ??
+
+2.what are the advantages from spring and springboot
+
+3.what is the api-gateway and brifly explain
+
++++++++++++++++++++++
+
+1.U have employee object save data into database can you tell me  what are the annotations you worked on it??
+
+
+2.how we need to handle the custom exception annaotation can you tell me the exactly procedure??
+
+
+3.I have an employee object and I have attribute location is hyderabad can you get the list of employees using java 8 ??
+
+4.I have an employee object and I need to findout the salary sum for all the employees using java 8??
+
+5.Can you tell me the collection hierarchy and give me brief about ??
+
+6.Arraylist is not athread safe ??
+
+7.what is the use of  maptosuper ?
+
+++++++++++++++++++++++++++++++
+
+
+1.Fallback mechanism.
+2.Orcherastration Architecture.
+3.Rest Template and feign client difference.
+4.Resilence.
+5.Saga design pattern.
+6. Hystrix dashboard.
+7.Eureka Server.
+8.How can u check if one services is down.
+9. Max size of s3 bucket.
+10.How to create the s3 Bucket.
+11.What is load balancer.
+ 
+AWS  Questions:
+-------------------------
+1.Elastic IP address.
+2.IAM Authentication. 
+3.Ec2 instance creation.
+4.How to provide Authentication on server level.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+

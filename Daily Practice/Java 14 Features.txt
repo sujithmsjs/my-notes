@@ -1,0 +1,38 @@
+
+
+
+
+What this effectively means is that this feature can now be used in production code, and not just in the preview mode to be experimented with by developers.
+
+
+2. Text Blocks new escape sequences
+
+text blocks now have two new escape sequences:
+
+\: to indicate the end of the line, so that a new line character is not introduced
+\s: to indicate a single space
+
+
+3. Records (JEP 359)
+Records were introduced to reduce repetitive boilerplate code in data model POJOs. They simplify day to day development, improve efficiency and greatly minimize the risk of human error.
+
+Records were introduced to reduce repetitive boilerplate code in data model POJOs. They simplify day to day development, improve efficiency and greatly minimize the risk of human error.
+
+
+- verbose
+- ceremony
+- boilerplate
+- distill
+- intent of
+- Incubating
+-  explore various use-cases
+- limitations
+
+- Records are a new kind of type declaration in the Java language.
+- Like an enum, a record is a restricted form of class.
+- It declares its representation, and commits to an API that matches that representation.
+
+- A record has a name and a state description.
+The state description declares the components of the record. Optionally, a record has a body.
+
+record Point(int x, int y) { }

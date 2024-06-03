@@ -32,6 +32,7 @@ store.getState()
 
 
 **How store looks like:**
+
 ```js
 const initialState = {
   user: {
@@ -51,6 +52,8 @@ const initialState = {
 - Automatic Subscription
 - Memoization
 - Accessing Nested Data
+
+
 `const userEmail = useSelector((state) => state.user.email);`
 
 
@@ -507,7 +510,23 @@ In Redux, you can maintain multiple values in the store by organizing your state
 With this approach, you can maintain and access multiple values in the Redux store while keeping your code organized and modular. Each part of the state can have its own reducer and actions, making it easier to manage complex application state.
 
 
+27-09-2023
 
+const rootReducer = combineReducers({
+	//... All the reducers
+});
+
+Ex:-
+
+const rootReducer = combineReducers(
+	{
+		counter: counterReducer,
+        auth: authReducer,
+        list: listReducer,
+        auth_local: authReducer_LS,
+        menu: menuReducer
+	}
+);
 
 
 
