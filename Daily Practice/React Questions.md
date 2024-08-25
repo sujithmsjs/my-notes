@@ -9,15 +9,7 @@ React is a front-end and open-source JavaScript library which is useful in devel
 
 Key features and concepts of React include:
 
-- Component-Based Architecture
-- Reusable components
-- Virtual DOM
-- Unidirectional Data Flow
-- Gentle learning curve
-- JSX
-- Hooks
-- Community Echosystem
-- Server-Side Rendering
+
 
 Component-Based Architecture: React encourages developers to break down the user interface into reusable, self-contained components. Each component represents a specific part of the UI and can have its own state, logic, and rendering. This approach promotes code modularity and reusability.
 

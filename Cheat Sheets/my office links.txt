@@ -1,5 +1,0 @@
-https://attendance.onpassive.com/user/dashboard.php
-
-https://webmail.mail.us-east-1.awsapps.com/workmail/?organization=onpassive
-
-https://obsodesk-dev.onpassive.com/overviewcases/Total

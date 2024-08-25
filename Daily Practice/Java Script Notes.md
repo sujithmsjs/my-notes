@@ -72,7 +72,7 @@ true - true	// 0
 true - false	// 1
 false - true	// -1
 false - false	// 0
-true * true	// 1
+true * true	// 1	
 true + true	// 2
 
 3 + +'7'	// 10
@@ -3649,10 +3649,36 @@ for(let r of range){ // TypeError: range is not iterable
 	console.info(r);
 }
 
+-----------------
+java Script
+-----------------
 
-Keywords
-JavaScript was invented by Brendan Eich in 1995, and became an ECMA standard in 1997.
-ECMA-262 is the official name of the standard. ECMAScript is the official name of the language.
+
+- JavaScript was invented by Brendan Eich in 1995, and became an ECMA standard in 1997.
+- ECMA-262 is the official name of the standard.
+- ECMAScript is the official name of the language.
+
+
+
+
+What is JS Engine?
+A JavaScript engine is a software component that executes JavaScript code.
+The first JavaScript engines were mere interpreters, but all relevant modern engines use just-in-time compilation for improved performance.
+
+
+- Recently a plethora of new languages appeared, which are transpiled (converted) to JavaScript before they run in the browser.
+- Modern tools make the transpilation very fast and transparent, actually allowing developers to code in another language and auto-converting it “under the hood”
+
+Transpiled languages:
+- Coffee Script
+- Type Script
+- Flow
+- Dart
+- Brython
+- Kotlin
+
+
+
 • Transpire
 • Interactive
 • exciting
@@ -4354,12 +4380,161 @@ console.info(elems);
 
 
 
+- JavaScript was initially created as a browser-only language, but it is now used in many other environments as well.
+- Today, JavaScript has a unique position as the most widely-adopted browser language, fully integrated with HTML/CSS.
+- There are many languages that get “transpiled” to JavaScript and provide certain features. It is recommended to take a look at them, at least briefly, after mastering JavaScript.
+
+
+- JavaScript was invented by Brendan Eich in 1995, and became an ECMA standard in 1997.
+- ECMA-262 is the official name of the standard.
+- ECMAScript is the official name of the language.
+
+What is JS Engine?
+A JavaScript engine is a software component that executes JavaScript code.
+The first JavaScript engines were mere interpreters, but all relevant modern engines use just-in-time compilation for improved performance.
+
+
+- Recently a plethora of new languages appeared, which are transpiled (converted) to JavaScript before they run in the browser.
+- Modern tools make the transpilation very fast and transparent, actually allowing developers to code in another language and auto-converting it “under the hood”
+
+Transpiled languages:
+- Coffee Script
+- Type Script
+- Flow
+- Dart
+- Brython
+- Kotlin
+
+
+Modern markup: In <script> type in not required anymore.
+
+External scripts:
+<script src="/path/to/script.js"></script>
+<script src="/js/script1.js"></script>
+<script src="/js/script2.js"></script>
+
+
+The modern mode, "use strict"
+“use strict”
+- The directive looks like a string: "use strict" or 'use strict'. When it is located at the top of a script, the whole script works the “modern” way.
+- Ensure that “use strict” is at the top
+- There’s no way to cancel use strict
+- "use strict" a welcome guest at the top of your scripts. Later, when your code is all in classes and modules, you may omit it.
+
+Nullish coalescing operator '??'
+
+Debugging in the browser
+Coding Style
+Comments
+Ninja code
+Automated testing with Mocha
+Polyfills and transpilers
 
 
 
 
 
+### POLYFILLS:
+A script that updates/adds new functions is called “polyfill”. It “fills in” the gap and adds missing implementations.
 
+### COMPUTED PROPERTIES:
+We can use square brackets in an object literal, when creating an object. That’s called computed properties.
+
+### PROPERTY EXISTENCE TEST, “IN” OPERATOR:
+"key" in object
+
+
+### THE "FOR..IN" LOOP:
+
+for (key in object) {
+  // executes the body for each key among object properties
+}
+
+### Ordered like an object
+
+### CLONING AND MERGING, OBJECT.ASSIGN
+
+Object.assign(dest, ...sources)
+
+### CONSTRUCTOR FUNCTION
+
+Constructor functions technically are regular functions. There are two conventions though:
+
+1. They should be executed only with "new" operator.
+2. They are named with capital letter first.
+
+That’s the main purpose of constructors – to implement reusable object creation code.
+
+Any function (except arrow functions, as they don’t have this) can be used as a constructor. It can be run with new, and it will execute the algorithm above.
+
+
+
+
+Constructor functions or, briefly, constructors, are regular functions, but there’s a common agreement to name them with capital letter first.
+Constructor functions should only be called using new. Such a call implies a creation of empty this at the start and returning the populated one at the end.
+
+
+### NEW.TARGET
+
+### OPTIONAL CHAINING '?.'
+
+### OBJECT TO PRIMITIVE CONVERSION
+- There’s no conversion to boolean. All objects are true in a boolean context, as simple as that. There exist only numeric and string conversions.
+- The numeric conversion happens when we subtract objects or apply mathematical functions. For instance, Date objects (to be covered in the chapter Date and time) can be subtracted, and the result of date1 - date2 is the time difference between two dates.
+- As for the string conversion – it usually happens when we output an object with alert(obj) and in similar contexts.
+
+[Symbol.toPrimitive](hint) {
+		//...
+}
+
+There are 3 types (hints) of it: string, number ,default.
+
+- If there’s no Symbol.toPrimitive then JavaScript tries to find methods toString and valueOf
+
+#### TO STRING()
+#### VALUE OF();
+
+
+
+
+
+### METHODS OF PRIMITIVES
+
+There are 7 primitive types: string, number, bigint, boolean, symbol, null and undefined.
+
+### A PRIMITIVE AS AN OBJECT
+
+The “object wrappers” are different for each primitive type and are called: String, Number, Boolean, Symbol and BigInt.
+
+
+### ITERABLES
+- Iterable allows us to make any object useable in a for..of loop.
+- Any object can be Iterable.
+[Symbol.iterator]
+
+### OBJECT.KEYS, VALUES, ENTRIES
+
+
+### DESTRUCTURING WORKS WITH ANY ITERABLE ON THE RIGHT-SIDE
+
+
+### The rest ‘…’
+
+### Object destructuring
+
+let options = {
+  title: "Menu",
+  width: 100,
+  height: 200
+}
+
+{ sourceProperty: targetVariable = defaultValues  }
+let {width: w, height: h, title} = options;
+
+
+Hi Sir!
+I may have forgotten to punch out a few times in this month. I will ensure this won't happen again.
+I wrote a mail regarding this.
 
 
 

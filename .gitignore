@@ -10,6 +10,9 @@
 # Compiled Python bytecode
 *.py[cod]
 
+# System related files
+*.ini
+
 # Log files
 *.log
 

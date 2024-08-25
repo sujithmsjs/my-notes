@@ -2865,9 +2865,9 @@ db.notes.insertMany([
  
 ---
 
-### Title
+### Select between dates
 
- 
+db.getCollection('case_details').find({"updated_date" : { $gte : ISODate("2023-03-15T18:30:00.000Z"),  $lte : ISODate("2023-03-16T18:29:59.999Z")}})
  
 ---
 
