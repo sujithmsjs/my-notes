@@ -49,6 +49,11 @@ import { Button } from 'react-bootstrap';
 ### Zod
 
 ```
+npm install @hookform/resolvers
+
+Zod lets you provide custom validation logic via refinements.
+
+
 
 ```
 
@@ -543,7 +548,7 @@ npm install --save-dev @faker-js/faker
 ```
 
 > **Note:**
->The issue with the provided code is that the input field is a controlled component, meaning its value is managed by the value state and cannot be changed directly by user input. In a controlled component, the value is only updated through the value prop and the onChange event.
+> The issue with the provided code is that the input field is a controlled component, meaning its value is managed by the value state and cannot be changed directly by user input. In a controlled component, the value is only updated through the value prop and the onChange event.
 
 ### Rendering a list
 > Warning: Each child in a list should have a unique "key" prop.
@@ -1391,6 +1396,9 @@ export default App;
 ```
 
 ## FormData
+
+> The FormData interface provides a way to construct a set of key/value pairs representing form fields and their values.
+
 **defaultValue:**
 Pass it as the defaultValue string for text inputs. Checkboxes and radio buttons should specify the initial value with the defaultChecked boolean instead.
 

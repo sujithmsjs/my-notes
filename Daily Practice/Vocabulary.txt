@@ -1,3 +1,35 @@
+ap·pre·hen·sive
+Anxious or fearful that something bad or unpleasant will happen.
+
+im·pec·ca·ble
+(of behavior, performance, or appearance) in accordance with the highest standards of propriety; faultless.
+
+
+an·ec·dote
+A short amusing or interesting story about a real incident or person.
+
+
+
+prerequisites 
+delve into the details
+boilerplate code
+minute differences
+verbose 
+readable
+memoization
+accelerating your growth 
+intuitive 
+delving 
+Versatility
+versatile tool 
+ widely adopted 
+ fine-grained control over
+ worth considering 
+ well established
+ convenient
+development-only
+production-ready
+
 extensively adverb : to a large degree; a great amount
 
 Gregorian calendar: 
@@ -136,6 +168,233 @@ The main difference between a pantry and a cafeteria is their purpose. A pantry 
 induction course
 
 
+Persistence
+Practice
+Daunting
+
+Ledger
+
+
+
+25-OCT-2023
+
+congested: 
+fas·ci·nat·ing: Extremely interesting
+fascinate
+enchanting
+SIM swapping
+vig·i·lant: Keeping careful watch for possible danger or difficulties.
+Smishing
+Phishing
+prompt you to fill
+mimic
+dis·pel: Make (a doubt, feeling, or belief) disappear.
+AGI: Artificial General Intelligence
+Sam Altman dispels fears about AGI, says it will enable humans to express more creatively.
+pin·na·cle: The most successful point; the culmination.
+fru·i·tion: The point at which a plan or project is realized.
+
+justify-content: center;
+
+User not auto logout issue
+Redis cache optimization
+
+
+
+
+
+
+
+26-OCT-2023
+
+
+ETA 
+{"mailId":"zeAeQZGDuv3z+3wxnYDlMlG4WmnguMAtDwEsJ/UOlZc=","password":"eFjfhcegDMvddKU/VvYqJg=="}
+
+Hi Aparna,
+
+I kindly request your attention to the Leave Application portal, as it appears not to have been updated. For your reference, I have attached the necessary information.
+
+I have attached a reference for your convenience. Please do the needful.
+
+Regards,
+Sujith Manchala
+8008188022
+Pending with Jaisal.
+18_00_000
+
+Succumb to
+
+
+I reapplied for leave on the same day, and it was approved by the Team Lead. However, it still shows as 'Pending' with Jaisal, just as before.
+
+
+27-OCT-2023
+28-OCT-2023
+29-OCT-2023
+30-OCT-2023
+31-OCT-2023
+
+https://activation.consumers.pluxee.in
+
+Vengeance
+Retaliation
+
+Implies: Conveys: Indicates: Signifies
+determination
+revenge
+
+In summary, the line "Gotta watch 'em bleed too" is a metaphorical way of conveying the speaker's determination to prove their critics wrong and ensure that those who doubted them also face the consequences or difficulties in some way, perhaps as a form of poetic justice or retribution. It's a common theme in music lyrics to use metaphorical language to express emotions and intentions.
+
+Obstacles: Adversity: Life-threatening circumstance
+metaphorically 
+
+Don't put worth inside: In this context, "putting worth inside" someone means investing your time, energy, or emotions into a person. It's about placing value or trust in someone.
+
+cautioning: 
+So, the line is essentially advising against investing your time, emotions, or trust in someone who is not making an effort or isn't worthy of that investment. It suggests that it's important to be discerning and not waste your resources on individuals who don't appreciate or reciprocate your efforts. This advice is common in various life situations, where people are warned to be selective in their relationships and associations to avoid being taken advantage of or disappointed.
+
+01-NOV-2023
+
+Cringe
+Plagiarism
+Escalation
+Reconciliation
+Abstract away
+Differ from
+
+
+
+
+	
+
+
+02-OCT-2023
+03-OCT-2023
+04-OCT-2023
+05-OCT-2023
+
+ra·tion·al
+Based on or in accordance with reason or logic.
+
+rea·son·a·ble
+(of a person) having sound judgment; fair and sensible.
+
+
+06-OCT-2023
+
+
+per·se·ver·ance
+Persistence in doing something despite difficulty or delay in achieving success.
+
+skep·ti·cism
+A skeptical attitude; doubt as to the truth of something.
+
+sym·bol·ize
+Be a symbol of.
+
+em·pha·size
+Give special importance or prominence to (something) in speaking or writing.
+
+rig·id
+Unable to bend or be forced out of shape; not flexible.
+
+bi·zarre
+Very strange or unusual, especially so as to cause interest or amusement.
+
+con·ges·tion
+The state of being congested.
+
+MBps: megabytes per second
+Mbps:  megabits per second
+
+
+Get along: manage to live or survive.
+Cistern: Well
+Wilderness: an uncultivated, uninhabited, and inhospitable region.
+Caravan: 
+Ishmaelite traders
+20 pieces of silver
+
+
+radically: in a thorough or fundamental way; completely.
+
+Constructive feedback
+affixed 
+acoustic guitar
+
+
+
+The term "discarded" generally means to get rid of or throw away something. It implies a deliberate decision to eliminate or reject something. For example:
+"The old furniture was discarded when we moved to a new house."
+In a different context, the term can be used metaphorically to indicate the rejection or abandonment of an idea, plan, or concept:
+"After careful consideration, they discarded the original proposal and opted for a new approach."
+So, "discarded" essentially means to cast aside, reject, or dispose of something.
+
+
+
+inception noun
+ /ɪnˈsepʃn/
+​the start of an institution, an organization, etc.
+
+
+
+
+Tips for Taking Notes
+- Write phrases, not full sentences.
+- Skip words 
+
+
+---
+
+action: The action performed by the user. It can be a value of any type. By convention, an action is usually an object with a type property identifying it and, optionally, other properties with additional information.
+
+
+
+
+ top level of your component
+  trigger a re-render.
+  
+  In Strict Mode, React will call your reducer and initializer twice in order to help you find accidental impurities.
+  accidental impurities
+   development-only behavior
+   
+Scalable and interoperable
+
+---
+
+Mindful Eating
+Practice Ergonomics
+
+
+
+paramount(noun)
+imperative 
+
+
+
+
+hurdle(noun) : a problem or difficulty that must be solved or dealt with before you can achieve something
+SYNONYM obstacle
+
+
+hurdle (verb): to jump over something while you are running.
+
+subtle (adj): not very obvious or easy to notice
+indistinct
+indefinite
+
+imperceptible (adjective): Indistinguishable, undectable, unnoticeable, slight, subtle, negli
+
+OPPOSITE perceptible, Obvious, Noticable
+
+FOCUS ON ONE TIME LEARNERS
+
+MongoDB Compass
+
+Please install MongoDB Compass and NetBeans in my system. Additionally, I require your help to launch SonarQube Server which may prompts security related pop ups.
+
+Could you please assist me with installing MongoDB Compass and NetBeans on my system? Additionally, I would appreciate your help in launching the SonarQube Server, which may generate security-related pop-ups.
 
 
 
@@ -157,4 +416,8 @@ induction course
 
 
 
- 
+
+
+
+
+

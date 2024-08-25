@@ -1,0 +1,30 @@
+----------------
+Java 16 Features
+----------------
+
+1. New Stream Methods.
+
+default List<T> toList()
+default <R> Stream<R> mapMulti(BiConsumer<? super T,? super Consumer<R>> mapper)
+default IntStream mapMultiToInt(BiConsumer<? super T,? super IntConsumer> mapper)
+default LongStream mapMultiToLong(BiConsumer<? super T,? super LongConsumer> mapper)
+default DoubleStream mapMultiToDouble(BiConsumer<? super T,? super DoubleConsumer> mapper)
+
+2. Day Period Support
+
+- A new addition to the DateTimeFormatter is the period-of-day symbol “B“
+- It provides an alternative to the am/pm format.
+- Instead of something like “3pm“, we get an output of “3 in the afternoon“.
+- We can also use the “B“, “BBBB“, or “BBBBB” DateTimeFormatter pattern for short, full, and narrow styles respectively.
+
+
+3. Stream.toList Method 
+
+List<Integer> intsEquivalent = integersAsString.stream().map(Integer::parseInt).toList();
+
+4. Records
+
+5. Pattern Matching for instanceof 
+
+modest adjective: not very large, expensive, important, etc.
+Example: This modest extension allows the familiar instanceof-and-cast idiom to be simplified.

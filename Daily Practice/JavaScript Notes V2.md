@@ -62,3 +62,32 @@ const fun2 = async () => {
 fun1();
 fun2();
 ```
+
+
+
+
+## Var key word
+
+- NO Block scope
+- Redeclarations
+- Hoisting(Raising)
+
+“var” has no block scope
+“var” tolerates redeclarations
+“var” variables can be declared below their use
+
+
+## IIFE
+immediately-invoked function expressions
+
+(function () {})();
++function(){}();
+!function(){}();
+
+
+## Callback function
+
+In JavaScript, a callback function is a function that is passed as an argument to another function and is executed after the completion of some asynchronous operation or at a later time. Callbacks are a way to handle operations that may take some time to complete, such as reading a file, making a network request, or handling user input.
+
+
+

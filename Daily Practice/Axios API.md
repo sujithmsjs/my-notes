@@ -360,6 +360,61 @@ console.log('Result a bit early : ', data);
 
 
 
+import { useState } from 'react'
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
+import './App.css'
+import axios from 'axios';
+
+const instance = axios.create({
+  baseURL: 'http://localhost:3000/',
+  timeout: 1000,
+  headers: { 'X-Custom-Header': 'foobar' }
+});
+
+const getAllPosts = async () => {
+  try {
+    const response = await instance.get('comments');
+    console.info(response);
+    if (response.status === 200) {
+      return response.data;
+    }
+    return [];
+  } catch (error) {
+    console.info(error);
+    return [];
+  }
+}
+
+function App() {
+  const [count, setCount] = useState(0);
+
+  const handleCall = async () => {
+    await getAllPosts();
+  }
+
+  const handleAddHeader = async () => {
+    instance.defaults.headers.common['MyName'] = 'SUJITH MANCHALA';
+    console.info('Header added');
+  }
+
+  const handleDelHeader = async () => {
+    delete instance.defaults.headers.common['MyName'];
+    console.info('Header Removed');
+  }
+
+  return (
+    <>
+      <div>
+        <button onClick={handleCall}>Call</button>
+        <button onClick={handleAddHeader}>Add Header</button>
+        <button onClick={handleDelHeader}>Delete Header</button>
+      </div>
+    </>
+  )
+}
+
+export default App
 
 
 

@@ -39,23 +39,6 @@ db.emp.insert(
 {"t":{"$date":"2022-07-09T19:40:28.058+05:30"},"s":"E",  "c":"CONTROL",  "id":20557,   "ctx":"initandlisten","msg":"DBException in initAndListen, terminating","attr":{"error":"NonExistentPath: Data directory C:\\data\\db\\ not found. Create the missing directory or specify another path using (1) the --dbpath command line option, or (2) by adding the 'storage.dbPath' option in the configuration file."}}
 
 
-JSON will converted into BSON and stored.
-
-
-Javascript only has 6 types:
-String, Number, Object, Array, Boolean, Null
-
-
-
-BSON:
-Efficient Storage and Extro data types.
-
-EJSON:
-Extended JSON
-At the time of Extention, EJSON will be displayed.
-
-
-db is implicit object in MOngoDB
 
 
 db.createCollection("<Name>")

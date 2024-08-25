@@ -1,0 +1,205 @@
+What projects you have worked
+2. Explain Abstract class and interface? How you implemented the project
+3. Can we create an object in the interface
+4. Features of Java 8
+5. What is the functional interface
+6. Types of annotations used in hibernate
+7. SQL joins
+8. What is the composite key?
+9. Use of having clause
+10. SQL query to fetch count of department based on department name
+11. How to make class as immutable
+12. Explain the final , finally and finalize
+13. Syntax of hashmap
+14. When we used arraylist and when we used linked list? Which is better for inserting the data?
+15. Output of the following program
+String s = "Hello";
+s.concat("world");
+
+Core java
+Spring boot
+Hibernate
+Mysql
+Postgre
+
+
+2. spring boot internal configuration
+3. class loader
+4. hashmap internal implementation
+5. object class methods
+
+6. get and load method difference in hibernate
+7. final keyword
+
+
+
+8. super keyword
+
+
+9. abstract method and interface and abstract class real time scenario
+10. jvm way of working
+11. @accept annotation
+12. real time hashmap scenario
+13. hashmap bucket creating and load factor
+14. thread class and runnable interface
+15. how to use two database in spring boot
+16. reverse a integer value 123456
+17. sum of integer value 1234758
+18. how @springbootapplication annotation works
+19. cache and how to use second level cache.
+20. @componentScan annotation uses
+21. can we override constructor and why
+22. Thread class and runnable interface.
+23. rightJoin and leftJoin in mysql.
+24. what is static block and why we use static block.
+
+Transaction propagation types
+
+JVM Architecture
+Class Loaders
+How you implement cache in Springboot
+
+Just-In-Time(JIT) compiler:
+
+It is used to improve the performance. JIT compiles parts of the byte code that have similar functionality at the same time, and hence reduces the amount of time needed for compilation. Here, the term "compiler" refers to a translator from the instruction set of a Java virtual machine (JVM) to the instruction set of a specific CPU.
+
+
+
+Java Native Interface:
+
+
+
+
+
+@Autowired
+
+
+Modes of Autowiring
+
+byName
+byType
+No
+Constructor
+Autodetect
+
+
+---
+Ex:
+
+class A{
+}
+
+class B extends A{
+}
+
+A[] arr = new A[10];
+arr.add(new A()); 
+arr.add(new B());// Is it possible
+
+When to go for ArrayList and when to go for LinkedList?
+
+
+Thread polling:
+---------------
+- For example you turned off your notifications in your mobile. One day your girlfrieds told you to text you. You need to open you WhatsApp explicitly and check whether you got the text or not.
+
+- Thread polling, in the context of multithreading, refers to the practice of repeatedly checking the state or condition of a thread to determine if it's ready to proceed or if some action needs to be taken.
+
+- Thread polling is useful in scenarios where blocking the thread until the condition is met is not desirable, such as in GUI applications or when responsiveness is crucial. However, excessive polling can waste CPU resources, so it's important to use it judiciously and consider other synchronization mechanisms like wait/notify or locks when appropriate.
+
+
+INTER-THREAD COMMUNICATION:
+---------------------------
+
+Inter-thread communication, as the name suggests, is a process or mechanism using which multiple threads can communicate with each other. It is especially used to avoid thread polling in java and can be obtained using wait(), notify(), and notifyAll() methods.
+
+Thread Scheduler:
+-----------------
+Thread Scheduler: It is a component of JVM that is used to decide which thread will execute next if multiple threads are waiting to get the chance of execution. By looking at the priority assigned to each thread that is READY, the thread scheduler selects the next run to execute. To schedule the threads, it mainly uses two mechanisms: Preemptive Scheduling and Time slicing scheduling.  
+
+
+Preemptive Scheduling:
+
+- Priority-based: Tasks are assigned priorities, and the scheduler selects the highest priority task that is ready to run.
+
+- Preemption: Lower priority tasks can be preempted by higher priority tasks.
+Fairness: Preemptive scheduling ensures fairness among tasks by not allowing any single task to monopolize the CPU for an extended period.
+
+Time-Slicing Scheduling:
+
+It is especially used to divide CPU time and allocate them to active threads. In this, each thread will get a predefined slice of time to execute. When the time expires, a particular thread has to wait till other threads get their chances to use their time in a round-robin fashion. Every running thread will get executed for a fixed time period. 
+
+- Fixed time intervals: Tasks are allowed to run for a fixed time slice before being preempted.
+
+- Round-robin: Tasks are served in a round-robin fashion, ensuring fairness as each task gets a turn to run.
+
+
+Spinning Works:
+
+Condition Checking: The thread repeatedly checks a condition in a loop to see if it's met. For example, it might be waiting for a flag to be set or a variable to reach a certain value.
+Loop Execution: The thread runs an empty loop continuously until the condition becomes true. It doesn't yield control to the CPU during this time.
+No Sleep or Wait: Unlike traditional blocking methods like wait() or sleep(), the thread remains active and doesn't give up CPU control. This means it can't be preempted or scheduled out by the operating system.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+What is Thread Scheduler and Time Slicing?
+
+
+BlockingQueue:
+- Q with thread safe.
+- Contains certain side.
+
+
+- contains put(T)/T take methods.
+
+> void put(T)
+> T take()
+
+
+- It the Q is emply or full appropriate will be thread will be blocked.
+
+
+Context switching:
+
+Context switching is basically an important feature of multithreading. It is referred to as switching of CPU from one thread or process to another one. It allows multiple processes to share the same CPU. In context switching, the state of thread or process is stored so that the execution of the thread can be resumed later if required. 
+
+
+
+
+Race condition:
+---------------
+https://www.interviewbit.com/multithreading-interview-questions/
+
+
+public interface Executor {
+    void execute(Runnable command);
+}
+
+public interface ExecutorService extends Executor {
+	void shutdown();
+	List<Runnable> shutdownNow();
+	boolean isShutdown();
+	boolean isTerminated();
+	<T> Future<T> submit(Callable<T> task);
+	<T> Future<T> submit(Runnable task, T result);
+	Future<?> submit(Runnable task);
+	<T> List<Future<T>> invokeAll(Collection<? extends Callable<T>> tasks)
+}
+
+AbstractExecutorService, ForkJoinPool, ScheduledThreadPoolExecutor, ThreadPoolExecutor
+
+An Executor that provides methods to manage termination and methods that can produce a Future for tracking progress of one or more asynchronous tasks.
+
+
+

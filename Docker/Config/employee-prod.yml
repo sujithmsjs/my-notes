@@ -1,0 +1,8 @@
+
+employee:
+  values:
+    x: 500
+    y: 600
+    name: Sujith
+  address:
+    pin: 507123

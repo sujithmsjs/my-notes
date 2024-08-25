@@ -6,7 +6,8 @@ https://medium.com/microservices-architecture/what-are-the-challenges-in-microse
 
 # Spring Cloud Config Server
 
-Spring Cloud Config Server provides the HTTP resource-based API for external configuration in the distributed system. We can enable the Spring Cloud Config Server by using the annotation @EnableConfigServer.
+Spring Cloud Config Server provides the HTTP resource-based API for external configuration in the distributed system.
+We can enable the Spring Cloud Config Server by using the annotation @EnableConfigServer.
 
 
 # Eureka Server
