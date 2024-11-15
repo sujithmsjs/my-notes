@@ -1,3 +1,4 @@
+```java
 interface Iterable<T>{
 	Iterator<T> iterator()
 Spliterator<T> spliterator()
@@ -92,3 +93,4 @@ public interface Queue<E> extends Collection<E> {
 	E remove()
 
 }
+```
